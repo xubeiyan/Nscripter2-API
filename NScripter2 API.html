@@ -1,0 +1,127 @@
+<html>
+<head>
+<title>NScripter2 API ver0.01</title>
+<style type="text/css">
+body {font-family: "微软雅黑"}
+p {margin-top:3px; margin-bottom:3px}
+/*.arg {background-color:#CCC;}*/
+/*.example {font-weight:bold;}*/
+/*.examplecode {background-color:#111;} */
+.description {}
+.function {margin:5px; font-size:14px; background-color:#EEE;}
+.functionName {font-size: 16px; font-weight:bolder; background-color:#CCC;}
+/* 函数保留字 */
+.functionWord {font-weight:bold; color:#F90}
+/* 文本 */
+.intro {margin:5px; background-color:#DED; font-size:14px}
+.label {color:#A00}
+.text {color:#0A0}
+.number {color:#116; font-weight:bold}
+.var {color:#}
+
+</style>
+</head>
+<body>
+<div id="functionList">
+<h5>函数列表</h5>
+</div>
+
+<div id="functionContent">
+<h5>API函数</h5>
+<h5>错误显示功能</h5>
+<div class="function" id="error">
+	<p class="functionName">ERROR</p>
+	<p class="arg"><b>参数：</b>ERROR <span class="text">str</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class="functionWord">ERROR</span> <span class="text">"文件不存在"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description"><p>显示错误信息并退出。</p></div>
+</div>
+<h5>选择支功能</h5>
+<div class="function" id="select">
+	<p class="functionName">SELECT</p>
+	<p class="arg"><b>参数：</b>SELECT <span class="text">text1</span>,<span class="label">lb1</span>,<span class="text">text2</span,<span class="label">lb2</span>,...</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class="functionWord">SELECT</span> <span class="text">"选项1"</span>,<span class="label">@lb1</span>,<span class="text">"选项2"</span>,<span class="label">@lb2</span></p>
+	</div>
+<p class="func"><b>功能：</b></p>
+<div class="description"><p>选择支命令。会调用基本的<span class="label">@selectb</span>标签。</p></div>
+</div>
+<h5>精灵功能</h5>
+<div class="intro">
+	<p>制作ADV游戏的时候主要使用的就是精灵功能。</p>
+	<p>贴图命令和绘图命令在内部使用的时候，是不能同时执行的。</p>
+	<p>此外，无论立绘，背景，日期还是对话文字，文字窗口等等，都是“精灵”。</p>
+	<p>并没有打算将他们写成固定的命令，而是由基本的功能组合起来的（请参考例子程序）。</p>
+	<p>至于为什么要这么做，是因为对于不同的游戏来说，每一个大功能实现方式和功能差别太多。</p>
+	<p></p>
+	<p>而且，精灵的显示状态更改之后并不会马上反映到屏幕上。</p>
+	<p>需要用PRINT命令指定显示效果，才能显示出来。</p>
+	<p>这个显示模式和旧Nscripter是一样的。</p>
+	<p></p>
+	<p>精灵的名称定义如下</p>
+	<p>"setname:spname"</p>
+	<p>setname为精灵组（sprite set）的名称，spname为精灵的名称</p>
+	<p>精灵组（sprite set）好比一个文件夹，精灵就像文件一样放在里面。</p>
+	<p></p>スプライトセットはボタン処理の際の処理の単位になったり、スプライトセット自体のＺ値や、表示非表示切り替えがあります。
+	<p>省略精灵组名称的时候，精灵组的名称为""，此精灵组的Z值默认为10000.</p>
+</div>
+<div class="function" id="spset">
+	<p class="functionName">SPSET</p>
+	<p class="arg"><b>参数：</b><span>SPSET <span class="text">name</span>,<span class="number">z</span></span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class="functionWord">SPSET</span> <span class="text">"setname"</span>,<span class="number">10</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>生成一个空的精灵组。有同名的精灵组存在的时候不会生成。</p>
+		<p>请注意：Z值为精灵组的Z值。精灵的Z值需要另外指定。</p>
+		<p>精灵首先会根据精灵组的Z值排序，再在精灵组中根据每个的Z值排序。</p>
+	</div>
+</div>
+<div class="function" id="spsetvisible">
+	<p class="functionName">SPSETVISIBLE</p>
+	<p class="arg"><b>参数：</b>SPSETVISIBLE <span class="text">name</span>,<span title="1或0">v</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class="functionWord">SPSET</span> <span class="text">"setname"</span>,<span class="number">1</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>切换精灵组的显示与隐藏。1为显示，0为隐藏。</p>
+		<p>即使精灵处于显示状态，如果其所属的精灵组切换为隐藏状态的话精灵也会隐藏。</p>
+		<p>精灵处于隐藏状态的话，即使所属的精灵组处于显示状态也不会显示。</p>
+	</div>
+</div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+<div class="function" id=""></div>
+</div>
+</body>
+
+</html>
