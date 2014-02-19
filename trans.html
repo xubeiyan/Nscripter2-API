@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<script>
+function trans(){
+	var source = document.getElementById("src"),
+		destination = document.getElementById("dst"),
+		text = source.value,
+	// 数字
+	text = text.replace(/t\>/g,"</span>");
+	text = text.replace(/\<t/g,"<span class='text'>");
+	text = text.replace(/\%n/g,"<span class='number'>");
+	text = text.replace(/n\%/g,"</span>");
+	text = text.replace(/\[/g,"<span class='functionWord'>");
+	text = text.replace(/\]/g,"</span>");
+	text = text.replace(/\$v/g,"<span class='var'>");
+	text = text.replace(/v\$/g,"</span>");
+	text = text.replace(/\@l/g,"<span class='label'>");
+	text = text.replace(/l\@/g,"</span>");
+	text = text.replace(/\{c/g,"<span class='textctrl'>");
+	text = text.replace(/c\}/g,"</span>");
+	text = text.replace(/\#c/g,"<span class='color'>");
+	text = text.replace(/c\#/g,"</span>");
+	destination.value = text; 
+}
+</script>
+
+<body>
+<table><tr><td>
+<textarea style="height:300px;width:800px" id="src"></textarea><br />
+<textarea style="height:300px;width:800px" id="dst"></textarea>
+</td><td>
+<div style="height:200px; width:200px">
+<p>%n...n% 数字<br />
+[...] 函数保留字<br />
+&#60t...t&#62 字符串<br />
+$v...v$ 变量<br />
+@l..l@ 标签<br />
+{c...c} 控制字符串<br />
+#c...c# 颜色</p></div>
+<input style="height:400px;width:200px"type="button" name="" value="转换" onclick="javascript:trans()"/></td></tr>
+<tr><td>某功能简陋的格式转换器 by yyd</td></tr></table>
+<body>
+</html>

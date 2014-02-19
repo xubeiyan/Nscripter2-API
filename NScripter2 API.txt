@@ -1,0 +1,1915 @@
+＜エラー機能＞
+■ERROR
+引数：ERROR str
+例：
+ERROR "ファイルがありません"
+機能：
+エラーメッセージを表示して終了します。
+
+＜選択肢機能＞
+■SELECT
+引数：SELECT text1,lb1,text2,lb2,...
+例：
+select "選択肢1",@lb1,"選択肢2",@lb2
+選択肢命令です。BASICのラベル@selectbをコールします。
+@selectbでは終了時にreturn @lb1 などを実行して、戻り先を飛び先ラベルに変えてください。
+
+＜スプライト機能＞
+ＡＤＶを作るときにはこの命令を主に使うことになります。
+テクスチャ命令や形状描画命令を内部的に使っていますので、同時に使えません。
+なお、立ち絵や背景や日付、テキスト文字列、テキストウィンドウなども「スプライト」ですが、
+これらは固定命令としては用意されておらず、BASICソースで組むことになります（サンプルを参照してください）。
+これは、ゲームによって大きく仕様が異なることが多いからです。
+
+なお、スプライトの描画状態を変更しても画面にすぐには反映されません。
+PRINT命令によってトランジションを指定し、描画を反映させる必要があります。
+この辺は旧NScripterの仕様を踏襲しています。
+
+スプライト名は次のように記述されます。
+"set:spname"
+setname=スプライトセット名、spname=スプライト名
+スプライトセットがフォルダでスプライトが個別ファイルのようなものです。
+スプライトセットはボタン処理の際の処理の単位になったり、スプライトセット自体のＺ値や、表示非表示切り替えがあります。
+スプライトセット名を省略すると、スプライトセット名""として扱われます。このスプライトセットはＺ値が10000に設定されています。
+
+■SPSET
+引数：SPSET name,z
+例：
+SPSET "setname",10
+機能：
+空のスプライトセットを作成します。同名のセットが既にある場合、作成できません。
+Ｚ値は「スプライトセットのＺ値」です。スプライトのＺ値とは別扱いですので注意してください。
+スプライトは、まず所属するスプライトセットのＺ値でソートされた後、スプライトセットの中で個々のスプライトのＺ値でソートされます。
+
+■SPSETVISIBLE
+引数：SPSETVISIBLE name,v
+例：
+SPSETVISIBLE "setname",1
+機能：
+スプライトセットの表示／非表示を切り替えます。1で表示、0で非表示です。
+スプライトが表示であっても、所属するスプライトセット名を非表示にすればまとめて非表示になります。
+スプライトが非表示である場合は、所属するスプライトセットが表示でも表示されません。
+
+■SPSETCLEAR
+引数：SPSETCLER name
+機能：
+スプライトセットに所属するスプライトを全部削除します。スプライトセット自体は消えません。
+
+■SPSETDELETE
+引数：SPSETDELETE name
+機能：
+スプライトセットを削除します。
+
+■SPSETZ
+引数：SPSETZ name,z
+機能：
+スプライトセットのＺ値を変更します。
+
+■SP
+引数：SP name,opt
+例：
+SP "sp1",{name="test.png",x=100,y=100,z=100}
+SP "set:sp2",{name={"cell1.png","cell2.png"},x=200,y=200,z=100,cell=0,blend=1} ; blendは0または省略で通常、1で加算ブレンド
+SP "set:sp2",{name={"cell1.png","cell2.png"},cx=300,cy=300,xs=1.2,ys=1.2,rot=45,z=100,cell=0} ; 角度はディグリー（度）単位です。ラジアンではありません。
+SP "set:sp3",{name={"cell1.png","cell2.png","cell3.png"},x=200,y=200,z=100,animtime=100,animtype="normal"}
+※オプション指定は必要がない場合は省略できます。必要な値を設定してください。
+※NScripterと違い、複数セル画像は全てのセルの画像をばらばらに指定します。画像としては連結しません。
+※アニメーションタイプは、
+"normal"もしくは指定なしもしくは""が0→1→2→3→0→1→2→3→0→1...
+"stop"が0→1→2→3（ここで止まる）
+"round"が0→1→2→3→2→1→0→1→2→3→... です。
+"lua"は、animfuncに指定してあるLua関数を呼び出します。Luaがわかる人向け。詳細はbasic.sprite_animation_checkを参照してください。
+
+機能：
+スプライトを作成します。同名のスプライトがある場合、それは削除されます。
+
+■SPDELETE
+引数：SPDELETE name
+例：
+SPDELETE "set:sp1"
+機能：
+スプライトを削除します。
+
+■SPDELETES
+引数：SPDELETES head
+例：
+SPDELETES "set:btn"
+機能：
+先頭部分に指定文字列を持つスプライトをまとめて消します。
+例えば上の例では"set:btn0""set:btn1"..."set:btn99"などが存在すれば全部まとめて消えます。
+消したくないものを巻き込んで消さないように気をつけてください。
+
+■GETSPINFO
+引数：GETSPINFO name,info
+例：
+GETSPINFO "sp1",%info
+機能：
+スプライトの情報を取得します。上の例だと、スプライト「sp1」の情報が次のように帰ってきます。
+（通常指定の場合）
+%info.x ; X座標
+%info.y ; Y座標
+（回転拡縮指定の場合）
+%info.cx ; CX座標
+%info.cy ; CY座標
+%info.xs ; X拡大率
+%info.ys ; Y拡大率
+%info.rot ; 回転角
+
+%info.z ; Z値
+%info.a ; α値
+%info.cell ; セル番号
+%info.cellnum ; セルの数
+%info.w ; 幅
+%info.h ; 高さ
+
+%info.animtype ; アニメーションタイプ
+%info.animtime ; アニメーション時間
+
+■SPANIMATIONRESET
+引数：SPANIMATIONRESET
+機能：
+スプライトのアニメーションを全部リセットします。
+
+■SPBEZIER
+引数：SPBEZIER name,x0,y0,x1,y1,x2,y2,x3,y3,sx0,sy0,sx1,sy1,sx2,sy2,sx3,sy3,sx4,sy4,sx5,sy5,sx6,sy6,sx7,sy7
+例）
+SPBEZIER "sp",0,0, 1,0, 1,1, 0,1, 0.2,-0.2, 0.8,-0.2, 1.2,0.2, 1.2,0.8, 0.8,1.2, 0.2,1.2, -0.2,0.8, -0.2,0.2
+機能：
+スプライトをベジエワープで変形します。スプライトの座標指定は回転拡縮タイプでなければなりません。
+座標はまず頂点座標を時計回りに左上、右上、右下、左下、次に上右下左の辺の制御点を時計回りに上辺左、上辺右、右辺上、右辺下、下辺右、下辺左、左辺下、左辺上、で指定します。値は左上頂点を0,0、右下頂点を1,1とします。
+
+■SPCELL
+引数：SPCELL name,cell
+例）
+SPCELL "sp1",2
+機能：
+スプライトのセル番号を切り替えます。
+
+■SPFILL
+引数：SPFILL name,cell,color
+例）
+SPFILL "sp1",0,#00000000
+機能：
+スプライトを塗りつぶします。テキストウィンドウなどで、描画前に以前のテキストを消したいときに使えるでしょう。
+
+■SPMOVE
+引数：SPMOVE name,x,y,a
+例）
+SPMOVE "sp1",100,100,255
+機能：
+スプライトを移動します。座標指定は左上座標タイプです。α値は省略でき、その場合255になります。
+
+■SPMOVELT
+引数：SPMOVELT name,cx,cy,xs,ys,rot,a
+例）
+SPMOVE "sp1",300,300,1.2,1.2,RAD(45),255
+機能：
+スプライトを移動します。座標指定は中心座標＋回転拡縮タイプです。α値は省略でき、その場合255になります。
+角度の単位はラジアンです。ディグリーはRADで変換してください。
+
+■SPVISIBLE
+引数：SPVISIBLE name,v
+例）
+SPVISIBLE "sp1",0
+機能：
+スプライトの表示／非表示を設定します。1で表示、0で非表示です。
+
+■SPZ
+引数：SPZ name,z
+例）
+SPZ "sp1",3
+機能：
+スプライトのＺ値を設定します。
+
+■SPFORMAT
+引数：SPFORMAT name,cell,str,opt,rubyopt
+例）
+SPFORMAT "sp1",0,"あいうえおかきくけこ{漢字/ルビ}さしすせそ",{font="text",x=2,y=2,w=25,h=4},{font="ruby"}
+機能：
+英語文章のようにルビ機能を使わない場合はrubyoptは省略できます。
+スプライトに文字列を書き込みます。これはスプライトを書き換える命令であって、描画命令ではありません。
+たとえばバックログの文字列を作るとき等に使います。テキスト中に%p等がある場合は単に無視します。
+
+
+■SPPUTTEXT
+引数：SPPUTTEXT name,cell,str,opt,rubyopt
+例）
+SPPUTTEXT "sp1",0,"あいうえおかきくけこ{漢字/ルビ}さしすせそ",{font="text",x=2,y=2,w=25,h=4,wait=50},{font="ruby"}
+機能：
+英語文章のようにルビ機能を使わない場合はrubyoptは省略できます。
+スプライトに文字列を書き込み、それを逐次表示します。waitで速度を調整できます。速度に0を指定したときは瞬時に全部を表示します。
+テキスト中の%pと文末で、BASICの@textbを呼び出してテキストウィンドウのインタフェース処理をします。
+ただし、文末が_で終わってる場合は文末でのインタフェース処理はしません。表示が終わるとそのまま次の行に実行を移します。
+（これは旧NScripterのlinepageと似た動作です）
+
+■GETSPCELL
+引数：GETSPCELL(name)
+例）
+%cell=GETSPCELL("sp1")
+機能：
+指定したスプライトのセル番号を取得します。
+
+■SPHITCHECK
+引数：SPHITCHECK(name,x,y)
+例）
+if SPHITCHECK("sp1",100,100)==1 then goto @hit
+機能：
+指定した座標がスプライトの内側か含まれるかどうかを判定し、内側（あたっている）なら1、そうでなければ0を返します。
+今のところ、左上座標形式のものにしか対応していません。
+
+＜高水準描画／入力待ち命令＞
+■PRINT
+引数：PRINT effectsymbol,time,param
+例）
+PRINT #C
+PRINT #RD,500
+PRINT #SL,500
+PRINT #F,500
+PRINT #U,500,"rule.png"
+機能：
+スプライトの描画状態を変更すると、内部にその変化が蓄積されます。
+PRINT命令で実際に画面に反映することが出来ます。この仕様は旧NScripterと同じです。
+シンボルはトランジションの種類を指定します。
+#C もしくは"" 瞬時表示 時間指定はいりません。
+
+#F クロスフェード
+#RU #RD #RL #RR ロール上下左右
+#SU #SD #SL #SR スクロール上下左右
+#U ユニバーサルトランジション 三番目の引数にルール画像を取ります。旧NScripterのトランジション18番と同じです。
+
+■QUAKE time,num,size
+引数：QUAKE time,num,size
+機能：
+画面を揺らします。掛ける時間（単位ミリ秒）,揺らす回数、揺らす幅(1=画面の1/20)を指定します。
+画面をずらした時に後ろの黒ウィンドウ部分が見えないように拡大していますので、幅を大きくすると拡大率も上がります。
+この辺の動作が気に入らない場合はsystem.luaのQUAKEを上書きするか、自前で別命令を実装してください。
+
+■CLICK
+引数：CLICK
+機能：
+左クリック待ちします。スプライトアニメーション等も実行されます。
+
+■LRCLICK
+引数：LRCLICK retval
+機能：LRCLICK %ret
+左右のクリックを判別するクリック待ちをします。スプライトアニメーション等も実行されます。
+左クリックの場合変数に#L、右クリックの場合変数に#Rが入ってきます。
+ＣＧモード等で便利に使えます。
+
+＜ボタン機能＞
+※スプライト操作文字列について
+旧NScripterにおける拡張ボタン機能に近い機能です。デフォルトのボタン動作で変化する以外の処理をしたい場合に使います。
+"S(test.ogg)" そのサウンドを再生します。
+"P(spname,N)"指定したスプライトのセル番号を変更します。Nとありますが、これは整数の数値を直接書かなければなりません。変数は使えません。
+"C(spname)"指定したスプライトを消去します。
+"M(spname,x,y)"指定したスプライトを移動します。
+これらはつなげて組み合わせることも出来ます。
+
+■BTNCLEAR
+引数：BTNCLEAR setname,defstr
+例）
+機能：
+※setnameとdefstrは必要がない場合省略できます。
+※setnameを省略すると、スプライトセット""を指定したのと同じことになります。
+※defstrを指定するときはsetnameは省略できません。
+ボタン定義をクリアします。ボタン定義はスプライトセットごとに別です。
+defstrは、どのボタンにもカーソルが重なっていない時に実行する「スプライト操作文字列」を指定します。
+
+
+■BTN
+引数：BTN name,opt
+例）
+BTN "sp1"
+BTN "sp2",{style="push"}
+BTN "sp3",{style="toggle"}
+BTN "sp4",{on="P(sp1,0)P(sp2,1)"}
+BTN "bar0",{style="bar"}
+機能：
+指定したスプライトにボタン処理を定義します。
+optには次の値が指定できます。
+on="スプライト操作文字列"
+　ボタンにカーソルが重なったときに実行する処理を指定します。
+off="スプライト操作文字列"
+　ボタンからカーソルが離れたときに実行する処理を指定します。
+style="スタイル指定"
+　ボタンのスタイルを指定します。省略すると"push"になります。次の種類があります。
+　"push" または"" プッシュボタン、重なっているときにセル1、離れているときにセル0を表示、戻り値はスプライト名です。
+　"toggle" トグルボタン 押すごとにセル0と1が切り替わります。戻り値は"スプライト名:0"もしくは"スプライト名:1"です。
+　"bar" バー セルをバーのように使って、スプライトの中のどこをクリックしたかでバーの位置が変わります。ちょっとややこしいのでサンプルを参照してください。
+align="left" もしくは align="right"
+　バータイプのボタンで、スプライトのどちらの端を0にするかを選択します。省略時のデフォルトは"left"です。
+notreset=1
+　プッシュボタンで、押した後に通常ならセルが0に戻りますが、1のまま戻らないようにします。
+
+■BTNEXEC
+引数：BTNEXEC val,setname,opt
+例）
+BTNEXEC %ret,"setname",{wheel=1}
+機能：
+※setnameとoptは必要がない場合省略できます。
+※setnameを省略すると、スプライトセット""を指定したのと同じことになります。
+※optを指定するときはsetnameは省略できません。
+
+ボタン処理を実行します。戻り値はシンボルもしくはスプライト名ですが、スプライト名にはスプライトセット名は含まれません。
+つまりプッシュボタン"set:sp"が押されたときは"sp"が帰ってきます。これは、スプライトセット名は自明だからです。
+
+戻り値は、
+プッシュボタン……"スプライト名"
+トグルボタン……"スプライト名:0"もしくは"スプライト名:1"
+バー……"スプライト名:セル番号"
+""……ボタンではないところをクリックしたとき
+#R……右クリック時
+
+optには次の値が指定できます。
+wheel=1
+　ホイール入力を取得します。戻り値は、#WU(ホイールアップ時) #WD(ホイールダウン時)です。
+ctrl=1
+　コントロールキーを取得します。#CTRLが戻ります。
+spcret=1
+　スペースキーとリターンキーを取得します。" "もしくは#RETURNを返します。
+automode=1
+　オートモードを実行します。ボイスがなっているときはボイスが終了したとき、なっていないときはtimeで指定した時間が過ぎたときに処理を続行します。
+　タイムアウト（もしくはボイス終了）時の戻り値は#TIMEOUTです。
+time=1000
+　タイムアウト時を指定します。オートモード時には、ボイスがなっていないとき、オートモードでないときはどのような場合でも指定時間でタイムアウトします。
+ldown=1
+　マウス左ボタンの押し下げを判定します。#LDが戻ります。
+rdown=1
+　マウス右ボタンの押し下げを判定します。#RDが戻ります。
+func=1
+　ファンクションキーを取得します。#F1～#F12が戻ります。
+cursor=1
+  カーソルキーを取得します。#UP #DOWN #LEFT #RIGHTが戻ります。
+alphabet=1
+  アルファベットキーを取得します。#KEY_A～#KEY_Zが戻ります。
+＜フォント機能＞
+■FONT
+引数：FONT name,opt
+例：
+FONT "text1",{}
+FONT "text2",{name="ＭＳ ゴシック",color=#FFFFFFFF,width=16,height=16}
+FONT "text3",{name="ＭＳ ゴシック",style="outline",outlinecolor=#FF000000,color=#FFFFFFFF,width=24,height=24}
+FONT "text4",{name="ＭＳ ゴシック",style="shadow",color=#FFFFFFFF,shadowcolor=#FF000000,width=24,height=24}
+FONT "text5",{name="ＭＳ ゴシック",style="fancy",outlinecolor=#FF000000,color1=#FFFFEEAA,color2=#FFFFFFFF,shadowcolor=#FF000000,fx=1,fy=1,width=24,height=24}
+機能：
+フォントを作成します。フォントはセーブされませんので、必ず通るスクリプト冒頭で宣言するのがいいでしょう。
+
+■FDELETE
+引数：FDELETE name
+例：
+FDELETE "text1"
+機能：
+フォントを削除します。
+
+＜各種音声再生機能＞
+※低水準サウンド機能を内部的に使っています。同時に使うときは内部仕様について調べてからにしてください。
+■BGMPLAY
+引数：BGMPLAY name
+例：
+BGMPLAY "test.ogg"
+機能：
+ＢＧＭを再生します。ＢＧＭはループします。
+
+■BGMPLAYONCE
+引数：BGMPLAYONCE name
+例：
+BGMPLAYONCE "test.ogg"
+機能：
+ＢＧＭを一回だけ再生します。ループしません。
+
+■BGMSTOP
+引数：BGMSTOP
+例：
+BGMSTOP
+機能：
+ＢＧＭを停止します。
+
+■BGMVOLUME
+引数：BGMVOLUME vol
+例：
+BGMVOLUME -10000
+機能：
+ＢＧＭの音量を調節します。値は0～-10000で、0が最大、-10000が無音です。
+-2000くらいでほとんど聞こえなくなるようです。実際に試していい感じの数値にしてください。
+ボリュームについては他の命令でも同じ範囲です。
+
+■BGMFADEOUT
+引数：BGMFADEOUT time
+例：
+BGMFADEOUT 1000
+機能：
+ＢＧＭ停止時／切替時のフェードアウトに掛ける時間を指定します。単位はミリ秒です。
+フェードアウトによって実行は止まりません。
+他の曲を再生した場合は、フェードアウトしながら、平行して次の曲の演奏が始まります。
+
+■GETBGMVOLUME
+引数：GETBGMVOLUME()
+例：
+bgmvol=GETBGMVOLUME()
+機能：
+現在のＢＧＭボリュームを取得します。
+
+■BGVPLAY
+引数：BGVPLAY ch,name
+例：
+BGVPLAY 0,"bgvoice.ogg"
+BGVPLAY 0,""
+機能：
+ＢＧＶ(Back Ground Voice、台詞ボイス(VOICEPLAY命令)が再生されていないときにループで再生されるボイス）を再生します。
+chはチャンネルで0～15です。ファイル名に""を指定するとＢＧＶが停止します。
+
+■BGVFADEOUT
+引数：BGVFADEOUT time
+例：
+BGVFADEOUT 1000
+機能：ＢＧＶのフェードアウト時間をミリ秒で指定します。
+
+■BGVVOLUME
+引数：BGVVOLUME vol
+例：
+BGVVOLUME 0
+機能：
+ＢＧＶのボリュームを指定します。
+
+■GETBGVVOLUME
+引数：GETBGVVOLUME()
+例：
+bgvvol=GETBGVVOLUME()
+機能：
+現在のＢＧＶボリュームを取得します。
+
+■SEPLAY
+引数：SEPLAY ch,name
+例：
+SEPLAY 0,"test.ogg"
+機能：
+ＳＥを再生します。chはチャンネルで、0～15です。
+
+■SELOOP
+引数：SELOOP ch,name
+例：SELOOP 1,"loopse.ogg"
+機能：
+ＳＥをループで再生します。
+
+■SESTOP         param:N        type:Lua
+引数：SESTOP ch
+例：
+SESTOP ch
+機能：
+ＳＥを停止します。
+
+■SESTOPALL      param:         type:Lua
+引数：SESTOPALL
+例：
+SESTOPALL
+機能：
+全てのチャンネルのSEを停止します。
+■SEVOLUME       param:N        type:Lua
+引数：SEVOLUME vol
+例：
+SEVOLUME -1000
+機能：
+ＳＥのボリュームを変更します。
+■SECHVOLUME     param:NN       type:Lua
+引数：SECHVOLUME ch,vol
+例：
+SECHVOLUME 4,-10000
+機能：
+あるチャンネルのボリュームを変更します。
+■SEFADEOUT      param:N        type:Lua
+引数：SEFADEOUT time
+例：
+SEFADEOUT 1000
+機能：
+ＳＥのフェードアウト時間を指定します。
+
+■GETSEVOLUME
+引数：GETSEVOLUME()
+例：
+sevol=GETSEVOLUME()
+機能：
+現在のＳＥボリュームを取得します。
+
+■VOICEPLAY      param:S*       type:Lua
+引数：VOICEPLAY name,spd
+例：
+VOICEPLAY "voice0000.ogg"
+VOICEPLAY "voice0000.ogg",2
+機能：
+ボイスを再生します。spdは省略可能です。ここに2を指定すると倍速再生します。
+ファイル名に""を指定すると今鳴らしているボイス再生が停止します。
+■VOICEFADEOUT   param:N        type:Lua
+引数：VOICEFADEOUT time
+例：
+VOICEFADEOUT 1000
+機能：
+ボイスのフェードアウト時間を指定します。
+■VOICEVOLUME    param:N        type:Lua
+引数：VOICEVOLUME vol
+例：
+VOICEVOLUME -10000
+機能：
+ボイスのボリュームを設定します。
+
+■GETVOICEVOLUME
+引数：GETVOICEVOLUME()
+例：
+voicevol=GETVOICEVOLUME()
+機能：
+現在のボイスボリュームを取得します。
+
+＜ムービー機能＞
+■MOVIE
+引数：MOVIE name,clickskip,volume
+例：
+MOVIE "test.mpg",1,0
+※clickskipは省略すると0、volumeは省略するとBGMのボリュームと同じになります。
+機能：
+ムービーをウィンドウ全体、最前面で再生し、再生を終えるまで他の動作を止めます。
+オープニング／エンディング／操作や重ねあわせ描画の必要の無いカットムービーなどに使います。
+clickskipに1を指定するとクリックで飛ばせるようになります。
+
+■MRESET
+引数：MRESET
+例：
+MRESET
+機能：
+ムービーテクスチャをリセットします。全てのムービーテクスチャが最初から再生されます。
+
+■MWRITEBEGIN
+引数：MWRITEBEGIN filename,width,height,fps,framenum
+例：
+MWRITEBEGIN "test.avi",800,600,30,60 ;30FPS,60フレーム、つまり2秒のムービー
+機能：
+ムービーファイルを書き込み用に開きます。フォーマットは無圧縮AVIになります。
+一度にひとつのムービーファイルしか書き込めません。
+
+■MWRITE
+引数：MWRITE frame,bmpname
+例：
+MWRITE 10,"bmp"
+機能：
+現在編集中のムービーにフレーム画像を登録します。
+画像には↓で説明しているビットマップ系の命令で作成した「ビットマップ名」を指定します。
+
+■MWRITEEND
+引数：MWRITEEND
+例：
+MWRITEEND
+機能：
+ムービーファイルの編集を終了し、ファイルに書き込みます。
+
+＜その他基本機能＞
+■QUIT
+引数：QUIT
+例：
+QUIT
+機能：
+プログラムを終了します。BASICで一般的なEND命令は実装していません。
+これは、END IFやEND LOOPなどの構文でも使うので（また、Luaではendひとつでブロックを閉じるため）、混乱しないようにするためです。
+
+■LOAD
+引数：LOAD num
+例：
+LOAD 2
+機能：
+セーブファイルからゲームをロードします。numはセーブ番号。
+
+■SAVE
+引数：SAVE num
+例：
+SAVE num
+機能：
+セーブファイルに最後に通ったセーブポイントのデータを保存します。numはセーブ番号。
+セーブポイントは、テキスト行頭で自動的に更新されます。
+
+■SAVEMODE
+引数：SAVEMODE n
+例：
+SAVEMODE 1
+機能：
+セーブポイント更新モードをオン／オフします。numはセーブ番号。
+0にするとセーブポイントが更新されなくなります。
+
+■SAVEPOINT
+引数：SAVEPOINT
+例：
+SAVEPOINT
+機能：
+セーブポイントを強制的に更新します。numはセーブ番号。
+多少時間が掛かりますので、必要なとき以外はやらないでください。
+
+■SAVETIME       param:NRRRRRR  type:C++
+引数：SAVETIME num,yearval,monthval,dayval,hourval,minval,secval
+例：
+SAVETIME 3,%year,%month,%day,%hour,%min,%sec
+機能：
+セーブファイルの保存された時間を取得します。numはセーブ番号。
+
+■SCHK
+引数：SCHK(num)
+例：
+%saveexist=SCHK(2)
+機能：セーブファイルがあれば1、なければ0を返します。numはセーブ番号。
+
+■WAIT
+引数：WAIT time,clickskip
+例：
+WAIT 1000
+WAIT 2000,1
+機能：
+指定した時間だけウェイトを入れます。アニメーションは実行されます。
+clickskipは省略できます。1を指定すると、クリックで飛ばせるようになります。
+
+■SKIP
+引数：SKIP num
+例：
+SKIP 1
+機能：
+スキップモードを変更します。
+0でスキップオフ（通常モード）、1でスキップモード、2でオートモードです。
+
+■GETSKIP
+引数：GETSKIP()
+例：
+%skipmode=GETSKIP()
+機能：
+現在のスキップモードを取得します。
+
+■TCHK
+引数：TCHK()
+例：
+%alreadyread=TCHK()
+機能：
+現在のテキスト位置が、既に読んだところであれば1、初めて読むところであれば0を返します。
+既読スキップは@textbのところでこの値とスキップモードを見てスキップをオフするように作ります。
+
+■LUA
+引数：LUA str
+例：
+LUA 'os.execute("pause")'
+機能：
+Luaスクリプトを実行します。
+
+■LUAFILE
+引数：LUAFILE filename
+例：
+LUAFILE "system.lua"
+機能：
+Luaスクリプトファイルを読み込み実行します。
+
+■LUAF
+引数：LUAF str
+例：
+%a=LUAF("foo(1)")
+機能：
+Lua関数を実行し、その戻り値をこのBASIC関数の戻り値として返します。
+
+■DEFSUB
+引数：DEFSUB commandname,prototypestr
+例：
+DEFSUB chr,"SN"
+機能：
+コマンドを定義します。コマンドはサブルーチン名にもなります。
+この場合だと、文字列変数１つを引数にとるコマンドchrを定義します。
+@chr
+param %name,%pos
+サブルーチン側ではこのように引数を受け取ります。
+
+プロトタイプ宣言は次の記号が使えます。
+S 文字列
+N 数値
+R 変数名（いわゆる参照渡しです。VSET VGETで変数の値を変更／参照できます）
+A 数値もしくは文字列
+. 一つ前のパラメータをその後あるだけ受け取ります。
+?N ?S 存在する場合のみNかSを、無い場合は#NILを受け取ります。
+* 以降のパラメータを型チェックしません。全てそのまま受け取ります。
+O オプション記法を受け取ります。内部的にはひとつの文字列です(basic.decode_tableに渡します)
+
+■PARAM
+引数：PARAM param1,param2,...
+例：
+param %name,%pos
+機能：
+サブルーチンコール時に渡されたパラメータを変数に受け取ります。
+
+■VSET
+引数：VSET varname,value
+例：
+defsub test,"R"
+test %name
+cprint %name
+quit
+
+@test
+param %v
+vset %v,"名前"
+return
+機能：
+paramで受け取った変数名にアクセスし、変数に値を代入します。
+
+
+■VGET
+引数：VGET(varname)
+例：
+defsub test,"R"
+%name="てすと"
+test %name
+quit
+
+@test
+param %v
+cprint vget(%v)
+return
+
+
+■CALL構文
+引数：CALL label,prototypestr,param1,param2,...
+例：
+CALL @test,"SS","paramstr1","paramstr2"
+機能：
+指定ラベルをあたかもDEFSUB定義された命令のように呼び出します。
+そこでしか使わないような処理でDEFSUB定義するほどの汎用性がないときに使います。
+呼び出されたサブルーチンの側ではDEFSUB時とまったく同じ記述が出来ます。
+
+■INPUT
+引数：INPUT val,text,caption
+例：
+INPUT %ret,"テキスト本文です","ダイアログのタイトルです"
+機能：
+文字列を入力するダイアログを表示して、変数に代入させます。
+
+■GETSCREENSHOT
+引数：GETSCREENSHOT bmpname
+例：
+GETSCREENSHOT "test"
+機能：
+ビットマップオブジェクトを作り、そこにスクリーンショットを保存します。
+
+■GETLOGTEXT
+引数：GETLOGTEXT num,tag,text
+例：
+GETLOGTEXT 0,%tag,%text
+機能：
+バックログに保存されているデータを取得します。
+0が現在のテキスト、1～がその数だけ巻き戻ったテキストです。
+
+■LOGCHK
+引数：LOGCHK(num)
+例：
+%logexist=LOGCHK(1)
+機能：
+その指定番号のログが存在すれば1、しなければ0を返します。
+この関数が1を返すときはGETLOGTEXT命令でログを取得できます。
+
+■LCHK
+引数：LCHK(label)
+例：
+%labelflag=LCHK("@test")
+機能：
+そのラベルを通ったことがあれば1、なければ0を返します。
+シーン回想モードの実装等に使います。
+
+■FCHK
+引数：FCHK(filename)
+例：
+%fileflag=FCHK("ev\test.png")
+機能：
+その画像をテクスチャとして読み込んだことがあれば1、なければ0を返します。
+ＣＧモードの実装等に使います。
+
+■FILECHK
+引数：FILECHK(filename)
+例：
+%appendflag=FILECHK("06.ns2")
+機能：
+そのファイルがアーカイブもしくは生ファイルで存在するかどうかをチェックします。
+FCHKは「読み込んだことがあるかどうか」のチェックであり、存在していても読み込んでいなければ0が戻りますが、
+こちらは存在さえすれば1が戻ることに注意してください。
+追加パッチ用のデータがあるかないかのチェック等に使います。
+
+■LINSERT
+引数：LINSERT label
+例：
+LINSERT "@test"
+機能：
+そのラベルをあたかも実際に通ったかのようにログに記録します。たとえば回想モード用のラベルと実際のシナリオ上のラベルが違う（回想モード用の特殊な処理がある等のため）などに使えます。
+
+■FINSERT
+引数：FINSERT filename
+例：
+FINSERT "test.png"
+機能：
+そのファイルをあたかも実際に読込んだかのようにログに記録します。ＣＧモード等で実際にシナリオ中で表示する画像とＣＧモード登録の画像が違う時などに使えます。
+
+■FILETIME
+引数：FILETIME name,year,month,day,hour,min,sec
+例：
+FILETIME "test.txt",%year,%month,%day,%hour,%min,%sec
+機能：
+そのファイルの更新日時を取得します。
+
+＜ＯＳ機能＞
+■CAPTION
+引数：CAPTION name
+例：
+CAPTION "ウィンドウタイトル"
+機能：
+ウィンドウタイトルに文字列を設定します。
+※ウィンドウタイトルはフルスクリーン時には見えないことに注意して下さい。
+　ここに表示される文字列は全てのプレイヤーに常に見えているとは限りません。
+
+■CLEARMOUSE
+引数：
+CLEARMOUSE
+例：
+CLEARMOUSE
+機能：
+ウィンドウのマウスメッセージをクリアします。
+この命令までにクリックしたメッセージは全部破棄されます。
+
+■DOEVENTS
+引数：
+DOEVENTS
+例：
+DOEVENTS
+機能：
+メッセージを処理します。ループの中で適切に呼んで下さい。
+GETCLICKやGETMOUSEでメッセージ処理するループ処理を書く際は、この命令がないとメッセージを取得出来ません。
+
+■EXEC
+引数：EXEC str
+例：
+EXEC 'CAPTION "変更"'
+機能：
+文字列で指定したBASIC文を実行します。
+
+■GETCLICK
+引数：GETCLICK l,r,w,ld,rd
+例：
+GETCLICK %l
+GETCLICK %l,%r,%w
+機能：
+マウス入力を取得します。変数指定は省略できます。
+左から、左クリック離す、右クリック離す、ホイール入力、左クリック押す、右クリック押すです。
+※離すほうを基準にしているのはWindowsのインタフェースでは一般的なやり方です。
+※ホイールは上なら-1、下なら1が戻ります。
+
+■GETMOUSE
+引数：GETMOUSE x,y
+例：
+GETMOUSE %x,%y
+機能：
+マウスの座標を取得します。画面外の場合は一律-1,-1を返します。
+
+■SETCLIPBOARD
+引数：SETCLIPBOARD str
+例：
+SETCLIPBOARD "cliptext"
+機能：
+クリップボードにテキストを指定します。
+例えば画像を選択するとそれを表示するスクリプト文をクリップボードに記録するようなプログラムを作るのに使えます。
+
+■SETMOUSE
+引数：SETMOUSE x,y
+例：
+SETMOUSE 400,300
+機能：
+マウスカーソルを指定座標に移動します。
+
+■OKBOX
+引数：OKBOX text,caption
+例：
+OKBOX "ダイアログボックスの本文","ウィンドウタイトル"
+機能：
+OKボタンのあるダイアログを表示します。OKを押すまで次の処理には移行しません。
+
+■RESETTIMER
+引数：RESETTIMER
+例：
+RESETTIMER
+機能：
+内部タイマをリセットします。GETTIMER()やWAITTIMERの時間はこれを起点に測られます。
+
+■WAITTIMER
+引数：WAITTIMER milisecond
+例：
+WAITTIMER 1000
+機能：
+RESETTIMERから指定した時間（単位：ミリ秒）が経つまで待ちます。アニメーションなどは実行されます。
+
+■SETSCREEN
+引数：SETSCREEN screenflag
+例：
+SETSCREEN 1
+機能：
+スクリーンモードを設定します。0=ウィンドウモード 1=フルスクリーンモード（解像度変更） 2=フルスクリーンモード（縦横比を保存して拡大）です。
+
+■SHELL
+引数：SHELL str
+例：
+SHELL "readme.txt"
+SHELL "http://www.nscripter.com/"
+機能：
+シェルで指定したファイルを開きます。URLを指定すると規定のWEBブラウザでそのURLを見に行きます。
+
+■YESNOBOX
+引数：YESNOBOX ret,text,caption
+例：
+YESNOBOX %ret,"上書きセーブしますか？","上書きセーブ確認"
+機能：
+はい／いいえで答えるダイアログを表示します。はいなら1、いいえなら0が変数に代入されます。
+
+■GETCONFIG
+引数：GETCONFIG(key)
+例：
+%value=GETCONFIG "configkey"
+機能：
+iniファイルから設定を読み取ります。指定したキーに設定された文字列を返します。
+
+■GETKEY
+引数：GETKEY(keystr)
+例：
+%ret=GETKEY("C")
+%ret=GETKEY("CTRL")
+%ret=GETKEY(" ")
+機能：
+キーが押されていれば1、離されていれば0を返します。
+キー文字列には英語大文字の他、次のものが指定出来ます。
+" "もしくは"SPACE" スペースキー
+"ESC" エスケープキー
+"CTRL" コントロールキー
+"UP" "DOWN" "LEFT" "RIGHT" カーソルキー
+"F1"～"F12" ファンクションキー
+"RETURN" "ENTER" リターンキー
+"PAGEUP" "PAGEDOWN" ページアップ／ダウンキー
+"SHIFT" シフトキー
+"SCROLLLOCK" スクロールロックキー(オン状態なら1、オフ状態なら0)
+"NUMLOCK" ナムロックキー(オン状態なら1、オフ状態なら0)
+"CAPSLOCK" キャプスロックキー(オン状態なら1、オフ状態なら0)
+"LBUTTON" マウス左ボタン
+"RBUTTON" マウス右ボタン
+"MBUTTON" マウス中央ボタン（全ての環境であるわけではないので注意）
+
+■GETSCREEN
+引数：GETSCREEN()
+例：
+%screenmode=GETSCREEN()
+機能：
+現在のスクリーンモードを取得します。0=ウィンドウモード 1=フルスクリーンモードです。
+
+■GETTIMER
+引数：GETTIMER()
+例：%tm=GETTIMER()
+機能：
+RESETTIMERから現在まで経過した時間をミリ秒単位で取得します。
+
+■LCLICKED
+引数：LCLICKED()
+例：
+%clicked=LCLICKED()
+機能：
+まだ処理されていない左クリックがあれば1、なければ0を取得します。
+
+■TIME
+引数：TIME year,month,day,hour,min,sec
+例：
+TIME %year,%month,%day,%hour,%min,%sec
+機能：
+現在時刻を取得します。
+
+■MOVIE
+引数：MOVIE filename,clickskipflag,volume
+例：
+MOVIE "op.mpg",1
+機能：
+ムービーを全画面で再生します。クリックフラグがオンならクリックで飛ばすことが出来ます。
+クリックフラグとボリュームは省略できます。ボリュームは省略するとBGMボリュームと同じになります。
+※透過ムービーは透過設定を無視してそのまま再生してしまいますのでご注意ください。
+　透過ムービーはテクスチャ（スプライト等）としてしか透過しません。
+
+＜コンソール機能＞
+■BEEP
+引数：BEEP freq,mili
+例：
+BEEP
+機能：
+freqとmiliは省略できます。ビープ音を鳴らします。
+レガシーな機能なので、音は貧相です。freqは周波数、miliは長さです（単位ミリ秒）
+
+■CCAPTION
+引数：CCAPTION titlestr
+例：
+CCAPTION "NScripter2 コンソール"
+機能：
+コンソールウィンドウにタイトルを設定します。
+
+■CCLEAR
+引数：CCLEAR
+例：
+CCLEAR
+機能：
+コンソールウィンドウをクリア（画面の文字を全消去）します。
+
+■CCLOSE
+引数：CCLOSE
+例：
+CCLOSE
+機能：
+コンソールウィンドウを閉じます。
+
+■CCOLOR
+引数：CCOLOR cr,cg,cb,br,bg,bb,ci,bi
+例：CCOLOR 1,0,1,0,0,1
+機能：
+引数はどこからでも省略できます。
+コンソールの色を設定します。cr,cg,cb,ci 文字色 br,bg,bb,bi 背景色です。
+rgbは赤緑青、iは色の濃さです。0は薄い、1は濃いです。
+
+■CGETCURSOR
+引数：CGETCURSOR x,y
+例：
+CGETCURSOR %x,%y
+機能：
+コンソールのカーソルの座標を取得します。
+
+■CGETSIZE
+引数：CGETSIZE w,h
+例：
+CGETSIZE %w,%h
+機能：
+コンソールの幅と高さを文字数単位で取得します。
+
+■CLOCATE
+引数：CLOCATE x,y
+例：
+CLOCATE 10,2
+機能：
+コンソールのカーソル位置を取得します。
+
+■COPEN
+引数：COPEN
+例：
+COPEN
+機能：
+コンソールウィンドウを開きます。
+この命令を使わなくてもコンソールへの入出力を実行すれば自動で開きます。
+
+■CPRINT
+引数：CPRINT a,b,c,...
+例：
+CPRINT "表示文字列です。"
+機能：
+コンソールに文字列を出力します。最後に改行を加えます。
+引数の数は自由です。複数の引数を指定すると、連結して表示します。
+
+■CSETSIZE
+引数：CSETSIZE w,h
+例：
+CSETSIZE 80,25
+機能：
+コンソールの幅と高さを文字数単位で設定します。
+
+■CSETTEXT
+引数：CSETTEXT str,x,y,cr,cg,cb,br,bg,bb,ci,bi
+例：
+CSETTEXT "あいうえお",3,3,1,1,1,0,0,0,1,1
+機能：
+指定した位置に指定した文字列を表示します。
+CLOCATEとCCOLORを参考にすれば引数の意味は分かると思います。
+
+■CWRITE
+引数：CWRITE a,b,c,...
+例：
+CWRITE "改行しない表示文字列です。"
+機能：
+CPRINTとほとんど同じですが、改行しません。
+
+■SLEEP
+引数：SLEEP miliwait
+例：
+SLEEP 1000
+機能：
+指定した時間（単位ミリ秒）だけ処理を止めます。
+スプライトアニメーション処理やメッセージ処理などは行いませんので、あまり長い間止めないようにしてください。
+
+■SYSTEM
+引数：SYSTEM str
+例：
+SYSTEM "pause"
+機能：
+指定したコマンドをコマンドプロンプトから実行します。
+
+■CINKEY
+引数：CINKEY()
+例：
+%key=CINKEY()
+機能：
+コンソールから文字を一文字入力します。
+F1 CTRL DOWN ESC RETURN PAGEUP SHIFT などの特殊キー用の文字列も返します。
+入力待ちにはならず、入力がなかった場合は#NILを返します。
+
+■CREAD
+引数：CREAD()
+例：
+%str=CREAD()
+機能：
+コンソールから文字列を入力します。
+
+＜変数機能＞
+■ISDEF
+引数：ISDEF(val)
+例：%isfirst=ISDEF(_first)
+機能：
+その変数が定義されていれば1、されていなければ0を返します。
+通常、定義されていない変数にアクセスするとエラーになりますが、この関数だけは別です。
+例えば、↑の例ではシステム変数_firstが定義されているかどうかを調べています。
+これは、初回起動時（つまり何も変数が定義されていない）0なので、初回時のコンフィグ設定等をする処理に飛ばす時に使える定石です。
+（その際は、忘れずに設定先で_first=1とでもして、定義状態にしてください）
+
+■SPLIT
+引数：SPLIT str,delchr,val1,val2,...
+例：
+SPLIT "あいうえお/かきくけこ/さしすせそ","/",%v1,%v2,%v3
+機能：
+文字列を区切り文字で分割して変数に格納します。対応する文字列が存在しない変数には""が代入されます。
+例えば↑の場合であれば、%v1="あいうえお" %v2="かきくけこ" %v3="さしすせそ" になります。
+
+■SPLITA
+引数：SPLITA str,delchr,val
+例：SPLITA "あいうえお/かきくけこ/さしすせそ","/",%v
+機能：
+文字列を区切り文字で分割して、配列変数に格納します。いくつ返ってくるか予想が付かないので、最後の要素には#NILが入ります。
+例えば↑の場合であれば、%v[0]="あいうえお" %v[1]="かきくけこ" %v[2]="さしすせそ" %v[3]=#NIL となります。
+
+■STRSAVE
+引数：STRSAVE filename,str
+例：
+STRSAVE "savefile.txt","Hello World!"
+機能：
+指定した文字列を指定したファイルにテキストファイルとして保存します。
+
+■STRLOAD
+引数：STRLOAD(filename)
+例：
+%str=STRLOAD(filename)
+機能：
+テキストファイルを読み取りその文字列を返します。
+
+■VCLEAR
+引数：VCLEAR val
+例：
+VCLEAR v
+機能：
+指定した変数、配列、構造体などをクリアします。
+上の例だと、配列（v[0] v[1]... やv[0][1]...） や構造体（v.param1 v.name ）などがクリアされます。
+
+■VCOPY
+引数：VCOPY dest,src
+例：
+VCOPY %dest,%src
+機能：
+指定した変数、配列、構造体などをまるまるコピーします。
+上の例だと、%src[0] %src[1]... %src.param1 %src.name などが%dest[0] %dest[1]... %dest.param1 %dest.nameなどにコピーされます。
+
+■RANDOMSEED
+引数：RANDOMSEED num
+例：RANDOMSEED 0
+機能：
+乱数の初期化をします。0を指定しておけば毎回違う乱数列がスタートします。
+0以外だと、同じ数を指定すれば同じ乱数列になります。
+
+
+（関数）
+※以下の数学関数はC言語やLuaの同名関数とだいたい同じです。
+　名前で分かると思うので説明を省略します。
+ABS(x) ACOS(x) ASIN(x) ATAN(x) ATAN2(y,x) CEIL(x) COS(x)
+COSH(x) DEG(rad) EXP(x) FLOOR(x) LOG(x) LOG10(x)
+RAD(deg) SIN(x) SINH(x) SQRT(x) TAN(x) TANH(x)
+
+※BASIC由来の関数やその他分かりにくそうなのを解説します。
+■PI
+引数：PI()
+機能：円周率を得ます。
+
+■ASC
+引数：ASC(chr)
+例：
+ASC(" ")
+機能：
+その文字のアスキーコードを得ます。
+
+■CHR
+引数：CHR(chrcode)
+例：CHR(13)
+機能：
+キャラクターコードから文字を得ます。
+
+■JOIN
+引数：JOIN(delchr,a,b,...)
+例：
+%str=JOIN("/","あいうえお","かきくけこ","さしすせそ")
+機能：
+SPLITの反対で、文字列を区切り文字で連結したものを返します。
+↑の例であれば、"あいうえお/かきくけこ/さしすせそ"を返します。
+
+■JOINA
+引数：JOIN(delchr,val)
+例：
+%str=JOINA("/",%v)
+機能：
+SPLITAの逆で、配列の内容を区切り文字で連結したものを返します。
+%v[0]="あいうえお" %v[1]="かきくけこ" %v[2]="さしすせそ" %v[3]=#NIL(もしくは未定義だったり数値だったり)のとき、
+↑の例であれば、"あいうえお/かきくけこ/さしすせそ"を返します。
+
+■LCASE
+引数：LCASE(chr)
+例：%c=LCASE("ABC")
+機能：
+小文字を返します。↑の例なら"abc"を返します。
+
+■LEFT
+引数：LEFT(str,num)
+例：%str=LEFT("string",3)
+機能：
+文字列を左から指定した文字数だけ切り出して返します。
+↑の例なら%str="str"になります。
+
+■LEN
+引数：LEN(str)
+例：%l=LEN("abcde")
+機能：
+文字列の長さをバイト数で返します。この場合なら%l=5になります。
+
+■LTRIM
+引数：LTRIM(str)
+例：
+%str=LTRIM("   string   ")
+機能：
+左から空白を削除した文字列を返します。右の空白は削除しません。
+この場合なら、%str="string   "になります。
+
+■MID
+引数：MID(str,start,num)
+例：
+%str=MID("abcdefg",2,3)
+機能：
+文字列の指定位置から指定文字数の部分文字列を切り出します。
+先頭は0になります。この場合なら%str="cde"になります。
+
+■NUM
+引数：NUM(str)
+例：%n=NUM("100")
+機能：
+文字列を数値に変換します。この場合であれば、%n=100になります。
+
+■RANDOM
+引数：RANDOM()
+例：%r=RANDOM()
+機能：
+乱数を生成します。0～32ビット整数の最大値までが戻ります。
+例えば0～99が得たい場合は、%r=RANDOM() mod 100
+1～6が得たい場合は%r=RANDOM() mod 6 + 1とすればいいでしょう。
+
+■REPLACE        param:SSS      type:C++
+引数：REPLACE(str,from,to)
+例：%str=REPLACE("abcdefghi","def","ZZZ")
+機能：
+文字列の置換をします。↑の例の場合、%strは"abcZZZghi"になります。
+
+■REGEX_REPLACE
+引数：REGEX_REPLACE(str,regex,repstr)
+例：%str=REGEX_REPLACE("abc123def","[0123456789]","Z")
+機能：
+正規表現による文字列の置換を実行します。↑の例の場合、%strは"abcZZZdef"になります。
+
+■RIGHT
+引数：RIGHT(str,num)
+例：%str=RIGHT("abcdef",3)
+機能：
+文字列の右端から指定文字を切り取ります。↑の例なら"def"になります。
+
+■RTRIM
+引数：RTRIM(str)
+例：%str=RTRIM("   string   ")
+機能：
+右から空白を削除した文字列を返します。左の空白は削除しません。
+この場合なら、%str="   string"になります。
+
+■SEARCH
+引数：SEARCH(str,findstr)
+例：%s=SEARCH("abcdefghi","def")
+機能：
+文字列を検索して先頭位置を返します。ない場合は-1を返します。
+↑の場合なら%s=3になります（先頭は０であるため）
+
+■SGN
+引数：SGN(n)
+例：%s=SGN(-100)
+機能：
+引数が負の数なら-1、正の数なら1、0なら0を返します。従って、↑の例なら-1です。
+
+■STR
+引数：STR(n)
+例：%str=STR(12345)
+機能：
+引数の数値を文字列に変換します。↑の例なら%str="12345"です。
+
+■STRF
+引数：STR(formatstr,n)
+例：%str=STRF("%3d",12)
+機能：
+数値をフォーマット化して文字列に変換します。
+c言語のprintfの書式文字列の整数もしくは小数点数の表記をそのまま使います。
+↑の例だと、%str=" 12"です（３桁で空白を入れて右詰になっている）
+
+■TRIM
+引数：TRIM(str)
+例：%str=TRIM("   string   ")
+機能：
+文字列の左右から空白を削除します。↑の例では%str="string"です。
+
+■TYPE
+引数：TYPE(val)
+例：%t=TYPE(123)
+機能：
+与えた引数の型を返します。↑の場合なら%t=#NUMBERになります。
+文字列を与えれば%t=#STRINGになります。#NILの場合は#NILです。
+
+■UCASE
+引数：UCASE(str)
+例：%s=UCASE("abc")
+機能：大文字を返します。↑の例であれは、%s="ABC"です。
+
+■VLBOUND
+引数：VLBOUND(val)
+例：%start=VLBOUND(%v)
+機能：
+配列変数において一番小さい添字を取得します。疎構造の配列でも正しく取得します。
+↑の例で、%vの一番小さい添字が3で、例えば%v[3]="abc" %v[12]="def".... のようなとき、%start=3になります。
+配列内容を全部検索するので、あまり速度の速い関数ではありません。
+
+■VLEN
+引数：VLEN(val)
+例：%vlen=VLEN(%v)
+機能：
+配列変数の長さを取得します。疎構造の配列ではうまく機能しません。
+添え字0から始めて、最後に見つかった添字番号+1が長さになります。
+
+■VUBOUND
+引数：VUBOUND(val)
+例：%end=VUBOUND(%v)
+機能：
+配列変数の一番大きい添え字を取得します。疎構造の配列でも正しく取得します。
+配列内容を全部検索するので、あまり速度の速い関数ではありません。
+
+■ZENKAKU
+引数：ZENKAKU(str)
+例：%str=ZENKAKU("abc")
+機能：
+文字列を全角文字に変換します。↑の例なら"ａｂｃ"になります。
+ここで、BASICは内部的にはUTF-8を使っていることに注意してください。
+外部ツールとやりとりするときにはエンコードの変換が必要になることもあります。
+
+＜ビットマップ機能＞
+ビットマップは「メインメモリ内に格納される」画像イメージです。
+レンダリングをビットマップに対して行う命令や、ビットマップからテクスチャに変換する命令はありますが、
+基本的には、ビットマップはメインメモリの中で画像を加工したり保存したりするための命令?関数群です。
+
+■BBEGIN
+引数：BBEGIN bmpname
+例：BBEGIN "scrbmp"
+機能：
+指定したビットマップに対して描画を開始します。ビットマップは黒の透明でクリアされます。
+ビットマップは画面サイズと同じ大きさで事前に作成されている必要があります。
+
+■BCREATE
+引数：BCREATE bmpname,w,h
+例：BCREATE "scrbmp",800,600
+機能：
+指定した名前、サイズで空白のビットマップを作成します。
+
+■BDELETE
+引数：BDELETE bmpname
+例：BDELETE "scrbmp"
+機能：
+指定した名前のビットマップを削除します。
+
+■BDUP
+引数：BDUP new,old
+例：BDUP "copybmp","sourcebmp"
+機能：
+指定したビットマップを複製して新しいビットマップを作ります。
+
+■BEND
+引数：BEND bmpname
+例：BEND "scrbmp"
+機能：
+ビットマップへの描画を終了します。描画結果はこの命令によってBMPに転送されます。
+この命令を実行しないと、ビットマップへの反映はされませんので注意してください。
+
+■BFILL
+引数：BFILL bmpname,color
+例：BFILL "bmp",#FFFFFFFF
+機能：
+ビットマップを指定した色で塗りつぶします。
+
+■BFORMAT        param:SSTT     type:Lua
+引数：BFORMAT bmpname,str,opt,rubyopt
+例：
+BFORMAT "scrbmp","あいうえおかきくけこ{漢字/ルビ}さしすせそ",{font="text",x=2,y=2,w=25,h=4},{font="ruby"}
+機能：
+英語文章のようにルビ機能を使わない場合はrubyoptは省略できます。
+ビットマップに文字列を書き込みます。optとrubyoptはSPFORMATと同じです。
+
+■BFRECT
+引数：BFRECT bmpname,x1,y1,x2,y2,color
+例：
+BFRECT "scrbmp",100,100,200,200,#FFFFFFFF
+機能：
+左上(x1,y1)右下(x2,y2)の中を塗りつぶした長方形を書きます。
+
+■BFROMT
+引数：BFROMT bmpname,texname
+例：BFROMT "bmp","tex"
+機能：
+指定したテクスチャの画像をコピーしたビットマップを作ります。
+
+■BGETSIZE
+引数：BGETSIZE bmpname,w,h
+例：BGETSIZE "scrbmp",%w,%h
+機能：
+ビットマップの幅と高さを取得します。
+
+■BGRADATION
+引数：BGRADATION bmpname,color1,color2,flagx,flagy
+例：
+機能：
+ビットマップをグラデーションで塗りつぶします。
+flagx,flagyはx方向y方向にグラデーションするかどうかのフラグです。
+どちらか片方だけをtrueだとその方向にだけグラデーション、両方trueもしくは両方falseだと斜めグラデーションです（trueかfalseで方向は変わります）
+
+■BJOINX
+引数：BJOINX bmpname,bmpname2
+例：BJOINX "bmp","bmp2"
+機能：
+bmpnameの右にbmpname2をくっつけたものをbmpnameに作成します。
+
+■BJOINY
+引数：BJOINY bmpname,bmpname2
+例：BJOINY "bmp","bmp2"
+機能：
+bmpnameの下にbmpname2をくっつけたものをbmpnameに作成します。
+
+■BLOAD
+引数：BLOAD bmpname,filename
+例：BLOAD "scrbmp","testbg.png"
+機能：
+ビットマップを指定名のオブジェクトにロードします。
+
+■BMONOTONE
+引数：BMONOTONE bmpname,color
+例：BMONOTONE "scrbmp",#FFFF0000
+機能：
+指定した色を基調にビットマップをモノトーンに変換します。
+
+■BNEGA
+引数：BNEGA bmpname
+例：BNEGA "scrbmp"
+機能：
+ビットマップをネガポジ反転します。
+
+■BRESIZE
+引数：BRESIZE bmpname,w,h
+例：BRESIZE "scrbmp",100,100
+機能：
+ビットマップを拡大縮小してサイズを変更します。
+スクリーンショットのリサイズなどに使います。
+
+■BREVERSE
+引数：BREVERSE bmpname,flagx,flagy
+例：BREVERSE "scrbmp",1,0
+機能：
+ビットマップをX軸方向もしくはY軸方向もしくは両方反転します。
+
+■BSAVE
+引数：BSAVE bmpname,savefilename
+例：BSAVE "scrbmp","save.png"
+機能：
+ビットマップをPNGファイルとして保存します。
+スクリーンショットの保存などに使います。
+
+■BTRIM          param:SNNNN    type:Lua
+引数：BTRIM bmpname,x1,y1,x2,y2
+例：BTRIM "scrbmp",100,100,200,200
+機能：
+ビットマップの二つの座標で指定される領域を切り取ってそこだけを取り出します。
+
+【低水準機能】
+これら低水準機能は高水準機能でラップされていますので、普段はそちらを使えば大丈夫です。
+個別に細かい調整をしたい場合にこちらを使ってください。
+
+＜低水準サウンド機能＞
+■SOUND
+引数：SOUND sndname
+例：SOUND "bgsound"
+機能：
+サウンドチャンネルを作成します。
+
+■SPLAY
+引数：SPLAY sndname,playtable
+例：
+SPLAY "bgsound",{name="test.ogg"}
+SPLAY "bgsound",{name="test.ogg",loop=1}
+SPLAY "bgsound",{name="test.ogg",volume=-100,loop=1}
+SPLAY "bgsound",{name="test.ogg",volume=-100,pan=-10000}
+機能：
+サウンドを再生します。
+
+■SDELETE
+引数：SDELETE sndname
+例：SDEKETE "bgsound"
+機能：
+サウンドチャンネルを削除します。音を止めるのではなく、チャンネルごと削除します。
+（従って、そのチャンネルはもう一度作り直さない限り使えなくなります）
+
+■SFADEOUT
+引数：SFADEOUT sndname,time
+例：SFADEOUT "bgsound",1000
+機能：
+指定した時間を掛けてサウンドをフェードアウトさせます。
+高水準機能のフェードアウトは「フェードアウト時間を設定する」ですが、こちらは「フェードアウトを開始する」命令なので注意してください。
+
+■SPAN
+引数：SPAN sndname,pan
+例：SPAN "bgsound",-10000
+機能：
+指定チャンネルをパン（左右に偏らせる処理）します。panは-10000（左）から10000（右）までです。
+
+■SPAUSE
+引数：SPAUSE sndname
+例：SPAUSE "bgsound"
+機能：
+指定チャンネルを一時停止します。これは停止とは別の処理で、SRESUMEで再生再開することが出来ます。
+
+■SRESUME
+引数：SRESUME sndname
+例：SRESUME "bgsound"
+機能：
+SPAUSEで止めた指定チャンネルの再生を再開します。
+
+■SSTOP
+引数：SSTOP sndname
+例：SSTOP "bgsound"
+機能：
+指定したチャンネルの再生を終了します。音声ファイルはクローズされますが、チャンネル自体は残っています。
+
+■SVOLUME
+引数：SVOLUME sndname,vol
+例：SVOLUME "bgsound",-10000
+機能：
+指定したチャンネルのボリュームを変更します。-10000で無音、0で最大です。
+-1000くらいで実質聞こえなくなることも多いので、実際にやってみて試してください。
+
+■SISPLAYING     param:S        type:Lua
+引数：SISPLAYING(sndname)
+例：%p=SISPLAYING("bgsound")
+機能：
+そのサウンドがまだ再生中なら1、再生が終了していれば0を返します。
+ループ音声の場合は常に1が返ることに注意してください。
+
+＜描画機能＞
+■GBEGIN
+引数：なし
+例：
+GBEGIN
+機能：
+画面への描画を開始する。この命令とGEND命令の間で挟まれた描画命令の内容が画面に反映される。
+高水準描画機能（スプライト機能）は、内部でこの命令を呼び出している。
+
+■SPDRAW
+引数：SPDRAW
+例）
+SPDRAW
+機能：
+スプライト全てを描画します。これは低水準描画命令と一緒にスプライトを描画したいときに使います。
+
+■GEND
+引数：GEND
+例：
+GEND
+機能：
+描画を終了します。この命令を実行することで画面に描画結果が反映されます。
+
+
+＜テクスチャ機能＞
+■TBEGIN
+引数：TBEGIN texname
+例：
+TBEGIN "scrtex"
+機能：
+テクスチャに対し描画を開始します。
+
+■TEND
+引数：TEND
+例：
+TEND
+機能：
+テクスチャに対する描画を終了します。
+
+■TBEZIER
+引数：TBEZIER texname,cx,cy,xs,ys,rot,a,x0,y0,x1,y1,x2,y2,x3,y3,sx0,sy0,sx1,sy1,sx2,sy2,sx3,sy3,sx4,sy4,sx5,sy5,sx6,sy6,sx7,sy7
+機能：
+テクスチャをベジエ変形して表示します。引数の順番はSPBEZIERと同じです。
+回転拡大縮小を先に指定し、残りは0～1でSPBEZIERと同じように指定します。
+
+■TDELETE
+引数：TDELETE texname
+例：
+TDELETE "scrtex"
+機能：
+テクスチャを削除します。
+
+■TDRAW
+引数：TDRAW texname,x,y,a
+例：
+TDRAW "spaceship",100,100,255
+機能：
+テクスチャを画面に描画します。
+
+■TDRAWLT
+引数：TDRAWLT texname,cx,cy,xs,ys,rot,alpha
+例：
+TDRAWLT "spaceship",200,200,1.0,1.0,RAD(45),255
+機能：
+テクスチャを回転拡大縮小して描画します。
+
+■TDRAWTR
+引数：TDRAWTR name,v
+例：
+%v[0]=100
+%v[1]=100
+%v[2]=0
+%v[3]=0
+%v[4]=0xFFFFFFFF
+
+%v[5]=200
+%v[6]=200
+%v[7]=1
+%v[8]=1
+%v[9]=0xFFFF00FF
+
+%v[5]=100
+%v[6]=200
+%v[7]=0
+%v[8]=1
+%v[9]=0xFFFFFF00
+
+TDRAWTR "testtex",%v
+機能：
+三角形の三頂点を指定し、そのポリゴンにテクスチャを張り付けて描画します。
+配列の要素は５つで一頂点です。(x,y,u,v,col)、頂点数は３の倍数になります（それぞれ三角形の頂点であるため）
+
+■TFILL
+引数：TFILL texname,color
+例：TFILL "scrtex",0xFFFFFFFF
+機能：
+指定したテクスチャを指定した色で塗りつぶします。
+
+■TFORMAT
+引数：TFORMAT name,str,opt,rubyopt
+例：
+TFORMAT "tex","あいうえおかきくけこ{漢字/ルビ}さしすせそ",{font="text",x=2,y=2,w=25,h=4},{font="ruby"}
+機能：
+英語文章のようにルビ機能を使わない場合はrubyoptは省略できます。
+ビットマップに文字列を書き込みます。optとrubyoptはSPFORMATと同じです。
+
+■TFRECT
+引数：TFRECT name,lx,ly,rx,ry,color
+例：
+TFRECT "tex",100,100,200,200,0xFFFFFFFF
+機能：
+テクスチャの指定範囲を指定色で塗りつぶします。
+
+■TFROMB
+引数：TFROMB texname,bmpname
+例：TFROMB "tex","bmp"
+機能：
+ビットマップからテクスチャを作ります。
+
+■TGETSIZE       param:SRR      type:Lua
+引数：TGETSIZE texname,w,h
+例：TGETSIZE "tex",%w,%h
+機能：
+テクスチャのサイズを得ます。
+
+■TLOAD
+引数：TLOAD texname,filename
+例：TLOAD "tex","test.jpg"
+機能：
+テクスチャをロードします。
+
+■TSAVE
+引数：TSAVE texname,filename
+例：TSAVE "tex","savefile.png"
+機能：
+テクスチャをセーブします。ファイル形式はPNGのみです。
+
+（関数）
+■TISPLAYING
+引数：TISPLAYING(texname)
+例：%p=TISPLAYING("movtex")
+機能：
+ムービーテクスチャ再生時に、ムービーがまだ再生中なら1、停止していれば0を返します。
+
+＜形状描画機能＞
+■GBEZIER
+引数：GBEZIER x1,y1,x2,y2,x3,y3,x4,y4,col
+例：
+GBEZIER 0,100,10,80,90,80,100,100,#FFFFFFFF
+機能：
+ベジエ曲線を描画する。x1,y1が始点、x4,y4が終点、x2,y2が点1の制御点、x3,y3が点2の制御点です。
+
+■GBLEND
+引数：GBLEND num
+例：
+GBLEND 0
+機能：
+ブレンド描画モードを切り替えます。0で通常のαブレンド、1で加算ブレンドです。
+モードは将来的に増える可能性があります。
+
+■GCIRCLE
+引数：GCIRCLE x,y,r,col
+例：
+GCIRCLE 100,100,35,#FFFFFFFF
+機能：
+円を書きます。
+
+■GELLIPSE
+引数：GELLIPSE x1,y1,x2,y2,col
+例：
+GELLIPSE 100,100,200,200,#FFFFFFFF
+機能：
+左上(x1,y1)右下(x2,y2)の長方形に内接する楕円を書きます。
+
+■GFCIRCLE
+引数：GFCIRCLE x,y,r,col
+GFCIRCLE 100,100,35,#FFFFFFFF
+機能：
+中を塗りつぶした円を書きます。
+
+■GFELLIPSE
+引数：GFELLIPSE x1,y1,x2,y2,col
+例：
+GFELLIPSE 100,100,200,200,#FFFFFFFF
+機能：
+左上(x1,y1)右下(x2,y2)の長方形に内接する、中を塗りつぶした楕円を書きます。
+
+■GRECT
+引数：GRECT x1,y1,x2,y2,col
+例：
+GRECT 100,100,200,200,#FFFFFFFF
+機能：
+左上(x1,y1)右下(x2,y2)の長方形を書きます。
+
+■GFRECT
+引数：GFRECT x1,y1,x2,y2,col
+例：
+GFRECT 100,100,200,200,#FFFFFFFF
+機能：
+左上(x1,y1)右下(x2,y2)の中を塗りつぶした長方形を書きます。
+
+■GLINE
+引数：GLINE x1,y1,x2,y2,col
+例：
+GLINE 100,100,200,200,#FFFFFFFF
+機能：
+x1,y1とx2,y2を結ぶ直線を描画します。
+
+■GLINES
+引数：GLINES array,col
+例：
+a[0]=100
+a[1]=100
+a[2]=200
+a[3]=200
+a[4]=300
+a[5]=300
+GLINES a,#FFFFFFFF
+機能：
+折れ線を描画します。座標は配列で指定します。
+
+■GLINEL
+引数：GLINEL array,col
+例：
+a[0]=100
+a[1]=100
+a[2]=200
+a[3]=200
+a[4]=300
+a[5]=300
+a[6]=300
+a[7]=300
+GLINEL a,#FFFFFFFF
+機能：
+直線のリストを描画します。座標は配列で指定します。始点-終点のペアで指定しますので、４つ一組です。
+
+■GPOINT
+引数：GPOINT x,y,col
+例：
+GPOINT 125,125,#FFFFFFFF
+機能：
+点を描画します。
+
+■GPOINTL
+引数：GPOINTL array,col
+例：
+a[0]=100
+a[1]=100
+a[2]=200
+a[3]=200
+GPOINTL a,#FFFFFFFF
+機能：
+点のリストを描画します。座標は配列で指定します。
+
+■GTRIANGLE
+引数：GTRIANGLE x1,y1,x2,y2,x3,y3,col
+例：
+GTRIANGLE 100,100,200,200,300,100,#FFFFFFFF
+機能：
+塗りつぶされた三角形を描画します。
+
+■GTRIANGLEL
+引数：GTRIANGLEL array,col
+例：
+a[0]=100
+a[1]=100
+a[2]=200
+a[3]=200
+a[4]=300
+a[5]=100
+a[6]=400
+a[7]=100
+a[8]=500
+a[9]=200
+a[10]=600
+a[11]=100
+GTRIANGLEL a,#FFFFFFFF
+機能：
+塗りつぶされた三角形のリストを描画します。
+それぞれ３頂点のセットです。
+
+■GTRIANGLEF
+引数：GTRIANGLEF array,col
+例：
+a[0]=100
+a[1]=100
+a[2]=200
+a[3]=200
+a[4]=300
+a[5]=100
+a[6]=0
+a[7]=0
+GTRIANGLEF a,#FFFFFFFF
+機能：
+塗りつぶされた三角形を結んで作るファン（扇形）を描画します。
+最初の点が中心点、後の点はファンの頂点です。
+
+■GTRIANGLES
+引数：GTRIANGLES array,col
+例：
+a[0]=100
+a[1]=100
+a[2]=200
+a[3]=200
+a[4]=300
+a[5]=200
+a[6]=0
+GTRIANGLES a,#FFFFFFFF
+機能：
+トライアングルストリップを描画します。
+
+＜トランジション機能＞
+■TRANSITION     param:SSNS*    type:Lua
+引数：TRANSITION frombmpname,tobmpname,rate,type,opt,...
+例：
+TRANSITON "from","to",0.7,#F
+機能：
+二つのビットマップと、トランジションの進行率rate(0で完全にfrom,1で完全にto)を用いて、トランジションの途中の画像を描画します。
+
+＜割り込み処理＞
+■TRAP
+引数：TRAP label,trigger
+例：
+TRAP @logo_end
+TRAP @logo_end,"L"
+TRAP @logo_end,"LR"
+TRAP @logo_end,"LRS"
+TRAP @logo_end,"LRSE"
+TRAP #NIL
+機能：
+処理をしている際にクリックやキー入力があったときに処理に割り込んでそのラベルにGOTOジャンプします。
+いくつかのスクリプトで構成されたブランドロゴなどをクリックで飛ばしたいときに使ってください。
+ラベル名に#NILを指定すると割り込みが解除されます。解除しない限りずっと有効なので、必ず解除してください。
+二つめの引数は何をトリガにして割り込みを発生させるかを指定します。省略すると"LRSE"になります。
+L=左クリック R=右クリック S=スペースキー E=リターンキー

@@ -7,17 +7,19 @@ p {margin-top:3px; margin-bottom:3px}
 /*.arg {background-color:#CCC;}*/
 /*.example {font-weight:bold;}*/
 /*.examplecode {background-color:#111;} */
+.color {color:#F0A}
 .description {}
-.function {margin:5px; font-size:14px; background-color:#EEE;}
+.function {margin:10px; font-size:14px; background-color:#EEE;}
 .functionName {font-size: 16px; font-weight:bolder; background-color:#CCC;}
 /* 函数保留字 */
 .functionWord {font-weight:bold; color:#F90}
 /* 文本 */
-.intro {margin:5px; background-color:#DED; font-size:14px}
+.intro {margin:10px; background-color:#DED; font-size:14px}
 .label {color:#A00}
 .text {color:#0A0}
+.textctrl {color:#F00}
 .number {color:#116; font-weight:bold}
-.var {color:#}
+.var {font-weight:bold;color:#00E}
 
 </style>
 </head>
@@ -40,7 +42,7 @@ p {margin-top:3px; margin-bottom:3px}
 <h5>选择支功能</h5>
 <div class="function" id="select">
 	<p class="functionName">SELECT</p>
-	<p class="arg"><b>参数：</b>SELECT <span class="text">text1</span>,<span class="label">lb1</span>,<span class="text">text2</span,<span class="label">lb2</span>,...</p>
+	<p class="arg"><b>参数：</b>SELECT <span class="text">text1</span>,<span class="label">lb1</span>,<span class="text">text2</span>,<span class="label">lb2</span>,...</p>
 	<p class="example"><b>例：</b></p>
 	<div class="examplecode">
 		<p><span class="functionWord">SELECT</span> <span class="text">"选项1"</span>,<span class="label">@lb1</span>,<span class="text">"选项2"</span>,<span class="label">@lb2</span></p>
@@ -55,16 +57,16 @@ p {margin-top:3px; margin-bottom:3px}
 	<p>此外，无论立绘，背景，日期还是对话文字，文字窗口等等，都是“精灵”。</p>
 	<p>并没有打算将他们写成固定的命令，而是由基本的功能组合起来的（请参考例子程序）。</p>
 	<p>至于为什么要这么做，是因为对于不同的游戏来说，每一个大功能实现方式和功能差别太多。</p>
-	<p></p>
+	<br />
 	<p>而且，精灵的显示状态更改之后并不会马上反映到屏幕上。</p>
 	<p>需要用PRINT命令指定显示效果，才能显示出来。</p>
 	<p>这个显示模式和旧Nscripter是一样的。</p>
-	<p></p>
+	<br />
 	<p>精灵的名称定义如下</p>
 	<p>"setname:spname"</p>
 	<p>setname为精灵组（sprite set）的名称，spname为精灵的名称</p>
 	<p>精灵组（sprite set）好比一个文件夹，精灵就像文件一样放在里面。</p>
-	<p></p>スプライトセットはボタン処理の際の処理の単位になったり、スプライトセット自体のＺ値や、表示非表示切り替えがあります。
+	<p>精灵组是在对按钮处理时的操作对象，其Z值用于在显示与隐藏之间切换。</p>
 	<p>省略精灵组名称的时候，精灵组的名称为""，此精灵组的Z值默认为10000.</p>
 </div>
 <div class="function" id="spset">
@@ -91,36 +93,214 @@ p {margin-top:3px; margin-bottom:3px}
 		<p>精灵处于隐藏状态的话，即使所属的精灵组处于显示状态也不会显示。</p>
 	</div>
 </div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
-<div class="function" id=""></div>
+<div class="function" id="SPSETCLEAR">
+	<p class="functionName">SPSETCLEAR</p>
+	<p class="arg"><b>参数：</b>SPSETCLEAR <span class="text">name</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>删除精灵组里的所有精灵，但保留精灵组。</p>
+	</div>
+</div>
+<div class="function" id="SPSETDELETE">
+	<p class="functionName">SPSETDELETE</p>
+	<p class="arg"><b>参数：</b>SPSETDELETE <span class="text">name</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>删除一个精灵组。</p>
+	</div>
+</div>
+<div class="function" id="SPSETZ">
+	<p class="functionName">SPSETZ</p>
+	<p class="arg"><b>参数：</b>SPSETZ <span class="text">name</span>,<span class="number">z</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>变更精灵组的Z值。</p>
+	</div>
+</div>
+<div class="function" id="SP">
+	<p class="functionName">SP</p>
+	<p class="arg"><b>参数：</b>SP <span class="text">name</span><span class="text">opt</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class="functionWord">SP</span> <span class="text">"sp1"</span><span class="textctrl">{name="test.png",x=100,y=100,z=100}</span></p>
+		<p><span class="functionWord">SP</span> <span class="text">"set:sp2"</span><span class="textctrl">{name={"cell1.png","cell2.png"},x=200,y=200,z=100,cell=0,blend=1}</span> ; 渲染方式（blend）默认为0，可省略，1为叠加渲染</p>
+		<p><span class="functionWord">SP</span> <span class="text">"set:sp2"</span><span class="textctrl">{name={"cell1.png","cell2.png"},cx=300,cy=300,xs=1.2,ys=1.2,rot=45,z=100,cell=0}</span> ; 角度以度（deg）为单位，而不是弧度（rad）。</p>
+		<p><span class="functionWord">SP</span> <span class="text">"set:sp3"</span><span class="textctrl">{name={"cell1.png","cell2.png","cell3.png"},x=200,y=200,z=100,animtime=100,animtype="normal"}</span></p>
+		<p>※参数在不必要的时候可以省略。</p>
+		<p>※和NScripter不同的是，多个分格的图像需要分别指定。这个指定不是作用于整个图像的。</p>
+		<p>※动画的模式（animation type）如下：</p>
+		<p>"normal"或者未指定的""为0→1→2→3→0→1→2→3→0→1...</p>
+		<p>"stop"则是0→1→2→3（停止）</p>
+		<p>"round"为0→1→2→3→2→1→0→1→2→3→...</p>
+		<p>"lua"会调用animfunc预先指定的Lua函数。是为懂Lua的用户准备的。详细请参照basic.sprite_animation_check。</p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>生成精灵。在同名精灵存在的时候删除该精灵。</p>
+	</div>
+</div>
+<div class="function" id="SPDELETE">
+	<p class="functionName">SPDELETE</p>
+	<p class="arg"><b>参数：</b>SPDELETE <span class="text">name</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class="functionWord">SPDELETE</span> <span class="text">"set:sp1"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>删除精灵。</p>
+	</div>
+</div>
+<div class="function" id="SPDELETES">
+	<p class="functionName">SPDELETES</p>
+	<p class="arg"><b>参数：</b>SPDELETES <span class="text">head</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p>SPDELETES <span class="text">"set:btn"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>删除以该字符串开始的精灵。</p>
+		<p>例子的代码中，如果存在"set:btn0""set:btn1"..."set:btn99"等精灵，都会被删除。</p>
+		<p>请注意：很容易误删不想删掉的精灵。</p>
+	</div>
+</div>
+<div class="function" id="GETINFO">
+	<p class="functionName">GETINFO</p>
+	<p class="arg"><b>参数：</b>GETSPINFO <span class="text">name</span>,<span class="var">info</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class="functionWord">GETSPINFO</span> <span class="text">"sp1"</span>,<span class="var">%info</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获得精灵的信息。例子中获得了“sp1”精灵的信息。</p>
+		<p>（常规定义）</p>
+		<p>%info.x ; X坐标</p>
+		<p>%info.y ; Y坐标</p>
+		<p>（旋转放缩定义）</p>
+		<p>%info.cx ; CX坐标</p>
+		<p>%info.cy ; CY坐标</p>
+		<p>%info.xs ; X扩大率</p>
+		<p>%info.ys ; Y扩大率</p>
+		<p>%info.rot ; 旋转角</p>
+		<br />
+		<p>%info.z ; Z值</p>
+		<p>%info.a ; α值</p>
+		<p>%info.cell ; 分格编号</p>
+		<p>%info.cellnum ; 分格数</p>
+		<p>%info.w ; 宽</p>
+		<p>%info.h ; 高</p>
+		<br />
+		<p>%info.animtype ; 动画的模式（animation type）</p>
+		<p>%info.animtime ; 动画时间</p>
+	</div>
+</div>
+<div class="function" id="SPANIMATIONRESET">
+	<p class="functionName">SPANIMATIONRESET</p>
+	<p class="arg"><b>参数：</b>SPANIMATIONRESET</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>重置（reset）所有精灵的动画。</p>
+	</div>
+</div>
+<div class="function" id="SPBEZIER">
+	<p class="functionName">SPBEZIER</p>
+	<p class="arg"><b>参数：</b>SPBEZIER <span class="text">name</span>,x0,y0,x1,y1,x2,y2,x3,y3,sx0,sy0,sx1,sy1,sx2,sy2,sx3,sy3,sx4,sy4,sx5,sy5,sx6,sy6,sx7,sy7</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class="functionWord">SPBEZIER</span> <span class="text">"sp"</span>,0,0, 1,0, 1,1, 0,1, 0.2,-0.2, 0.8,-0.2, 1.2,0.2, 1.2,0.8, 0.8,1.2, 0.2,1.2, -0.2,0.8, -0.2,0.2</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>对精灵进行贝塞尔（Bezier）变换。指定的坐标不存在的话则不会进行变换。</p>
+		<p>坐标首先是按顺时针顺序的左上、右上、右下、左下，然后是按上右下左的顺时针顺序的上边左，上边右，右边上，右边下，下边右，下边左，左边下，左边上。坐标值都是按左上0,0，右下1,1来指定的。</p>
+	</div>
+</div>
+<div class="function" id="SPCELL">
+	<p class="functionName">SPCELL</p>
+	<p class="arg"><b>参数：</b>SPCELL <span class="text">name</span>,<span class="number">cell</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class="functionWord">SPCELL</span> <span class="text">"sp1"</span>,<span class="number">2</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>切换精灵的分格编号。</p>
+	</div>
+</div>
+<div class="function" id="SPFILL">
+	<p class="functionName">SPFILL</p>
+	<p class="arg"><b>参数：</b>SPFILL <span class="text">name</span>,<span class="number">cell</span>,<span class="color">color</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class="functionWord">SPFILL</span> <span class="text">"sp1"</span>,<span class="number">0</span>,<span class="color">#00000000</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制单色的精灵。对于文字窗口，可以用这个命令涂抹掉绘制之前的文字。</p>
+	</div>
+</div>
+<div class="function" id="SPMOVE">
+	<p class="functionName">SPMOVE</p>
+	<p class="arg"><b>参数：</b>SPMOVE <span class="text">name</span>,<span class="number">x</span>,<span class="number">y</span>,<span class="number">a</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class="functionWord">SPMOVE</span> <span class="text">"sp1"</span>,<span class="number">100</span>,<span class="number">100</span>,<span class="number">255</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>移动精灵。坐标为精灵左上角的位置。α值省略的时候为255。</p>
+	</div>
+</div>
+<div class="function" id="SPMOVELT">
+	<p class="functionName">SPMOVELT</p>
+	<p class="arg"><b>参数：</b>SPMOVELT <span class="text">name</span>,<span class="number">cx</span>,<span class="number">cy</span>,<span class="number">xs</span>,<span class="number">ys</span>,<span class="number">rot</span>,<span class="number">a</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class="functionWord">SPMOVELT</span> <span class="text">"sp1"</span>,<span class="number">300</span>,<span class="number">300</span>,<span class="number">1.2</span>,<span class="number">1.2</span>,<span class="number">RAD(45)</span>,<span class="number">255</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>移动精灵，指定的坐标为精灵中心的坐标和旋转放缩值。α省略的时候为255。</p>
+		<p>角度的单位为弧度（rad），度（deg）需要使用RAD()进行转换。</p>
+	</div>
+</div>
+<div class="function" id="SPVISIBLE">
+	<p class="functionName">SPVISIBLE</p>
+	<p class="arg"><b>参数：</b>SPVISIBLE <span class="text">name</span>,<span class="number" title="1或0">v</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class="functionWord">SPVISIBLE</span> <span class="text">"sp1"</span>,<span class="number">0</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>显示/隐藏精灵。1为显示，0为隐藏。</p>
+	</div>
+</div>
+<div class="function" id="SPZ">
+	<p class="functionName">SPZ</p>
+	<p class="arg"><b>参数：</b>SPZ <span class="text">name</span>,<span class="number">z</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class="functionWord">SPZ</span> <span class="text">"sp1"</span>,<span class="number">3</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>设定精灵的Z值。</p>
+	</div>
+</div>
+<div class="function" id="SPFORMAT">
+	<p class="functionName">SPFORMAT</p>
+	<p class="arg"><b>参数：</b>SPFORMAT <span class='text'>name</span>,<span class='number'>cell</span>,<span class='text'>str</span>,<span class='textctrl'>opt</span>,<span class='textctrl'>rubyopt</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>SPFORMAT</span> <span class='text'>"sp1"</span>,<span class='number'>0</span>,<span class='text'>"あいうえおかきくけこ<span class='textctrl'>{漢字/ルビ}</span>さしすせそ"</span>,<span class='textctrl'>{font="text",x=2,y=2,w=25,h=4}</span>,<span class='textctrl'>{font="ruby"}</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+
+<div class="function" id="SPPUTTEXT">
+	<p class="functionName">SPPUTTEXT</p>
+	<p class="arg"><b>参数：</b>SPPUTTEXT <span class='text'>name</span>,<span class='number'>cell</span>,<span class='text'>str</span>,<span class='textctrl'>opt</span>,<span class='textctrl'>rubyopt</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>SPPUTTEXT</span> <span class='text'>"sp1"</span>,<span class='number'>0</span>,<span class='text'>"あいうえおかきくけこ{漢字/ルビ}さしすせそ"</span>,<span class='textctrl'>{font="text",x=2,y=2,w=25,h=4,wait=50}</span>,<span class='textctrl'>{font="ruby"}</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+
+
 </div>
 </body>
 
