@@ -2,20 +2,28 @@
 <head>
 <title>NScripter2 API ver0.01</title>
 <style type="text/css">
-body {font-family: "微软雅黑"}
-p {margin-top:3px; margin-bottom:3px}
+body {font-family: "Consolas","微软雅黑"}
+/* 超链接样式 */
+a:link {color:#999;text-decoration:none;}		
+a:visited {color:#999;text-decoration:none;}	
+a:hover {color:#000;text-decoration:underline;}	
+a:active {color:#000;text-decoration:underline;}
+p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 /*.arg {background-color:#CCC;}*/
 /*.example {font-weight:bold;}*/
 /*.examplecode {background-color:#111;} */
 .color {color:#F0A}
 .description {}
 .function {margin:10px; font-size:14px; background-color:#EEE;}
+/* 函数列表项 */
+.functionList {background-color:#EE9;font-size:14px;font-weight:bold}
 .functionName {font-size: 16px; font-weight:bolder; background-color:#CCC;}
 /* 函数保留字 */
 .functionWord {font-weight:bold; color:#F90}
 /* 文本 */
 .intro {margin:10px; background-color:#DED; font-size:14px}
 .label {color:#A00}
+.reverseWord {color:#999;font-weight:bold}
 .text {color:#0A0}
 .textctrl {color:#F00}
 .number {color:#116; font-weight:bold}
@@ -26,12 +34,28 @@ p {margin-top:3px; margin-bottom:3px}
 <body>
 <div id="functionList">
 <h5>函数列表</h5>
+	<p class="functionList"><a href="#ERROR" title="" >ERROR</a></p>
+	<p class="functionList"><a href="#SELECT" title="" >SELECT</a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#" title="" ></a></p>
 </div>
 
 <div id="functionContent">
 <h5>API函数</h5>
 <h5>错误显示功能</h5>
-<div class="function" id="error">
+<div class="function" id="ERROR">
 	<p class="functionName">ERROR</p>
 	<p class="arg"><b>参数：</b>ERROR <span class="text">str</span></p>
 	<p class="example"><b>例：</b></p>
@@ -40,7 +64,7 @@ p {margin-top:3px; margin-bottom:3px}
 	<div class="description"><p>显示错误信息并退出。</p></div>
 </div>
 <h5>选择支功能</h5>
-<div class="function" id="select">
+<div class="function" id="SELECT">
 	<p class="functionName">SELECT</p>
 	<p class="arg"><b>参数：</b>SELECT <span class="text">text1</span>,<span class="label">lb1</span>,<span class="text">text2</span>,<span class="label">lb2</span>,...</p>
 	<p class="example"><b>例：</b></p>
@@ -69,7 +93,7 @@ p {margin-top:3px; margin-bottom:3px}
 	<p>精灵组是在对按钮处理时的操作对象，其Z值用于在显示与隐藏之间切换。</p>
 	<p>省略精灵组名称的时候，精灵组的名称为""，此精灵组的Z值默认为10000.</p>
 </div>
-<div class="function" id="spset">
+<div class="function" id="SPSET">
 	<p class="functionName">SPSET</p>
 	<p class="arg"><b>参数：</b><span>SPSET <span class="text">name</span>,<span class="number">z</span></span></p>
 	<p class="example"><b>例：</b></p>
@@ -81,7 +105,7 @@ p {margin-top:3px; margin-bottom:3px}
 		<p>精灵首先会根据精灵组的Z值排序，再在精灵组中根据每个的Z值排序。</p>
 	</div>
 </div>
-<div class="function" id="spsetvisible">
+<div class="function" id="SPSETVISIBLE">
 	<p class="functionName">SPSETVISIBLE</p>
 	<p class="arg"><b>参数：</b>SPSETVISIBLE <span class="text">name</span>,<span title="1或0">v</span></p>
 	<p class="example"><b>例：</b></p>
@@ -282,10 +306,12 @@ p {margin-top:3px; margin-bottom:3px}
 	<p class="functionName">SPFORMAT</p>
 	<p class="arg"><b>参数：</b>SPFORMAT <span class='text'>name</span>,<span class='number'>cell</span>,<span class='text'>str</span>,<span class='textctrl'>opt</span>,<span class='textctrl'>rubyopt</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p><span class='functionWord'>SPFORMAT</span> <span class='text'>"sp1"</span>,<span class='number'>0</span>,<span class='text'>"あいうえおかきくけこ<span class='textctrl'>{漢字/ルビ}</span>さしすせそ"</span>,<span class='textctrl'>{font="text",x=2,y=2,w=25,h=4}</span>,<span class='textctrl'>{font="ruby"}</span></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SPFORMAT</span> <span class='text'>"sp1"</span>,<span class='number'>0</span>,<span class='text'>"あいうえおかきくけこ{漢字/ルビ}さしすせそ"</span>,<span class='textctrl'>{font="text",x=2,y=2,w=25,h=4}</span>,<span class='textctrl'>{font="ruby"}</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>在不需要注音（ruby）功能（比如英语文字）的时候可以省略rubyopt参数。</p>
+		<p>向精灵中写入字符串。这是一个精灵替换命令，而不是绘制命令。</p>
+		<p>在例如回想模式的时候使用此命令写入字符串。文字中的%p等字符会被忽略。</p>
 	</div>
 </div>
 
@@ -294,6 +320,448 @@ p {margin-top:3px; margin-bottom:3px}
 	<p class="arg"><b>参数：</b>SPPUTTEXT <span class='text'>name</span>,<span class='number'>cell</span>,<span class='text'>str</span>,<span class='textctrl'>opt</span>,<span class='textctrl'>rubyopt</span></p>
 	<p class="example"><b>例：</b></p>
 	<div class="examplecode"><p><span class='functionWord'>SPPUTTEXT</span> <span class='text'>"sp1"</span>,<span class='number'>0</span>,<span class='text'>"あいうえおかきくけこ{漢字/ルビ}さしすせそ"</span>,<span class='textctrl'>{font="text",x=2,y=2,w=25,h=4,wait=50}</span>,<span class='textctrl'>{font="ruby"}</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>在不需要注音（ruby）功能（比如英语文字）的时候可以省略rubyopt参数。</p>
+		<p>向精灵里写入文字，然后依次显示它们。wait可以调整速度。速度指定为0的时候是立即全部显示。</p>
+		<p>文字里出现%p以及到达整段末尾时，会调用基本的@textb来进行文字窗口的界面的处理。</p>
+		<p>但是末尾为_的时候不会进行处理。屏幕会保持完毕的样子继续执行下面的命令。</p>
+		<p>（此函数和旧Nscripter的linepage函数类似）</p>
+	</div>
+</div>
+<div class="function" id="GETSPCELL">
+	<p class="functionName">GETSPCELL</p>
+	<p class="arg"><b>参数：</b>GETSPCELL(<span class='text'>name</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%cell</span>=<span class='functionWord'>GETSPCELL</span>(<span class='text'>"sp1"</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获得指定精灵组的编号。</p>
+	</div>
+</div>
+<div class="function" id="SPHITCHECK">
+	<p class="functionName">SPHITCHECK</p>
+	<p class="arg"><b>参数：</b>SPHITCHECK(<span class='text'>name</span>,<span class='number'>x</span>,<span class='number'>y</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='reverseWord'>if</span> <span class='functionWord'>SPHITCHECK</span>(<span class='text'>"sp1"</span>,<span class='number'>100</span>,<span class='number'>100</span>)==<span class='number'>1</span> <span class='reverseWord'>then</span> <span class='reverseWord'>goto</span> <span class='label'>@hit</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>判断精灵是否覆盖了指定的坐标，是则返回1，否则返回0。</p>
+		<p>现在所有的坐标都是左上坐标的形式。</p>
+	</div>
+</div>
+<h5>高质量绘制命令/等待输入命令</h5>
+<div class="function" id="PRINT">
+	<p class="functionName">PRINT</p>
+	<p class="arg"><b>参数：</b>PRINT <span class='text'>effectsymbol</span>,<span class='number'>time</span>,<span class='text'>param</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class='functionWord'>PRINT</span> <span class='text'>#C</span></p>
+		<p><span class='functionWord'>PRINT</span> <span class='text'>#RD</span>,<span class='number'>500</span></p>
+		<p><span class='functionWord'>PRINT</span> <span class='text'>#SL</span>,<span class='number'>500</span></p>
+		<p><span class='functionWord'>PRINT</span> <span class='text'>#F</span>,<span class='number'>500</span></p>
+		<p><span class='functionWord'>PRINT</span> <span class='text'>#U</span>,<span class='number'>500</span>,<span class='text'>"rule.png"</span></p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>精灵在改变状态之后，并不会反应在屏幕上。</p>
+		<p>而PRINT命令能将改变反映到实际屏幕上。这一点和旧Nscripter是一样的。</p>
+		<p>第一个参数用于指定变化的类型。</p>
+		<br />
+		<p>#C 或者"" 瞬时显示 不指定时间。</p>
+		<p>#F 交叉淡入淡出</p>
+		<p>#RU #RD #RL #RR 从上下左右方向进入</p>
+		<p>#SU #SD #SL #SR 从上下左右方向卷动进入</p>
+		<p>#U 全局变换（Universal Transition） 第三个参数为掩模图像（原文为ルール画像）。和旧Nscripter的18号效果是一样的。</p>
+	</div>
+</div>
+<div class="function" id="QUAKE">
+	<p class="functionName">QUAKE</p>
+	<p class="arg"><b>参数：</b>QUAKE <span class='number'>time</span>,<span class='number'>num</span>,<span class='number'>size</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>摇晃画面。三个参数依次为持续时间（单位毫秒），摇动次数，摇动幅度（1为画面的1/20）。</p>
+		<p>为了不露出画面之后的黑色会对图像进行扩大，摇动幅度越大扩大率就越大。</p>
+		<p>对此命令的功能不满的话可以在system.lua的QUAKE命令中编写自己中意的命令。</p>
+	</div>
+</div>
+<div class="function" id="CLICK">
+	<p class="functionName">CLICK</p>
+	<p class="arg"><b>参数：</b>CLICK</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>等待一次鼠标左键点击。精灵动画等并不会暂停。</p>
+	</div>
+</div>
+<div class="function" id="LRCLICK">
+	<p class="functionName">LRCLICK</p>
+	<p class="arg"><b>参数：</b>LRCLICK <span class='var'>retval</span></p>
+	<p class="example"><b>例：</b><span class='functionWord'>LRCLICK</span> <span class='var'>%ret</span></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>等待点击，会判断按下的是鼠标左键还是右键。精灵动画等并不会暂停。</p>
+		<p>点击左键变量会被赋值#L，单击右键变量会被赋值#R。</p>
+		<p>在CG模式里使用很方便。</p>
+	</div>
+</div>
+<h5>按钮功能</h5>
+<div class="intro" id="">
+	<p>※关于精灵操作字符串</p>
+	<p>和旧Nscripter的扩展按钮功能相近的功能。在打算进行默认的按钮变化以外的功能的时候使用。</p>
+	<p>"S(test.ogg)" 播放指定的声音。</p>
+	<p>"P(spname,N)" 变更指定的精灵的分格编号。N只能使用直接的整数，不能使用变量。</p>
+	<p>"C(spname)" 清除指定的精灵。</p>
+	<p>"M(spname,x,y)" 移动指定的精灵。</p>
+	<p>上面的效果可以组合使用。</p>
+</div>
+<div class="function" id="BTNCLEAR">
+	<p class="functionName">BTNCLEAR</p>
+	<p class="arg"><b>参数：</b>BTNCLEAR <span class='text'>setname</span>,<span class='text'>defstr</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>※setname和defstr在不必要的时候可以省略。</p>
+		<p>※setname省略的时候，精灵组的名字相当于""。</p>
+		<p>※在指定了defstr的时候不能省略setname。</p>
+		<p>清除按钮定义。按钮定义和精灵组是不同的。</p>
+		<p>defstr是鼠标和任何按钮都不重叠的时候执行的“精灵操作字符串”。</p>
+	</div>
+</div>
+<div class="function" id="BTN">
+	<p class="functionName">BTN</p>
+	<p class="arg"><b>参数：</b>BTN <span class='text'>name</span>,<span class='textctrl'>opt</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class='functionWord'>BTN</span> <span class='text'>"sp1"</span></p>
+		<p><span class='functionWord'>BTN</span> <span class='text'>"sp2"</span>,<span class='textctrl'>{style="push"}</span></p>
+		<p><span class='functionWord'>BTN</span> <span class='text'>"sp3"</span>,<span class='textctrl'>{style="toggle"}</span></p>
+		<p><span class='functionWord'>BTN</span> <span class='text'>"sp4"</span>,<span class='textctrl'>{on="P(sp1,0)P(sp2,1)"}</span></p>
+		<p><span class='functionWord'>BTN</span> <span class='text'>"bar0"</span>,<span class='textctrl'>{style="bar"}</span></p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>将指定的精灵定义为按钮。</p>
+		<p>opt为以下指定的值。</p>
+		<p>on="精灵操作字符串"</p>
+		<p>&nbsp;&nbsp;当鼠标移动到按钮上时执行的处理。</p>
+		<p>off="精灵操作字符串"</p>
+		<p>&nbsp;&nbsp;当鼠标从按钮上移开时执行的处理。</p>
+		<p>style="指定的样式"</p>
+		<p>&nbsp;&nbsp;用于指定按钮的样式。省略的话为"push"。以下为可能的种类。</p>
+		<p>&nbsp;&nbsp;"push" 以及"" 为push按钮，鼠标重叠切换为分格1，离开为分格0，返回值为精灵名。</p>
+		<p>&nbsp;&nbsp;"toggle" toggle按钮，按下的时候由分格0切换到分格1。返回值为"精灵名:0"或者"精灵名:1"。</p>
+		<p>&nbsp;&nbsp;"bar" bar 将分格像条一样的使用，点击精灵的某处就会移动条的位置。稍微有一些费解请参考例子的用法。</p>
+		<p>align="left"或者align="right"</p>
+		<p>&nbsp;&nbsp;bar类型的按钮，规定精灵的那个方向是0。省略的话是默认left。</p>
+		<p>noreset=1</p>
+		<p>&nbsp;&nbsp;对于push按钮，按下之后会回复到分格0的状态，noreset设置为1的话则不会回复。</p>
+	</div>
+</div>
+<div class="function" id="BTNEXEC">
+	<p class="functionName">BTNEXEC</p>
+	<p class="arg"><b>参数：</b>BTNEXEC <span class='number'>val</span>,<span class='text'>setname</span>,<span class='textctrl'>opt</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BTNEXEC</span> <span class='var'>%ret</span>,<span class='text'>"setname"</span>,<span class='textctrl'>{wheel=1}</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>※setname和opt在不必要的时候都可以省略。</p>
+		<p>※省略setname的时候，精灵组默认为""。</p>
+		<p>※在指定了opt的时候不能省略setname。</p>
+		<br />
+		<p>执行按钮处理。返回值为符号或者精灵名，其中精灵名不含其所在的精灵组名。</p>
+		<p>也就是说在点击"set:sp"的精灵的时候返回的值为"sp"。因为命令中已经包含了精灵组的名字。</p>
+		<br />
+		<p>返回值如下：</p>
+		<p>push按钮……"精灵名"</p>
+		<p>toggle按钮……"精灵名:0"或者"精灵名:1"</p>
+		<p>bar……"精灵名:分格编号"</p>
+		<p>""……点击按钮之外的地方</p>
+		<p>#R……单击右键时</p>
+		<br />
+		<p>opt为以下指定的值</p>
+		<p>wheel=1</p>
+		<p>&nbsp;&nbsp;获得滚轮的输入。返回值为#WU（滚轮上滚），#WD滚轮下滚。</p>
+		<p>ctrl=1</p>
+		<p>&nbsp;&nbsp;获得Ctrl键的输入。返回值为#CTRL。</p>
+		<p>spcret=1</p>
+		<p>&nbsp;&nbsp;获得Space和Enter键的输入。返回值为" "或者#RETURN。</p>
+		<p>automode=1</p>
+		<p>&nbsp;&nbsp;执行自动模式。使用语音的时候在语音结束时，未使用语音时在time所规定的时间之后继续执行。</p>
+		<p>&nbsp;&nbsp;超时（time out）（或者语音结束）的时候返回#TIMEOUT。</p>
+		<p>time=1000</p>
+		<p>&nbsp;&nbsp;指定超时的时间。在自动模式之下，未使用语音的时候以及未开启自动模式的时候，超时所需的时间。</p>
+		<p>ldown=1</p>
+		<p>&nbsp;&nbsp;判断鼠标左键按下。返回值#LD。</p>
+		<p>rdown=1</p>
+		<p>&nbsp;&nbsp;判断鼠标右键按下。返回值#RD。</p>
+		<p>func=1</p>
+		<p>&nbsp;&nbsp;获得功能键的输入。返回值为#F1~#F12。</p>
+		<p>cursor=1</p>
+		<p>&nbsp;&nbsp;获得方向键的输入。返回值为#UP #DOWN #LEFT #RIGHT。</p>
+		<p>alphabet=1</p>
+		<p>&nbsp;&nbsp;获得字母按键的输入。返回值为#KEY_A~#KEY_Z。</p>
+	</div>
+</div>
+<h5>字体功能</h5>
+<div class="function" id="FONT">
+	<p class="functionName">FONT</p>
+	<p class="arg"><b>参数：</b>FONT <span class='text'>name</span>,<span class='textctrl'>opt</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"></p>
+		<p><span class='functionWord'>FONT</span> <span class='text'>"text1"</span>,<span class='textctrl'>{}</span></p>
+		<p><span class='functionWord'>FONT</span> <span class='text'>"text2"</span>,<span class='textctrl'>{name="ＭＳ ゴシック",color=#FFFFFFFF,width=16,height=16}</span></p>
+		<p><span class='functionWord'>FONT</span> <span class='text'>"text3"</span>,<span class='textctrl'>{name="ＭＳ ゴシック",style="outline",outlinecolor=#FF000000,color=#FFFFFFFF,width=24,height=24}</span></p>
+		<p><span class='functionWord'>FONT</span> <span class='text'>"text4"</span>,<span class='textctrl'>{name="ＭＳ ゴシック",style="shadow",color=#FFFFFFFF,shadowcolor=#FF000000,width=24,height=24}</span></p>
+		<p><span class='functionWord'>FONT</span> <span class='text'>"text5"</span>,<span class='textctrl'>{name="ＭＳ ゴシック",style="fancy",outlinecolor=#FF000000,color1=#FFFFEEAA,color2=#FFFFFFFF,shadowcolor=#FF000000,fx=1,fy=1,width=24,height=24}</span></p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>生成特定字体。特定字体不会被保存，所以一定要在脚本初始声明。</p>
+	</div>
+</div>
+<div class="function" id="FDELETE">
+	<p class="functionName">FDELETE</p>
+	<p class="arg"><b>参数：</b>FDELETE <span class='text'>name</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>FDELETE</span> <span class='text'>"text1"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>删除特定字体。</p>
+	</div>
+</div>
+<h5>各种声音功能</h5>
+<div class="intro" id="">
+	<p>※低水準サウンド機能を内部的に使っています。同時に使うときは内部仕様について調べてからにしてください。</p>
+</div>
+<div class="function" id="BGMPLAY">
+	<p class="functionName">BGMPLAY</p>
+	<p class="arg"><b>参数：</b>BGMPLAY <span class='text'>name</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BGMPLAY</span> <span class='text'>"test.ogg"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>循环播放BGM。</p>
+	</div>
+</div>
+<div class="function" id="BGMPLAYONCE">
+	<p class="functionName">BGMPLAYONCE</p>
+	<p class="arg"><b>参数：</b>BGMPLAYONCE <span class='text'>name</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BGMPLAYONCE</span> <span class='text'>"test.ogg"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>播放一遍BGM。</p>
+	</div>
+</div>
+<div class="function" id="BGMSTOP">
+	<p class="functionName">BGMSTOP</p>
+	<p class="arg"><b>参数：</b>BGMSTOP</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BGMSTOP</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>停止播放BGM。</p>
+	</div>
+</div>
+<div class="function" id="BGMVOLUME">
+	<p class="functionName">BGMVOLUME</p>
+	<p class="arg"><b>参数：</b>BGMVOLUME <span class='number'>vol</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BGMVOLUME</span> <span class='number'>-10000</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>调节BGM的音量。范围为0~-10000，0最大，-10000为静音。</p>
+		<p>一般来说-2000左右是差不多能听清的范围。实际情况听起来舒服的范围下需要尝试。</p>
+		<p>和音量相关的命令均是这个范围。</p>
+	</div>
+</div>
+<div class="function" id="BGMFADEOUT">
+	<p class="functionName">BGMFADEOUT</p>
+	<p class="arg"><b>参数：</b>BGMFADEOUT <span class='number'>time</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BGMFADEOUT</span> <span class='number'>1000</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>指定BGM停止或者切换的时候淡出的时间。单位为毫秒。</p>
+		<p>开始淡出后无法停止执行。</p>
+		<p>在切换为其他音乐的时候，会在淡出原曲的同时，平行开始播放新曲。</p>
+	</div>
+</div>
+<div class="function" id="GETBGMVOLUME">
+	<p class="functionName">GETBGMVOLUME</p>
+	<p class="arg"><b>参数：</b>GETBGMVOLUME()</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>bgmvol</span>=<span class='functionWord'>GETBGMVOLUME</span>()</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获得现在播放的BGM的音量。</p>
+	</div>
+</div>
+<div class="function" id="BGVPLAY">
+	<p class="functionName">BGVPLAY</p>
+	<p class="arg"><b>参数：</b>BGVPLAY <span class='number'>ch</span>,<span class='text'>name</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class='functionWord'>BGVPLAY</span> <span class='number'>0</span>,<span class='text'>"bgvoice.ogg"</span></p>
+		<p><span class='functionWord'>BGVPLAY</span> <span class='number'>0</span>,<span class='text'>""</span></p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>BGV（Back Ground Voice，未播放语音（VOICEPLAY命令）时循环的声音）播放命令。</p>
+		<p>ch为0~15，文件名为""的时候停止播放BGV。</p>
+	</div>
+</div>
+<div class="function" id="BGVFADEOUT">
+	<p class="functionName">BGVFADEOUT</p>
+	<p class="arg"><b>参数：</b>BGVFADEOUT <span class='number'>time</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BGVFADEOUT</span> <span class='number'>1000</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>指定BGV淡出的时间（毫秒）。</p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b>BGVVOLUME <span class='number'>vol</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
 		<p></p>
