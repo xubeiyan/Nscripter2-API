@@ -2,10 +2,10 @@
 <head>
 <title>NScripter2 API ver0.01</title>
 <style type="text/css">
-body {font-family: "Consolas","微软雅黑"}
+body {font-family: "Consolas","微软雅黑";background-color:#999}
 /* 超链接样式 */
-a:link {color:#999;text-decoration:none;}		
-a:visited {color:#999;text-decoration:none;}	
+a:link {color:#777;text-decoration:none;}		
+a:visited {color:#777;text-decoration:none;}	
 a:hover {color:#000;text-decoration:underline;}	
 a:active {color:#000;text-decoration:underline;}
 p {margin-top:3px; margin-bottom:3px; padding-left:5px}
@@ -35,19 +35,29 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 <div id="functionList">
 <h5>函数列表</h5>
 	<p class="functionList"><a href="#ERROR" title="" >ERROR</a></p>
+	<p class="functionList"><a href="#GETSPCELL" title="" >GETSPCELL</a></p>
+	<p class="functionList"><a href="#GETSPINFO" title="" >GETSPINFO</a></p>
+	<p class="functionList"><a href="#PRINT" title="" ></a></p>
 	<p class="functionList"><a href="#SELECT" title="" >SELECT</a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#SP" title="" >SP</a></p>
+	<p class="functionList"><a href="#SPANIMATIONRESET" title="" >SPANIMATIONRESET</a></p>
+	<p class="functionList"><a href="#SPBEZIER" title="" >SPBEZIER</a></p>
+	<p class="functionList"><a href="#SPCELL" title="" >SPCELL</a></p>
+	<p class="functionList"><a href="#SPDELETE" title="" >SPDELETE</a></p>
+	<p class="functionList"><a href="#SPDELETES" title="" >SPDELETES</a></p>
+	<p class="functionList"><a href="#SPFILL" title="" >SPFILL</a></p>
+	<p class="functionList"><a href="#SPFORMAT" title="" >SPFORMAT</a></p>
+	<p class="functionList"><a href="#SPHITCHECK" title="" >SPHITCHECK</a></p>
+	<p class="functionList"><a href="#SPMOVE" title="" >SPMOVE</a></p>
+	<p class="functionList"><a href="#SPMOVELT" title="" >SPMOVELT</a></p>
+	<p class="functionList"><a href="#SPPUTTEXT" title="" >SPPUTTEXT</a></p>
+	<p class="functionList"><a href="#SPSET" title="" >SPSET</a></p>
+	<p class="functionList"><a href="#SPSETCLEAR" title="" >SPSETCLEAR</a></p>
+	<p class="functionList"><a href="#SPSETDELETE" title="" >SPSETDELETE</a></p>
+	<p class="functionList"><a href="#SPSETVISIBLE" title="" >SPSETVISIBLE</a></p>
+	<p class="functionList"><a href="#SPSETZ" title="" >SPSETZ</a></p>
+	<p class="functionList"><a href="#SPVISIBLE" title="" >SPVISIBLE</a></p>
+	<p class="functionList"><a href="#SPZ" title="" >SPZ</a></p>
 	<p class="functionList"><a href="#" title="" ></a></p>
 	<p class="functionList"><a href="#" title="" ></a></p>
 </div>
@@ -627,124 +637,197 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>指定BGV淡出的时间（毫秒）。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
+<div class="function" id="BGVVOLUME">
+	<p class="functionName">BGVVOLUME</p>
 	<p class="arg"><b>参数：</b>BGVVOLUME <span class='number'>vol</span></p>
 	<p class="example"><b>例：</b></p>
 	<div class="examplecode"><p></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>指定BGV的音量。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="GETBGVVOLUME">
+	<p class="functionName">GETBGVVOLUME</p>
+	<p class="arg"><b>参数：</b>GETBGVVOLUME()</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>bgvvol</span>=<span class='functionWord'>GETBGVVOLUME<span class='reverseWord'>()</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>获得当前BGV的音量。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SEPLAY">
+	<p class="functionName">SEPLAY</p>
+	<p class="arg"><b>参数：</b>SEPLAY <span class='number'>ch</span>,<span class='text'>name</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SEPLAY</span> <span class='number'>0</span>,<span class='text'>"test.ogg"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>播放SE，ch为通道0~15。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SELOOP">
+	<p class="functionName">SELOOP</p>
+	<p class="arg"><b>参数：</b>SELOOP <span class='number'>ch</span>,<span class='text'>name</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SELOOP</span> <span class='number'>1</span>,<span class='text'>"loopse.ogg"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>循环播放SE。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SESTOP">
+	<p class="functionName">SESTOP</p>
+	<p class="arg"><b>参数：</b>SESTOP <span class='number'>ch</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SESTOP</span> <span class='number'>1</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>停止SE。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SESTOPALL">
+	<p class="functionName">SESTOPALL</p>
+	<p class="arg"><b>参数：</b>SESTOPALL</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SESTOPALL</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>停止所有的SE。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SEVOLUME">
+	<p class="functionName">SEVOLUME</p>
+	<p class="arg"><b>参数：</b>SEVOLUME <span class='number'>vol</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SEVOLUME</span> <span class='number'>-1000</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>设置SE的音量。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SECHVOLUME">
+	<p class="functionName">SECHVOLUME</p>
+	<p class="arg"><b>参数：</b>SECHVOLUME <span class='number'>ch</span>,<span class='number'>vol</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SECHVOLUME</span> <span class='number'>4</span>,-<span class='number'>10000</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>单独设置某个通道的音量。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SEFADEOUT">
+	<p class="functionName">SEFADEOUT</p>
+	<p class="arg"><b>参数：</b>SEFADEOUT <span class='number'>time</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SEFADEOUT</span> <span class='number'>1000</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>设置SE的淡出时间（毫秒）。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="GETSEVOLUME">
+	<p class="functionName">GETSEVOLUME</p>
+	<p class="arg"><b>参数：</b>GETSEVOLUME()</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>sevol</span>=<span class='functionWord'>GETSEVOLUME</span>()</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>获得SE的音量。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="VOICEPLAY">
+	<p class="functionName">VOICEPLAY</p>
+	<p class="arg"><b>参数：</b>VOICEPLAY <span class='text'>name</span>,<span class='number'>spd</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode">
+		<p><span class='functionWord'>VOICEPLAY</span> <span class='text'>"voice0000.ogg"</span></p>
+		<p><span class='functionWord'>VOICEPLAY</span> <span class='text'>"voice0000.ogg"</span>,<span class='number'>2</span></p>
+	</div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>播放语音。spd参数可以省略。例子中的2表示2倍速播放。</p>
+		<p>文件名为""的时候停止当前播放的语音。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="VOICEFADEOUT">
+	<p class="functionName">VOICEFADEOUT</p>
+	<p class="arg"><b>参数：</b>VOICEFADEOUT <span class='number'>time</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>VOICEFADEOUT</span> <span class='number'>1000</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>指定语音淡出的时间（毫秒）。</p>
+	</div>
+</div>
+<div class="function" id="VOICEVOLUME">
+	<p class="functionName">VOICEVOLUME</p>
+	<p class="arg"><b>参数：</b>VOICEVOLUME <span class='number'>vol</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>VOICEVOLUME</span> <span class='number'>-10000</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>设定语音的音量。</p>
+	</div>
+</div>
+<div class="function" id="GETVOICEVOLUME">
+	<p class="functionName">GETVOICEVOLUME</p>
+	<p class="arg"><b>参数：</b>GETVOICEVOLUME()</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>voicevol</span>=<span class='functionWord'>GETVOICEVOLUME</span>()</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获得语音的音量。</p>
+	</div>
+</div>
+<h5>电影功能</h5>
+<div class="function" id="MOVIE">
+	<p class="functionName">MOVIE</p>
+	<p class="arg"><b>参数：</b>MOVIE <span class='text'>name</span>,<span class='number'>clickskip</span>,<span class='number'>volume</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class='functionWord'>MOVIE</span> <span class='text'>"test.mpg"</span>,<span class='number'>1</span>,<span class='number'>0</span></p>
+		<p>※clickskip省略的话为0，volume省略的话和BGM的音量相同。</p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>以充满整个窗口，在所有元素最前播放影片，会停止其他所有动作的处理。</p>
+		<p>用于游戏的OP、ED或者不需要实现交互操作的短电影。</p>
+		<p>clickskip指定为1的话点击可跳过影片。</p>
+	</div>
+</div>
+<div class="function" id="MRESET">
+	<p class="functionName">MRESET</p>
+	<p class="arg"><b>参数：</b>MRESET</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>MRESET</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>重置所有的动画纹理，使之从头开始播放。</p>
+	</div>
+</div>
+
+<div class="function" id="MWRITEBEGIN">
+	<p class="functionName">MWRITEBEGIN</p>
+	<p class="arg"><b>参数：</b>MWRITEBEGIN <span class='text'>filename</span>,<span class='number'>width</span>,<span class='number'>height</span>,<span class='number'>fps</span>,<span class='number'>framenum</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>MWRITEBEGIN</span> <span class='text'>"test.avi"</span>,<span class='number'>800</span>,<span class='number'>600</span>,<span class='number'>30</span>,<span class='number'>60</span> ;30fps，共60帧，也就是说2秒的动画</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>打开一个电影文件供写入。格式为无压缩的AVI。</p>
+		<p>同时只能写入一个文件。</p>
+	</div>
+</div>
+<div class="function" id="MWRITE">
+	<p class="functionName">MWRITE</p>
+	<p class="arg"><b>参数：</b>MWRITE <span class='number'>frame</span>,<span class='text'>bmpname</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>MWRITE</span> <span class='number'>10</span>,<span class='text'>"bmp"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>将现在播放的动画保存为图像文件。</p>
+		<p>图像的部分请参照后面的位图类命令中的“位图名”来指定。</p>
 	</div>
 </div>
 <div class="function" id="">
