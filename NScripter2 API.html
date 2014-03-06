@@ -2,7 +2,7 @@
 <head>
 <title>NScripter2 API ver0.01</title>
 <style type="text/css">
-body {font-family: "Consolas","微软雅黑";background-color:#999}
+body {font-family: "Consolas","微软雅黑";background-color:#FDFDFD}
 /* 超链接样式 */
 a:link {color:#777;text-decoration:none;}		
 a:visited {color:#777;text-decoration:none;}	
@@ -26,7 +26,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 .reverseWord {color:#999;font-weight:bold}
 .text {color:#0A0}
 .textctrl {color:#F00}
-.number {color:#116; font-weight:bold}
+.number {color:#188; font-weight:bold}
 .var {font-weight:bold;color:#00E}
 
 </style>
@@ -873,67 +873,337 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>保存点会在一段文字开始的时候自动更新。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SAVEMODE">
+	<p class="functionName">SAVEMODE</p>
+	<p class="arg"><b>参数：</b>SAVEMODE <span class='number'>num</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SAVEMODE</span> <span class='number'>1</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>打开/关闭更新保存点的功能。</p>
+		<p>为0的话在保存点处不更新。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SAVEPOINT">
+	<p class="functionName">SAVEPOINT</p>
+	<p class="arg"><b>参数：</b>SAVEPOINT</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SAVEPOINT</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>强制地更新保存点。</p>
+		<p>会耗费一定的时间，在不必要的地方不要轻易使用。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SAVETIME">
+	<p class="functionName">SAVETIME</p>
+	<p class="arg"><b>参数：</b>SAVETIME <span class='number'>num</span>,<span class='var'>yearval</span>,<span class='var'>monthval</span>,<span class='var'>dayval</span>,<span class='var'>hourval</span>,<span class='var'>minval</span>,<span class='var'>secval</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SAVETIME</span> <span class='number'>3</span>,<span class='var'>%year</span>,<span class='var'>%month</span>,<span class='var'>%day</span>,<span class='var'>%hour</span>,<span class='var'>%min</span>,<span class='var'>%sec</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>获得存档的保存时间。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SCHK">
+	<p class="functionName">SCHK</p>
+	<p class="arg"><b>参数：</b>SCHK(<span class='number'>num</span>)</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>%saveexist</span>=<span class='functionWord'>SCHK</span>(<span class='number'>2</span>)</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>存档存在的话返回1，否则返回0。num为存档编号。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="WAIT">
+	<p class="functionName">WAIT</p>
+	<p class="arg"><b>参数：</b>WAIT <span class='number'>time</span>,<span class='number'>clickskip</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode">
+		<p><span class='functionWord'>WAIT</span> <span class='number'>1000</span></p>
+		<p><span class='functionWord'>WAIT</span> <span class='number'>2000</span>,<span class='number'>1</span></p>
+	</div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>等待指定的时间。用于执行动画。</p>
+		<p>clickskip可以省略。指定1的话，允许单击跳过等待。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SKIP">
+	<p class="functionName">SKIP</p>
+	<p class="arg"><b>参数：</b>SKIP <span class='number'>num</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SKIP</span> <span class='number'>1</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
+		<p>变更Skip模式。</p>
+		<p>0为关闭Skip（正常模式），1为Skip模式，2为自动模式。</p>
+	</div>
+</div>
+<div class="function" id="GETSKIP">
+	<p class="functionName">GETSKIP</p>
+	<p class="arg"><b>参数：</b>GETSKIP()</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%skipmode</span>=<span class='functionWord'>GETSKIP</span>()</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获取当前的Skip模式。</p>
+	</div>
+</div>
+<div class="function" id="TCHK">
+	<p class="functionName">TCHK</p>
+	<p class="arg"><b>参数：</b>TCHK()</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%alreadyread</span>=<span class='functionWord'>TCHK</span>()</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获得当前文本的属性，已经阅读过的部分返回1，未读的部分返回0。</p>
+		<p>用于实现跳过已读文本功能。在@textb中判断这个值然后选择是否关闭Skip模式。</p>
+	</div>
+</div>
+<div class="function" id="LUA">
+	<p class="functionName">LUA</p>
+	<p class="arg"><b>参数：</b>LUA <span class='text'>str</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>LUA</span> <span class='text'>'os.execute("pause")'</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>执行Lua脚本。</p>
+	</div>
+</div>
+<div class="function" id="LUAFILE">
+	<p class="functionName">LUAFILE</p>
+	<p class="arg"><b>参数：</b>LUAFILE <span class='text'>filename</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>LUAFILE</span> <span class='text'>"system.lua"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>读取Lua文件并执行。</p>
+	</div>
+</div>
+<div class="function" id="LUAF">
+	<p class="functionName">LUAF</p>
+	<p class="arg"><b>参数：</b>LUAF <span class='text'>str</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%a</span>=<span class='functionWord'>LUAF</span>(<span class='text'>"foo(1)"</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>执行Lua函数，将函数的返回值作为此命令的返回值。</p>
+	</div>
+</div>
+<div class="function" id="DEFSUB">
+	<p class="functionName">DEFSUB</p>
+	<p class="arg"><b>参数：</b>DEFSUB <span class='text'>commandname</span>,<span class='text'>prototypestr</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>DEFSUB</span> <span class='text'>chr</span>,<span class='text'>"SN"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>自定义命令。命令名同时也是子程序的名字。</p>
+		<p>例子中代码，第一个字符串变量chr定义了一个chr命令。</p>
+		<p><span class='label'>@chr</span></p>
+		<p><span class='reverseWord'>param</span> <span class='var'>%name</span>,<span class='var'>%pos</span></p>
+		<p>命令的参数的获得如上例中在命令内部实现。</p>
+		<br />
+		<p>原型（prototype）的定义如下：</p>
+		<p>S 字符串</p>
+		<p>N 数值</p>
+		<p>R 变量名（）</p>
+		<p>A 数值或者字符串</p>
+		<p>. </p>
+		<p>?N ?S 存在</p>
 		<p></p>
 	</div>
 </div>
 
+プロトタイプ宣言は次の記号が使えます。
+S 文字列
+N 数値
+R 変数名（いわゆる参照渡しです。VSET VGETで変数の値を変更／参照できます）
+A 数値もしくは文字列
+. 一つ前のパラメータをその後あるだけ受け取ります。
+?N ?S 存在する場合のみNかSを、無い場合は#NILを受け取ります。
+* 以降のパラメータを型チェックしません。全てそのまま受け取ります。
+O オプション記法を受け取ります。内部的にはひとつの文字列です(basic.decode_tableに渡します)
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
 
 </div>
 </body>

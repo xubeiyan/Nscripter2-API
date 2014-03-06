@@ -35,22 +35,25 @@ function add(type){
 	var before = text.substring(0,start),
 		selection = text.substring(start, end),
 		after = text.substring(end, text.length);
-	if(type == "number"){
-		text = before + "%n" + selection + "n%" + after;
-	} else if (type == "functionname"){
-		text = before + "[" + selection + "]" + after;
-	} else if (type == "var") {
-		text = before + "$v" + selection + "v$" + after;
-	} else if (type == "string") {	
-		text = before + "<t" + selection + "t>" + after;
-	} else if (type == "label") {
-		text = before + "@l" + selection + "l@" + after;
-	} else if (type == "controlstring") {
-		text = before + "{c" + selection + "c}" + after;
-	} else if (type == "color") {
-		text = before + "#c" + selection + "c#" + after;
-	} else if (type == "reverseword") {
-		text = before + "*r" + selection + "r*" + after;
+		
+	if (selection != ""){
+		if(type == "number"){
+			text = before + "%n" + selection + "n%" + after;
+		} else if (type == "functionname"){
+			text = before + "[" + selection + "]" + after;
+		} else if (type == "var") {
+			text = before + "$v" + selection + "v$" + after;
+		} else if (type == "string") {	
+			text = before + "<t" + selection + "t>" + after;
+		} else if (type == "label") {
+			text = before + "@l" + selection + "l@" + after;
+		} else if (type == "controlstring") {
+			text = before + "{c" + selection + "c}" + after;
+		} else if (type == "color") {
+			text = before + "#c" + selection + "c#" + after;
+		} else if (type == "reverseword") {
+			text = before + "*r" + selection + "r*" + after;
+		}
 	}
 	source.value = text;
 	//alert(source.value.substring(before,after));
