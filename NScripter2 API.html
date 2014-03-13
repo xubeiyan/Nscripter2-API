@@ -1292,194 +1292,230 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>执行字符串中的命令。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="GETCLICK">
+	<p class="functionName">GETCLICK</p>
+	<p class="arg"><b>参数：</b>GETCLICK <span class='var'>l</span>,<span class='var'>r</span>,<span class='var'>w</span>,<span class='var'>ld</span>,<span class='var'>rd</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode">
+		<p><span class='functionWord'>GETCLICK</span> <span class='var'>%l</span></p>
+		<p><span class='functionWord'>GETCLICK</span> <span class='var'>%l</span>,<span class='var'>%r</span>,<span class='var'>%w</span></p>
+	</div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
+		<p>获得鼠标的输入。不必指定所有的变量。</p>
+		<p>从左到右为，松开左键，松开右键，滚轮，按下左键，按下右键。</p>
+		<p>※松开的基准是根据Windows的接口的一般调用来实现的。</p>
+		<p>※滚轮向上返回-1，向下返回1。</p>
+	</div>
+</div>
+<div class="function" id="GETMOUSE">
+	<p class="functionName">GETMOUSE</p>
+	<p class="arg"><b>参数：</b>GETMOUSE <span class='var'>x</span>,<span class='var'>y</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>GETMOUSE</span> <span class='var'>%x</span>,<span class='var'>%y</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获得鼠标的坐标。在窗口外则返回-1，-1。</p>
+	</div>
+</div>
+<div class="function" id="SETCLIPBOARD">
+	<p class="functionName">SETCLIPBOARD</p>
+	<p class="arg"><b>参数：</b>SETCLIPBOARD <span class='text'>str</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>SETCLIPBOARD</span> <span class='text'>"cliptext"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>设置剪切板中的文字。</p>
+		<p>例如，程序需要实现在选择图像的时候，将显示图像的指令复制到剪切板中的功能。</p>
+	</div>
+</div>
+<div class="function" id="SETMOUSE">
+	<p class="functionName">SETMOUSE</p>
+	<p class="arg"><b>参数：</b>SETMOUSE <span class='number'>x</span>,<span class='number'>y</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>SETMOUSE</span> <span class='number'>400</span>,<span class='number'>300</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>将鼠标移动到指定的位置。</p>
+	</div>
+</div>
+<div class="function" id="OKBOX">
+	<p class="functionName">OKBOX</p>
+	<p class="arg"><b>参数：</b>OKBOX <span class='text'>text</span>,<span class='text'>caption</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>OKBOX</span> <span class='text'>"对话框内容"</span>,<span class='text'>"对话框标题"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>显示一个有OK按钮的对话框，在按下OK按钮之后脚本才会继续执行。</p>
+	</div>
+</div>
+<div class="function" id="RESETTIMER">
+	<p class="functionName">RESETTIMER</p>
+	<p class="arg"><b>参数：</b>RESETTIMER</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>RESETTIMER</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>重置内部的计时器。GETTIMER()和WAITTIMER()都是以此为起点计算时间的。</p>
+	</div>
+</div>
+<div class="function" id="WAITTIMER">
+	<p class="functionName">WAITTIMER</p>
+	<p class="arg"><b>参数：</b>WAITTIMER <span class='number'>milisecond</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>WAITTIMER</span> <span class='number'>1000</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>等待从RESETTIMER命令开始执行算起的时间。用于实现动画。</p>
+	</div>
+</div>
+<div class="function" id="SETSCREEN">
+	<p class="functionName">SETSCREEN</p>
+	<p class="arg"><b>参数：</b>SETSCREEN <span class='number'>screenflag</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>SETSCREEN</span> <span class='number'>1</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>设置显示的模式。0为窗口模式。</p>
+		<p>1为全屏模式（分辨率变化）</p>
+		<p>2为全屏模式（保持纵横比扩大）</p>
+	</div>
+</div>
+<div class="function" id="SHELL">
+	<p class="functionName">SHELL</p>
+	<p class="arg"><b>参数：</b>SHELL <span class='text'>str</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class='functionWord'>SHELL</span> <span class='text'>"readme.txt"</span></p>
+		<p><span class='functionWord'>SHELL</span> <span class='text'>"http://www.nscripter.com/"</span></p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>在Shell中打开指定的文件或者访问指定的网页。</p>
+	</div>
+</div>
+<div class="function" id="YESNOBOX">
+	<p class="functionName">YESNOBOX</p>
+	<p class="arg"><b>参数：</b>YESNOBOX <span class='var'>ret</span>,<span class='text'>text</span>,<span class='text'>caption</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>YESNOBOX</span> <span class='var'>%ret</span>,<span class='text'>"要覆盖该存档吗？"</span>,<span class='text'>"存档覆盖确认"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>显示一个YES或者NO的对话框。是的话变量返回1，否的话返回0.</p>
+	</div>
+</div>
+<div class="function" id="GETCONFIG">
+	<p class="functionName">GETCONFIG</p>
+	<p class="arg"><b>参数：</b>GETCONFIG(<span class='text'>key</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%value</span>=<span class='functionWord'>GETCONFIG</span>(<span class='text'>"configkey"</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>从ini文件中读取设定。返回指定的键值（key）对应的字符串。</p>
+	</div>
+</div>
+<div class="function" id="GETKEY">
+	<p class="functionName">GETKEY</p>
+	<p class="arg"><b>参数：</b>GETKEY(<span class='text'>keystr</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class='var'>%ret</span>=<span class='functionWord'>GETKEY</span>(<span class='text'>"C"</span>)</p>
+		<p>><span class='var'>%ret</span>=<span class='functionWord'>GETKEY</span>(<span class='text'>"CTRL"</span>)</p>
+		<p><span class='var'>%ret</span>=<span class='functionWord'>GETKEY</span>(<span class='text'>" "</span>)</p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>对应按键被按下则返回1，松开则返回0。</p>
+		<p>按键对应的字符串是英文大写字母，列表如下。</p>
+		<p>" "或者"SPACE" 空格键</p>
+		<p>”ESC“ Esc键</p>
+		<p>"CTRL" 控制键</p>
+		<p>"UP""DOWN""LEFT""RIGHT" 光标键</p>
+		<p>"F1"~"F12" 功能键</p>
+		<p>"RETURN" "ENTER" 回车键</p>
+		<p>"PAGEUP" "PAGEDOWN" 上翻/下翻键</p>
+		<p>"SHIFT" 上档键</p>
+		<p>"SCROLLLOCK" 锁屏滚动键（关闭状态返回0，打开状态返回1）</p>
+		<p>"NUMLOCK" 数字键盘锁定键（关闭状态返回0，打开状态返回1）</p>
+		<p>"CAPSLOCK" 大小写锁定键（关闭状态返回0，打开状态返回1）</p>
+		<p>"LBUTTON" 鼠标左键</p>
+		<p>"RBUTTON" 鼠标右键</p>
+		<p>"MBUTTON" 鼠标中键</p>
+	</div>
+</div>
+<div class="function" id="GETSCREEN">
+	<p class="functionName">GETSCREEN</p>
+	<p class="arg"><b>参数：</b>GETSCREEN()</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%screenmode</span>=<span class='functionWord'>GETSCREEN</span>()</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获得当前的屏幕模式。0为窗口，1位全屏。</p>
+	</div>
+</div>
+<div class="function" id="GETTIMER">
+	<p class="functionName">GETTIMER</p>
+	<p class="arg"><b>参数：</b>GETTIMER()</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%tm</span>=<span class='functionWord'>GETTIMER</span>()</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获得自RESETTIMER开始经过的时间（毫秒）。</p>
+	</div>
+</div>
+<div class="function" id="LCLICKED">
+	<p class="functionName">LCLICKED</p>
+	<p class="arg"><b>参数：</b>LCLICKED()</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%clicked</span>=<span class='functionWord'>LCLICKED</span>()</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>存在还未处理的左键点击则返回1，否则就返回0。</p>
+	</div>
+</div>
+<div class="function" id="TIME">
+	<p class="functionName">TIME</p>
+	<p class="arg"><b>参数：</b>TIME <span class='var'>year</span>,<span class='var'>month</span>,<span class='var'>day</span>,<span class='var'>hour</span>,<span class='var'>min</span>,<span class='var'>sec</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>TIME</span> <span class='var'>%year</span>,<span class='var'>%month</span>,<span class='var'>%day</span>,<span class='var'>%hour</span>,<span class='var'>%min</span>,<span class='var'>%sec</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获得当前的时间。</p>
+	</div>
+</div>
+<div class="function" id="MOVIE">
+	<p class="functionName">MOVIE</p>
+	<p class="arg"><b>参数：</b>MOVIE <span class='text'>filename</span>,<span class='number'>clickskipflag</span>,<span class='number'>volume</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>MOVIE</span> <span class='text'>"op.mpg"</span>,<span class='number'>1</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>用整个窗口播放影片。点击跳过标志开启的话可以点击左键跳过。</p>
+		<p>点击跳过标志和音量都可以省略。省略音量的话则音量和BGM相同。</p>
+		<p>※对于透明的影片会无视透明设定保持原样播放，请注意。</p>
+		<p>透明的影片并不会让纹理（精灵的）透过而显示出来。</p>
+	</div>
+</div>
+<h5>控制台命令</h5>
+<div class="function" id="BEEP">
+	<p class="functionName">BEEP</p>
+	<p class="arg"><b>参数：</b>BEEP <span class='number'>freq</span>,<span class='number'>mili</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BEEP</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>频率（freq）和毫秒数（mili）都可以省略。freq为频率，mili为持续的毫秒数。</p>
 		<p></p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CCAPTION">
+	<p class="functionName">CCAPTION</p>
+	<p class="arg"><b>参数：</b>CCAPTION <span class='text'>titlestr</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>CCAPTION</span> <span class='text'>"NScripter2 コンソール"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
+		<p>设定控制台的窗口标题。</p>
 	</div>
 </div>
 <div class="function" id="">
