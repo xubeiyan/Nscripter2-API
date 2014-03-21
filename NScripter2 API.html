@@ -1512,162 +1512,172 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<p class="functionName">CCAPTION</p>
 	<p class="arg"><b>参数：</b>CCAPTION <span class='text'>titlestr</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p><span class='functionWord'>CCAPTION</span> <span class='text'>"NScripter2 コンソール"</span></p></div>
+	<div class="examplecode"><p><span class='functionWord'>CCAPTION</span> <span class='text'>"NScripter2 控制台"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
 		<p>设定控制台的窗口标题。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CCLEAR">
+	<p class="functionName">CCLEAR</p>
+	<p class="arg"><b>参数：</b>CCLEAR</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>CCLEAR</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>清空控制台。（清除所有画面上的文字）</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CCLOSE">
+	<p class="functionName">CCLOSE</p>
+	<p class="arg"><b>参数：</b>CCLOSE</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>CCLOSE</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>关闭控制台窗口。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CCOLOR">
+	<p class="functionName">CCOLOR</p>
+	<p class="arg"><b>参数：</b>CCOLOR <span class='number'>cr</span>,<span class='number'>cg</span>,<span class='number'>cb</span>,<span class='number'>br</span>,<span class='number'>bg</span>,<span class='number'>bb</span>,<span class='number'>ci</span>,<span class='number'>bi</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>CCOLOR</span> <span class='number'>1</span>,<span class='number'>0</span>,<span class='number'>1</span>,<span class='number'>0</span>,<span class='number'>0</span>,<span class='number'>1</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>参数可以从任何地方开始省略。</p>
+		<p>设置控制台的颜色。cr，cg，cb，ci是文字颜色，br，bg，bb，bi是背景颜色。</p>
+		<p>rgb为红绿蓝，i为颜色浓度。0为最稀，1位最浓。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CGETCURSOR">
+	<p class="functionName">CGETCURSOR</p>
+	<p class="arg"><b>参数：</b>CGETCURSOR <span class='var'>x</span>,<span class='var'>y</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>CGETCURSOR</span> <span class='var'>%x</span>,<span class='var'>%y</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>获得控制台中光标的坐标。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CGETSIZE">
+	<p class="functionName">CGETSIZE</p>
+	<p class="arg"><b>参数：</b>CGETSIZE <span class='var'>w</span>,<span class='var'>h</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>CGETSIZE</span> <span class='var'>%w</span>,<span class='var'>%h</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>获得控制台横向和纵向容纳的字符数。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CLOCATE">
+	<p class="functionName">CLOCATE</p>
+	<p class="arg"><b>参数：</b>CLOCATE <span class='number'>x</span>,<span class='number'>y</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>CLOCATE</span> <span class='number'>10</span>,<span class='number'>2</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>设置控制台光标的位置。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="COPEN">
+	<p class="functionName">COPEN</p>
+	<p class="arg"><b>参数：</b>COPEN</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>COPEN</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>打开控制台窗口。</p>
+		<p>即使不使用此命令，在执行控制台输入和输出命令的时候也会自动打开控制台。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CPRINT">
+	<p class="functionName">CPRINT</p>
+	<p class="arg"><b>参数：</b>CPRINT <span class='var'>a</span>,<span class='var'>b</span>,<span class='var'>c</span>,...</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>CPRINT</span> <span class='text'>"要显示的字符串。"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>向控制台输出字符串。最后会加上换行符。</p>
+		<p>可以传入多个参数。如果指定多个参数，会将它们连续输出。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CSETSIZE">
+	<p class="functionName">CSETSIZE</p>
+	<p class="arg"><b>参数：</b>CSETSIZE <span class='number'>w</span>,<span class='number'>h</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>CSETSIZE</span> <span class='number'>80</span>,<span class='number'>25</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>设定控制台窗口横向和纵向容纳的字符数。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CSETTEXT">
+	<p class="functionName">CSETTEXT</p>
+	<p class="arg"><b>参数：</b>CSETTEXT <span class='text'>str</span>,<span class='number'>x</span>,<span class='number'>y</span>,<span class='number'>cr</span>,<span class='number'>cg</span>,<span class='number'>cb</span>,<span class='number'>br</span>,<span class='number'>bg</span>,<span class='number'>bb</span>,<span class='number'>ci</span>,<span class='number'>bi</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>CSETTEXT</span> <span class='text'>"あいうえお"</span>,<span class='number'>3</span>,<span class='number'>3</span>,<span class='number'>1</span>,<span class='number'>1</span>,<span class='number'>1</span>,<span class='number'>0</span>,<span class='number'>0</span>,<span class='number'>0</span>,<span class='number'>1</span>,<span class='number'>1</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>在指定的位置输出指定的字符串。</p>
+		<p>参数的意义请参考CLOCATE和CCOLOR命令。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CWRITE">
+	<p class="functionName">CWRITE</p>
+	<p class="arg"><b>参数：</b>CWRITE <span class='text'>a</span>,<span class='text'>b</span>,<span class='text'>c</span>,...</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>CWRITE</span> <span class='text'>"不换行输出字符串。"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>和CPRINT命令相同，唯一的区别是不换行。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SLEEP">
+	<p class="functionName">SLEEP</p>
+	<p class="arg"><b>参数：</b>SLEEP <span class='number'>miliwait</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SLEEP</span> <span class='number'>1000</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>停止指定的时间（毫秒）。</p>
+		<p>因为停止的时候不会进行精灵动画和消息的处理，所以请不要长时间的停止。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SYSTEM">
+	<p class="functionName">SYSTEM</p>
+	<p class="arg"><b>参数：</b>SYSTEM <span class='text'>str</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SYSTEM</span> <span class='text'>"pause"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>在命令提示符下执行指定的命令。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CINKEY">
+	<p class="functionName">CINKEY</p>
+	<p class="arg"><b>参数：</b>CINKEY()</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>%key</span>=<span class='functionWord'>CINKEY</span>()</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>从控制台获取一个字符。</p>
+		<p>F1 CTRL DOWN ESC RETURN PAGEUP PAGEDOWN</p>
+		<p>等特殊按键也会返回对应的字符串。</p>
+		<p>没有读取到输入的时候返回#NIL。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="CREAD">
+	<p class="functionName">CREAD</p>
+	<p class="arg"><b>参数：</b>CREAD()</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>CREAD</span>()</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>从控制台读入一个字符串。</p>
 	</div>
 </div>
+<h5>变量功能</h5>
 <div class="function" id="">
 	<p class="functionName"></p>
 	<p class="arg"><b>参数：</b></p>
