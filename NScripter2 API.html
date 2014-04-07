@@ -1678,6 +1678,354 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	</div>
 </div>
 <h5>变量功能</h5>
+<div class="function" id="ISDEF">
+	<p class="functionName">ISDEF</p>
+	<p class="arg"><b>参数：</b>ISDEF(<span class='var'>val</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%isfirst</span>=<span class='functionWord'>ISDEF</span>(<span class='var'>_first</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>如果该变量已被定义则返回1，没有则返回0。</p>
+		<p>一般来说，访问没有定义的变量会导致错误，而这个函数不会。</p>
+		<p>例子中的代码用于检查系统变量_first是否定义。</p>
+		<p>在程序第一次启动的时候（即任何变量都没有定义）返回值都是0，在进行设定（configure）的时候，用于预先设定。</p>
+		<p>（这个时候请不要忘记对_first进行定义。）</p>
+	</div>
+</div>
+<div class="function" id="SPLIT">
+	<p class="functionName">SPLIT</p>
+	<p class="arg"><b>参数：</b>SPLIT <span class='text'>str</span>,<span class='text'>delchr</span>,<span class='var'>val1</span>,<span class='var'>val2</span>,...</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p<span class='functionWord'>SPLIT</span> <span class='text'>"あいうえお/かきくけこ/さしすせそ"</span>,<span class='text'>"/"</span>,<span class='var'>%v1</span>,<span class='var'>%v2</span>,<span class='var'>%v3</span>></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>根据指定的字符将字符串分割至若干个变量中，对应的字符串不存在的话会代入""。</p>
+		<p>例子的情况中，%v1="あいうえお",%v2="かきくけこ",%v3="さしすせそ"。</p>
+	</div>
+</div>
+<div class="function" id="SPLITA">
+	<p class="functionName">SPLITA</p>
+	<p class="arg"><b>参数：</b>SPLITA <span class='text'>str</span>,<span class='text'>delchr</span>,<span class='var'>val</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>SPLITA</span> <span class='text'>"あいうえお/かきくけこ/さしすせそ"</span>,<span class='text'>"/"</span>,<span class='var'>%v</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>根据指定的字符将字符串分割至一个数组中。数组最后一个元素会被赋值#NIL。</p>
+		<p>例子的情况中，%v[0]="あいうえお",%v[1]="かきくけこ",%v[2]="さしすせそ",%v[3]=#NIL。</p>
+	</div>
+</div>
+<div class="function" id="STRSAVE">
+	<p class="functionName">STRSAVE</p>
+	<p class="arg"><b>参数：</b>STRSAVE <span class='text'>filename</span>,<span class='text'>str</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>STRSAVE</span> <span class='text'>"savefile.txt"</span>,<span class='text'>"Hello World!"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>将指定的字符串保存到指定的文本文件中。</p>
+	</div>
+</div>
+<div class="function" id="STRLOAD">
+	<p class="functionName">STRLOAD</p>
+	<p class="arg"><b>参数：</b>STRLOAD(<span class='text'>filename</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>STRLOAD</span>(<span class='text'>filename</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>读取文本文件，返回对应的字符串。</p>
+	</div>
+</div>
+<div class="function" id="VCLEAR">
+	<p class="functionName">VCLEAR</p>
+	<p class="arg"><b>参数：</b>VCLEAR <span class='var'>val</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>VCLEAR</span> <span class='var'>v</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>清除指定的变量，数组，或者结构体。</p>
+		<p>例子中的代码会清除诸如数组（v[0] v[1] 或者v[0][1]）或者结构体（v.param1，v.name）等等。</p>
+	</div>
+</div>
+<div class="function" id="VCOPY">
+	<p class="functionName">VCOPY</p>
+	<p class="arg"><b>参数：</b>VCOPY <span class='var'>dest</span>,<span class='var'>src</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>VCOPY</span> <span class='var'>%dest</span>,<span class='var'>%src</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>将src指定的变量，数组，或者结构体复制到dest指定的对应结构去。</p>
+		<p>例子中的代码会将%src[0],%src[1]...%src.param1 %src.name等复制到%dest[0],%dest[1]...%dest.param1 %dest.name中去。</p>
+	</div>
+</div>
+<div class="function" id="RANDOMSEED">
+	<p class="functionName">RANDOMSEED</p>
+	<p class="arg"><b>参数：</b>RANDOMSEED <span class='number'>num</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>RANDOMSEED</span> <span class='number'>0</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>初始化随机数种子。指定0的话则每次的种子都不一样。</p>
+		<p>两次都指定0以外的数话，都会生成同样的随机数列。</p>
+	</div>
+</div>
+<h5>函数</h5>
+<div class="intro">
+	<p>※以下的数学函数在C语言和Lua中都是同名的，功能也类似。看到名字就知道其作用，由此不再赘述。</p>
+	<p>ABS(x) ACOS(x) ASIN(x) ATAN(x) ATAN2(y,x) CEIL(x) COS(x)</p>
+	<p>COSH(x) DEG(rad) EXP(x) FLOOR(x) LOG(x) LOG10(x)</p>
+	<p>RAD(deg) SIN(x) SINH(x) SQRT(x) TAN(x) TANH(x)</p>
+	<br />
+	<p>※下面解释来自BASIC以及不容易理解的函数。</p>
+</div>
+<div class="function" id="PI">
+	<p class="functionName">PI</p>
+	<p class="arg"><b>参数：</b>PI()</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>返回圆周率。</p>
+	</div>
+</div>
+<div class="function" id="ASC">
+	<p class="functionName">ASC</p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b>ASC(<span class='text'>chr</span>)</p>
+	<div class="examplecode"><p><span class='functionWord'>ASC</span>(<span class='text'>" "</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获得该字符的ASCII码。</p>
+	</div>
+</div>
+<div class="function" id="CHR">
+	<p class="functionName">CHR</p>
+	<p class="arg"><b>参数：</b>CHR(<span class='number'>chrcode</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>CHR</span>(<span class='number'>13</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>由ASCII码获得字符。</p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
 <div class="function" id="">
 	<p class="functionName"></p>
 	<p class="arg"><b>参数：</b></p>
