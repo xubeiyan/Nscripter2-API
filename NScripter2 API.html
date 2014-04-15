@@ -1806,254 +1806,280 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>由ASCII码获得字符。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="JOIN">
+	<p class="functionName">JOIN</p>
+	<p class="arg"><b>参数：</b>JOIN(<span class='text'>delchr</span>,<span class='text'>a</span>,<span class='text'>b</span>,...)</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>JOIN</span>(<span class='text'>"/"</span>,<span class='text'>"あいうえお"</span>,<span class='text'>"かきくけこ"</span>,<span class='text'>"さしすせそ"</span>)</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>和SPLIT相反，将字符串用指定字符连接。</p>
+		<p>上例中，返回"あいうえお/かきくけこ/さしすせそ"。</p>
+	</div>
+</div>
+<div class="function" id="JOINA">
+	<p class="functionName">JOINA</p>
+	<p class="arg"><b>参数：</b>JOINA(<span class='text'>delchr</span>,<span class='var'>val</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>JOINA</span>(<span class='text'>"/"</span>,<span class='var'>%v</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>和SPLIT相反，将数组用指定字符连接。</p>
+		<p>其中%v[0]="あいうえお" %v[1]="かきくけこ" %v[2]="さしすせそ" %v[3]=#NIL（可以是未定义或者数值）。</p>
+		<p>上例中，返回"あいうえお/かきくけこ/さしすせそ"。</p>
+	</div>
+</div>
+<div class="function" id="LCASE">
+	<p class="functionName">LCASE</p>
+	<p class="arg"><b>参数：</b>LCASE(<span class='text'>chr</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%c</span>=<span class='functionWord'>LCASE</span>(<span class='text'>"ABC"</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>返回小写字母。上例中返回"abc"。</p>
+	</div>
+</div>
+<div class="function" id="LEFT">
+	<p class="functionName">LEFT</p>
+	<p class="arg"><b>参数：</b>LEFT(<span class='text'>str</span>,<span class='number'>num</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>LEFT</span>(<span class='text'>"string"</span>,<span class='number'>3</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>将字符串从左截取指定的字符数。</p>
+		<p>上例中%str="str"。</p>
+	</div>
+</div>
+<div class="function" id="LEN">
+	<p class="functionName">LEN</p>
+	<p class="arg"><b>参数：</b>LEN(<span class='text'>str</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%l</span>=<span class='functionWord'>LEN</span>(<span class='text'>"abcde"</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>返回字符串的长度，上例中%l=5。</p>
+	</div>
+</div>
+<div class="function" id="LTRIM">
+	<p class="functionName">LTRIM</p>
+	<p class="arg"><b>参数：</b>LTRIM(<span class='text'>str</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>LTRIM</span>(<span class='text'>"   string   "</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>删除字符串左边的空格，不删除右边的空格。</p>
+		<p>例子中%str="string   "。</p>
+	</div>
+</div>
+<div class="function" id="MID">
+	<p class="functionName">MID</p>
+	<p class="arg"><b>参数：</b>MID(<span class='text'>str</span>,<span class='number'>start</span>,<span class='number'>num</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>MID</span>(<span class='text'>"abcdefg"</span>,<span class='number'>2</span>,<span class='number'>3</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>从指定位置开始截取指定数目的字符。</p>
+		<p>第一个字符从0开始。例子中%str="cde"。</p>
+	</div>
+</div>
+<div class="function" id="NUM">
+	<p class="functionName">NUM</p>
+	<p class="arg"><b>参数：</b>NUM(<span class='var'>str</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%n</span>=<span class='functionWord'>NUM</span>(<span class='text'>"100"</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>将字符串转换为数值。上例中%n=100。</p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName">RANDOM</p>
+	<p class="arg"><b>参数：</b>RANDOM()</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%r</span>=<span class='functionWord'>RANDOM</span>()</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>用于生成随机数。返回0~2的32次-1的整数。</p>
+		<p>比如要生成0~99的整数，%r=RANDOM() mod 100。</p>
+		<p>比如要生成1~6的整数，%r=RANDOM() mod 6 + 1。</p>
+	</div>
+</div>
+<div class="function" id="REPLACE">
+	<p class="functionName">REPLACE</p>
+	<p class="arg"><b>参数：</b>REPLACE(<span class='text'>str</span>,<span class='text'>from</span>,<span class='text'>to</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>REPLACE</span>(<span class='text'>"abcdefghi"</span>,<span class='text'>"def"</span>,<span class='text'>"ZZZ"</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>替换字符串。例子中%str为"abcZZZghi"。</p>
+	</div>
+</div>
+<div class="function" id="REGEX_REPLACE">
+	<p class="functionName">REGEX_REPLACE</p>
+	<p class="arg"><b>参数：</b>REGEX_REPLACE(<span class='text'>str</span>,<span class='text'>regex</span>,<span class='text'>repstr</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%str</span>=REGEX_REPLACE(<span class='text'>"abc123def"</span>,<span class='text'>"[0123456789]"</span>,<span class='text'>"Z"</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>根据正则表达式替换字符串。例子中%str为"abcZZZdef"。</p>
+	</div>
+</div>
+<div class="function" id="RIGHT">
+	<p class="functionName">RIGHT</p>
+	<p class="arg"><b>参数：</b>RIGHT(<span class='text'>str</span>,<span class='number'>num</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>RIGHT</span>(<span class='text'>"abcdef"</span>,<span class='number'>3</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>从字符串右端截取指定数目的字符。例子中%str为"def"。</p>
+	</div>
+</div>
+<div class="function" id="RTRIM">
+	<p class="functionName">RTRIM</p>
+	<p class="arg"><b>参数：</b>RTRIM(<span class='text'>str</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>RTRIM</span>(<span class='text'>"   string   "</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>删除字符串右边的空格。不会删除左边的空格。</p>
+		<p>上例中的%str="   string"。</p>
+	</div>
+</div>
+<div class="function" id="SEARCH">
+	<p class="functionName">SEARCH</p>
+	<p class="arg"><b>参数：</b>SEARCH(<span class='text'>str</span>,<span class='text'>findstr</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%s</span>=<span class='functionWord'>SEARCH</span>(<span class='text'>"abcdefghi"</span>,<span class='text'>"def"</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>在字符串中搜索指定的字符串，返回第一个字符的位置。未找到则返回-1。</p>
+		<p>上例中%s=3。（第一个字符位置为0。）</p>
+	</div>
+</div>
+<div class="function" id="SGN">
+	<p class="functionName">SGN</p>
+	<p class="arg"><b>参数：</b>SGN(n)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%s</span>=<span class='functionWord'>SGN</span>(<span class='number'>-100</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>参数为负数返回-1，正数返回1。0则返回0。例子中返回-1。</p>
+	</div>
+</div>
+<div class="function" id="STRF">
+	<p class="functionName">STRF</p>
+	<p class="arg"><b>参数：</b>STRF(<span class='text'>formatstr</span>,<span class='number'>n</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>STRF</span>(<span class='text'>"%3d"</span>,<span class='number'>12</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>将数值格式化输出。</p>
+		<p>整数和小数的输出和C语言的printf的格式化字符串相同。</p>
+		<p>例子中，%str=" 12"。（用空白补齐为三个空位并右对齐）</p>
+	</div>
+</div>
+<div class="function" id="TRIM">
+	<p class="functionName">TRIM</p>
+	<p class="arg"><b>参数：</b>TRIM(<span class='text'>str</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>TRIM</span>(<span class='text'>"   string   "</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>删除字符串两端的空格。上例中%str="string"。</p>
 	</div>
 </div>
 <div class="function" id="">
 	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+	<p class="arg"><b>参数：</b>TYPE(<span class='var'>val</span>)</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>%t</span>=<span class='functionWord'>TYPE</span>(<span class='number'>123</span>)</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>返回参数的值类型。上例中%t=#NUMBER。</p>
+		<p>字符串返回%t=#STRING。#NIL返回#NIL。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="UCASE">
+	<p class="functionName">UCASE</p>
+	<p class="arg"><b>参数：</b>UCASE(<span class='text'>str</span>)</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>%s</span>=<span class='functionWord'>UCASE</span>(<span class='text'>"abc"</span>)</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>转换为大写字母。例子中%s="ABC"。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="VLBOUND">
+	<p class="functionName">VLBOUND</p>
+	<p class="arg"><b>参数：</b>VLBOUND(<span class='var'>val</span>)</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>%star</span>t=<span class='functionWord'>VLBOUND</span>(<span class='var'>%v</span>)</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>获得数组最小非空元素的下标。也能正确作用于稀疏构造的数组。</p>
+		<p>例子中，%v的最小非空元素为3。例如，%v[3]="abc"，%v[12]="def"....。则%start=3。</p>
+		<p>因为要搜索所有的数组元素，所有没有比较快的函数。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="VLEN">
+	<p class="functionName">VLEN</p>
+	<p class="arg"><b>参数：</b>VLEN(<span class='var'>val</span>)</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>%vlen</span>=<span class='functionWord'>VLEN</span>(<span class='var'>%v</span>)</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>获得数组的长度。不能正确地作用于稀疏构造的数组。</p>
+		<p>下标从0开始，最后一个找到的下标+1则是数组长度。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="VUBOUND">
+	<p class="functionName">VUBOUND</p>
+	<p class="arg"><b>参数：</b>VUBOUND(<span class='var'>val</span>)</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>%end</span>=<span class='functionWord'>VUBOUND</span>(<span class='var'>%v</span>)</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>获得数组最大非空元素的下标。也能正确作用于稀疏构造的数组。</p>
+		<p>因为要搜索所有的数组元素，所有没有比较快的函数。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="ZENKAKU">
+	<p class="functionName">ZENKAKU</p>
+	<p class="arg"><b>参数：</b>ZENKAKU(<span class='text'>str</span>)</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>%str</span>=<span class='functionWord'>ZENKAKU</span>(<span class='text'>"abc"</span>)</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>将字符串转换为全角字符。上例中返回"ａｂｃ"。</p>
+		<p>这里，BASIC内部使用的是UTF-8编码，请注意。</p>
+		<p>当字符串是从外部工具获取的时候，有必要对其进行转码。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<h5>位图功能</h5>
+<div class="intro">
+	<p>位图是“储存在内存中”的图像数据。</p>
+	<p>其中包含了对位图进行渲染处理，以及从位图转换到纹理的命令。</p>
+	<p>总之，位图功能是用来对内存中的图像进行加工和保存的命令（以及函数）的集合。</p>
+</div>
+<div class="function" id="BBEGIN">
+	<p class="functionName">BBEGIN</p>
+	<p class="arg"><b>参数：</b>BBEGIN <span class='text'>bmpname</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>BBEGIN</span> <span class='text'>"scrbmp"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>开始对指定的位图进行描画操作。初始位图为黑色透明的区域。</p>
+		<p>位图的尺寸大小需要事先制作好。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="BCREATE">
+	<p class="functionName">BCREATE</p>
+	<p class="arg"><b>参数：</b>BCREATE <span class='text'>bmpname</span>,<span class='number'>w</span>,<span class='number'>h</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>BCREATE</span> <span class='text'>"scrbmp"</span>,<span class='number'>800</span>,<span class='number'>600</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
+		<p>生成指定名称，指定大小的空白位图。</p>
 	</div>
 </div>
 <div class="function" id="">
