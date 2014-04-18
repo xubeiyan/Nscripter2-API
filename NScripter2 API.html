@@ -2112,166 +2112,178 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>从指定的位图复制生成一个新的位图。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="BEND">
+	<p class="functionName">BEND</p>
+	<p class="arg"><b>参数：</b>BEND <span class='text'>bmpname</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BEND</span> <span class='text'>"scrbmp"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>停止对位图的操作。执行此命令后会将数据生成为BMP文件。</p>
+		<p>只有执行这个命令之后，位图的改变才会被显示出来。</p>
+	</div>
+</div>
+<div class="function" id="BFILL">
+	<p class="functionName">BFILL</p>
+	<p class="arg"><b>参数：</b>BFILL <span class='text'>bmpname</span>,<span class='color'>color</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BFILL</span> <span class='text'>"bmp"</span>,<span class='color'>#FFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>用指定的颜色填充位图。</p>
+	</div>
+</div>
+<div class="function" id="BFORMAT">
+	<p class="functionName">BFORMAT</p>
+	<p class="arg"><b>参数：</b>BFORMAT <span class='text'>bmpname</span>,<span class='text'>str</span>,<span class='textctrl'>opt</span>,<span class='textctrl'>rubyopt</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BFORMAT</span> <span class='text'>"scrbmp"</span>,<span class='text'>"あいうえおかきくけこ{漢字/ルビ}さしすせそ"</span>,<span class='textctrl'>{font="text",x=2,y=2,w=25,h=4}</span>,<span class='textctrl'>{font="ruby"}</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>在使用英语等不需要注音功能的时候可以省略rubyopt参数。</p>
+		<p>此命令用于向位图中写入字符串。opt和rubyopt参数类似SOFORMAT命令。</p>
+	</div>
+</div>
+<div class="function" id="BFRECT">
+	<p class="functionName">BFRECT</p>
+	<p class="arg"><b>参数：</b>BFRECT <span class='text'>bmpname</span>,<span class='number'>x1</span>,<span class='number'>y1</span>,<span class='number'>x2</span>,<span class='number'>y2</span>,<span class='color'>color</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p>BFRECT <span class='text'>"scrbmp"</span>,<span class='number'>100</span>,<span class='number'>100</span>,<span class='number'>200</span>,<span class='number'>200</span>,<span class='color'>#FFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>向位图中插入一个左上（x1,y1）到右下（x2,y2）的矩形。</p>
+	</div>
+</div>
+<div class="function" id="BFROMT">
+	<p class="functionName">BFROMT</p>
+	<p class="arg"><b>参数：</b>BFROMT <span class='text'>bmpname</span>,<span class='text'>texname</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BFROMT</span> <span class='text'>"bmp"</span>,<span class='text'>"tex"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>从指定的纹理创建一个位图。</p>
+	</div>
+</div>
+<div class="function" id="BGETSIZE">
+	<p class="functionName">BGETSIZE</p>
+	<p class="arg"><b>参数：</b>BGETSIZE <span class='text'>bmpname</span>,<span class='var'>w</span>,<span class='var'>h</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>BGETSIZE</span> <span class='text'>"scrbmp"</span>,<span class='var'>%w</span>,<span class='var'>%h</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获得位图的宽和高。</p>
+	</div>
+</div>
+<div class="function" id="BGRADATION">
+	<p class="functionName">BGRADATION</p>
+	<p class="arg"><b>参数：</b>BGRADATION <span class='text'>bmpname</span>,<span class='color'>color1</span>,<span class='color'>color2</span>,<span class='reverseWord'>flagx</span>,<span class='reverseWord'>flagy</span></p>
 	<p class="example"><b>例：</b></p>
 	<div class="examplecode"><p></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>用渐变颜色填充位图。</p>
+		<p>flagx和flagy是用于确定在x方向还是y方向上进行渐变。</p>
+		<p>在某个方向上设置为true就会在该方向上渐变，两个都true或者两个都false会生成斜向的渐变。（true和false方向不同）</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="BJOINX">
+	<p class="functionName">BJOINX</p>
+	<p class="arg"><b>参数：</b>BJOINX <span class='text'>bmpname</span>,<span class='text'>bmpname2</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>BJOINX</span> <span class='text'>"bmp"</span>,<span class='text'>"bmp2"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>在bmpname的右边接上bmpname2生成新的bmpname。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="BJOINY">
+	<p class="functionName">BJOINY</p>
+	<p class="arg"><b>参数：</b>BJOINY <span class='text'>bmpname</span>,<span class='text'>bmpname2</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>BJOINY</span> <span class='functionWord'>"bmp"</span>,<span class='functionWord'>"bmp2"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>在bmpname的下面接上bmpname2生成新的bmpname。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="BLOAD">
+	<p class="functionName">BLOAD</p>
+	<p class="arg"><b>参数：</b>BLOAD <span class='text'>bmpname</span>,<span class='text'>filename</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>BLOAD</span> <span class='text'>"scrbmp"</span>,<span class='text'>"testbg.png"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>读取指定的对象中到位图中。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="BMONOTONE">
+	<p class="functionName">BMONOTONE</p>
+	<p class="arg"><b>参数：</b>BMONOTONE <span class='text'>bmpname</span>,<span class='color'>color</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>BMONOTONE</span> <span class='text'>"scrbmp"</span>,<span class='color'>#FFFF0000</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>根据指定的颜色单色化位图。（译注：褐色照片效果。）</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="BNEGA">
+	<p class="functionName">BNEGA</p>
+	<p class="arg"><b>参数：</b>BNEGA <span class='text'>bmpname</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p>BNEGA <span class='text'>"scrbmp"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>反转位图的颜色。（译注：底片效果。）</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="BRESIZE">
+	<p class="functionName">BRESIZE</p>
+	<p class="arg"><b>参数：</b>BRESIZE <span class='text'>bmpname</span>,<span class='number'>w</span>,<span class='number'>h</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>BRESIZE</span> <span class='text'>"scrbmp"</span>,<span class='number'>100</span>,<span class='number'>100</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>扩大或者缩小位图。</p>
+		<p>用于调整屏幕截图的大小。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="BREVERSE">
+	<p class="functionName">BREVERSE</p>
+	<p class="arg"><b>参数：</b>BREVERSE <span class='text'>bmpname</span>,<span class='number'>flagx</span>,<span class='number'>flagy</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>BREVERSE</span> <span class='text'>"scrbmp"</span>,<span class='number'>1</span>,<span class='number'>0</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>根据参数x方向上或者y方向上翻转位图。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="BSAVE">
+	<p class="functionName">BSAVE</p>
+	<p class="arg"><b>参数：</b>BSAVE <span class='text'>bmpname</span>,<span class='text'>savefilename</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>BSAVE</span> <span class='text'>"scrbmp"</span>,<span class='text'>"save.png"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>将位图保存为PNG文件。</p>
+		<p>用于保存屏幕截图等功能。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="BTRIM">
+	<p class="functionName">BTRIM</p>
+	<p class="arg"><b>参数：</b>BTRIM <span class='text'>bmpname</span>,<span class='number'>x1</span>,<span class='number'>y1</span>,<span class='number'>x2</span>,<span class='number'>y2</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>BTRIM</span> <span class='text'>"scrbmp"</span>,<span class='number'>100</span>,<span class='number'>100</span>,<span class='number'>200</span>,<span class='number'>200</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>截取位图指定坐标区域的部分。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
+<h5>低水平功能</h5>
+<div class="intro">
+	<p></p>
+	<p></p>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
+<h5>低水平声音功能</h5>
 <div class="function" id="">
 	<p class="functionName"></p>
 	<p class="arg"><b>参数：</b></p>
