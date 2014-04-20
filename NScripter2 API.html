@@ -146,7 +146,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 <h5>精灵功能</h5>
 <div class="intro">
 	<p>制作ADV游戏的时候主要使用的就是精灵功能。</p>
-	<p>贴图命令和绘图命令在内部使用的时候，是不能同时执行的。</p>
+	<p>纹理命令和绘图命令在内部使用的时候，是不能同时执行的。</p>
 	<p>此外，无论立绘，背景，日期还是对话文字，文字窗口等等，都是“精灵”。</p>
 	<p>并没有打算将他们写成固定的命令，而是由基本的功能组合起来的（请参考例子程序）。</p>
 	<p>至于为什么要这么做，是因为对于不同的游戏来说，每一个大功能实现方式和功能差别太多。</p>
@@ -1197,7 +1197,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<div class="examplecode"><p><span class='var'>%fileflag</span>=<span class='functionWord'>FCHK</span>(<span class='text'>"ev\test.png"</span>)</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p>如果已经将图像作为贴图读入内存则返回1，否则返回0。</p>
+		<p>如果已经将图像作为纹理读入内存则返回1，否则返回0。</p>
 		<p>用于实现CG鉴赏等功能。</p>
 	</div>
 </div>
@@ -2284,164 +2284,177 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<p></p>
 </div>
 <h5>低水平声音功能</h5>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SOUND">
+	<p class="functionName">SOUND</p>
+	<p class="arg"><b>参数：</b>SOUND <span class='text'>sndname</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SOUND</span> <span class='text'>"bgsound"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>新增一个声道。</p>
+	</div>
+</div>
+<div class="function" id="SPLAY">
+	<p class="functionName">SPLAY</p>
+	<p class="arg"><b>参数：</b>SPLAY <span class='text'>sndname</span>,<span class='textctrl'>playtable</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class='functionWord'>SPLAY</span> <span class='text'>"bgsound"</span>,<span class='textctrl'>{name="test.ogg"}</span></p>
+		<p><span class='functionWord'>SPLAY</span> <span class='text'>"bgsound"</span>,<span class='textctrl'>{name="test.ogg",loop=1}</span></p>
+		<p><span class='functionWord'>SPLAY</span> <span class='text'>"bgsound"</span>,<span class='textctrl'>{name="test.ogg",volume=-100,loop=1}</span></p>
+		<p><span class='functionWord'>SPLAY</span> <span class='text'>"bgsound"</span>,<span class='textctrl'>{name="test.ogg",volume=-100,pan=-10000}</span></p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>在指定声道播放声音。</p>
+	</div>
+</div>
+<div class="function" id="SDELETE">
+	<p class="functionName">SDELETE</p>
+	<p class="arg"><b>参数：</b>SDELETE <span class='text'>sndname</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>SDEKETE</span> <span class='text'>"bgsound"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>删除声道。删除声道的时候并不会停止在当前声道播放的声音。</p>
+		<p>（此功能只用于再次创建一个声道。）</p>
+	</div>
+</div>
+<div class="function" id="SFADEOUT">
+	<p class="functionName">SFADEOUT</p>
+	<p class="arg"><b>参数：</b>SFADEOUT <span class='text'>sndname</span>,<span class='number'>time</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>SFADEOUT</span> <span class='text'>"bgsound"</span>,<span class='number'>1000</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>经过指定的时间之后对声音进行淡出处理。</p>
+		<p>高水平功能中的淡出是“指定淡出的时间”，而此处是指定淡出开始的时间。</p>
+	</div>
+</div>
+<div class="function" id="SPAN">
+	<p class="functionName">SPAN</p>
+	<p class="arg"><b>参数：</b>SPAN <span class='text'>sndname</span>,<span class='number'>pan</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>SPAN</span> <span class='text'>"bgsound"</span>,<span class='number'>-10000</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>对指定的声道进行偏移（pan）（偏向左声道或者右声道）处理。pan值-10000为最左，10000为最右。</p>
+	</div>
+</div>
+<div class="function" id="SPAUSE">
+	<p class="functionName">SPAUSE</p>
+	<p class="arg"><b>参数：</b>SPAUSE <span class='text'>sndname</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>SPAUSE</span> <span class='text'>"bgsound"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>暂停指定的声道。使用SREMUSE命令可以继续播放。</p>
+	</div>
+</div>
+<div class="function" id="SRESUME">
+	<p class="functionName">SRESUME</p>
+	<p class="arg"><b>参数：</b>SRESUME <span class='text'>sndname</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>SRESUME</span> <span class='text'>"bgsound"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>继续播放由SPAUSE停止的声道。</p>
 	</div>
 </div>
 <div class="function" id="">
 	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+	<p class="arg"><b>参数：</b>SSTOP <span class='text'>sndname</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SSTOP</span> <span class='text'>"bgsound"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>停止声道上的声音播放。关闭声音文件，但是声道本身会保留下来。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SVOLUME">
+	<p class="functionName">SVOLUME</p>
+	<p class="arg"><b>参数：</b>SVOLUME <span class='text'>sndname</span>,<span class='number'>vol</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SVOLUME</span> <span class='text'>"bgsound"</span>,<span class='number'>-10000</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>变更指定声道的音量。-10000为静音，0为最大。</p>
+		<p>实际情况中-1000就听不到声音也是有的，所以要在实际中尝试。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="SISPLAYING">
+	<p class="functionName">SISPLAYING</p>
+	<p class="arg"><b>参数：</b>SISPLAYING(<span class='text'>sndname</span>)</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='var'>%p</span>=<span class='functionWord'>SISPLAYING</span>(<span class='text'>"bgsound"</span>)</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>确定该声道是否在播放声音，是则返回1，否则返回0。</p>
+		<p>注意：循环播放声音的声道总是会返回1。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
+<h5>图像绘制功能</h5>
+<div class="function" id="GBEGIN">
+	<p class="functionName">GBEGIN</p>
 	<p class="arg"><b>参数：</b></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>GBEGIN</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>开始对画面进行绘制。只有在此命令和GEND命令之间的命令才会被反映在画面上。</p>
+		<p>高水平绘制功能（精灵功能）是在内部调用此命令。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
+<div class="function" id="SPDRAW">
+	<p class="functionName">SPDRAW</p>
 	<p class="arg"><b>参数：</b></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>SPDRAW</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>绘制所有的精灵。此命令是低水平命令请在打算同时显示所有精灵的时候使用。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
+<div class="function" id="GEND">
+	<p class="functionName">GEND</p>
 	<p class="arg"><b>参数：</b></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>GEND</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>停止绘制过程。执行此命令后绘制结果会反映在画面上。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<h5>纹理功能</h5>
+<div class="function" id="TBEGIN">
+	<p class="functionName">TBEGIN</p>
+	<p class="arg"><b>参数：</b>TBEGIN <span class='text'>texname</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>TBEGIN</span> <span class='text'>"scrtex"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>开始对纹理的绘制。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
+<div class="function" id="TEND">
+	<p class="functionName">TEND</p>
 	<p class="arg"><b>参数：</b></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>TEND</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>结束对纹理的绘制。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="TBEZIER">
+	<p class="functionName">TBEZIER</p>
+	<p class="arg"><b>参数：</b>TBEZIER <span class='text'>texname</span>,<span class='number'>cx</span>,<span class='number'>cy</span>,<span class='number'>xs</span>,<span class='number'>ys</span>,<span class='number'>rot</span>,<span class='number'>a</span>,<span class='number'>x0</span>,<span class='number'>y0</span>,<span class='number'>x1</span>,<span class='number'>y1</span>,<span class='number'>x2</span>,<span class='number'>y2</span>,<span class='number'>x3</span>,<span class='number'>y3</span>,<span class='number'>sx0</span>,<span class='number'>sy0</span>,<span class='number'>sx1</span>,<span class='number'>sy1</span>,<span class='number'>sx2</span>,<span class='number'>sy2</span>,<span class='number'>sx3</span>,<span class='number'>sy3</span>,<span class='number'>sx4</span>,<span class='number'>sy4</span>,<span class='number'>sx5</span>,<span class='number'>sy5</span>,<span class='number'>sx6</span>,<span class='number'>sy6</span>,<span class='number'>sx7</span>,<span class='number'>sy7</span></p>
 	<p class="example"><b>例：</b></p>
 	<div class="examplecode"><p></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
+		<p>对纹理进行贝塞尔变换。参数的顺序和SPBEZIER相同。</p>
+		<p>先是指定旋转扩大缩小，剩下的部分0~1和SPBEZIER相同。</p>
 	</div>
 </div>
 <div class="function" id="">
