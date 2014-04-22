@@ -2457,44 +2457,65 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>先是指定旋转扩大缩小，剩下的部分0~1和SPBEZIER相同。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="TDELETE">
+	<p class="functionName">TDELETE</p>
+	<p class="arg"><b>参数：</b>TDELETE <span class='text'>texname</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>TDELETE</span> <span class='text'>"scrtex"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>删除纹理</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="TDRAW">
+	<p class="functionName">TDRAW</p>
+	<p class="arg"><b>参数：</b>TDRAW <span class='text'>texname</span>,<span class='number'>x</span>,<span class='number'>y</span>,<span class='number'>a</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>TDRAW</span> <span class='text'>"spaceship"</span>,<span class='number'>100</span>,<span class='number'>100</span>,<span class='number'>255</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>将纹理绘制在画面指定位置。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="TDRAWLT">
+	<p class="functionName">TDRAWLT</p>
+	<p class="arg"><b>参数：</b>TDRAWLT <span class='text'>texname</span>,<span class='number'>cx</span>,<span class='number'>cy</span>,<span class='number'>xs</span>,<span class='number'>ys</span>,<span class='number'>rot</span>,<span class='number'>alpha</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>TDRAWLT</span> <span class='text'>"spaceship"</span>,<span class='number'>200</span>,<span class='number'>200</span>,<span class='number'>1.0</span>,<span class='number'>1.0</span>,<span class='functionWord'>RAD</span>(<span class='number'>45</span>),<span class='number'>255</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>对纹理进行旋转扩大缩小。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<div class="function" id="TDRAWTR">
+	<p class="functionName">TDRAWTR</p>
+	<p class="arg"><b>参数：</b>TDRAWTR <span class='text'>name</span>,<span class='var'>v</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode">
+		<p><span class='var'>%v</span>[<span class='number'>0</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>%v</span>[<span class='number'>1</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>%v</span>[<span class='number'>2</span>]=<span class='number'>0</span></p>
+		<p><span class='var'>%v</span>[<span class='number'>3</span>]=<span class='number'>0</span></p>
+		<p><span class='var'>%v</span>[<span class='number'>4</span>]=<span class='color'>0xFFFFFFFF</span></p>
+		<br />
+		<p><span class='var'>%v</span>[<span class='number'>5</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>%v</span>[<span class='number'>6</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>%v</span>[<span class='number'>7</span>]=<span class='number'>1</span></p>
+		<p><span class='var'>%v</span>[<span class='number'>8</span>]=<span class='number'>1</span></p>
+		<p><span class='var'>%v</span>[<span class='number'>9</span>]=<span class='color'>0xFFFF00FF</span></p>
+		<br />
+		<p><span class='var'>%v</span>[<span class='number'>10</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>%v</span>[<span class='number'>11</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>%v</span>[<span class='number'>12</span>]=<span class='number'>0</span></p>
+		<p><span class='var'>%v</span>[<span class='number'>13</span>]=<span class='number'>1</span></p>
+		<p><span class='var'>%v</span>[<span class='number'>14</span>]=<span class='color'>0xFFFFFF00</span></p>
+		<br />
+		<p><span class='functionWord'>TDRAWTR</span> <span class='text'>"testtex"</span>,<span class='var'>%v</span></p>
+	</div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>指定三角形的三个顶点，对相应的多边形绘制纹理。</p>
+		<p>数组的每元素对应一个顶点。（x, y, u, v, col）。顶点数必须是三的倍数。（因为每三个顶点绘制一个三角形。）</p>
 	</div>
 </div>
 <div class="function" id="">
