@@ -419,7 +419,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>现在所有的坐标都是左上坐标的形式。</p>
 	</div>
 </div>
-<h5>高质量绘制命令/等待输入命令</h5>
+<h5>高级绘制命令/等待输入命令</h5>
 <div class="function" id="PRINT">
 	<p class="functionName">PRINT</p>
 	<p class="arg"><b>参数：</b>PRINT <span class='text'>effectsymbol</span>,<span class='number'>time</span>,<span class='text'>param</span></p>
@@ -606,7 +606,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 </div>
 <h5>各种声音功能</h5>
 <div class="intro" id="">
-	<p>※程序内部使用的是低音质。需要同时也使用低音质的时候，请调用内部相关函数。</p>
+	<p>※程序内部使用的是初级声音功能。需要同时也使用初级声音功能的时候，请调用内部相关函数。</p>
 </div>
 <div class="function" id="BGMPLAY">
 	<p class="functionName">BGMPLAY</p>
@@ -2278,12 +2278,12 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>截取位图指定坐标区域的部分。</p>
 	</div>
 </div>
-<h5>低水平功能</h5>
+<h5>初级功能</h5>
 <div class="intro">
 	<p></p>
 	<p></p>
 </div>
-<h5>低水平声音功能</h5>
+<h5>初级声音功能</h5>
 <div class="function" id="SOUND">
 	<p class="functionName">SOUND</p>
 	<p class="arg"><b>参数：</b>SOUND <span class='text'>sndname</span></p>
@@ -2328,7 +2328,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
 		<p>经过指定的时间之后对声音进行淡出处理。</p>
-		<p>高水平功能中的淡出是“指定淡出的时间”，而此处是指定淡出开始的时间。</p>
+		<p>高级功能中的淡出是“指定淡出的时间”，而此处是指定淡出开始的时间。</p>
 	</div>
 </div>
 <div class="function" id="SPAN">
@@ -2402,7 +2402,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
 		<p>开始对画面进行绘制。只有在此命令和GEND命令之间的命令才会被反映在画面上。</p>
-		<p>高水平绘制功能（精灵功能）是在内部调用此命令。</p>
+		<p>高级绘制功能（精灵功能）是在内部调用此命令。</p>
 	</div>
 </div>
 <div class="function" id="SPDRAW">
@@ -2412,7 +2412,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<div class="examplecode"><p><span class='functionWord'>SPDRAW</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p>绘制所有的精灵。此命令是低水平命令请在打算同时显示所有精灵的时候使用。</p>
+		<p>绘制所有的精灵。此命令是初级命令请在打算同时显示所有精灵的时候使用。</p>
 	</div>
 </div>
 <div class="function" id="GEND">
@@ -2516,6 +2516,319 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<div class="description">
 		<p>指定三角形的三个顶点，对相应的多边形绘制纹理。</p>
 		<p>数组的每元素对应一个顶点。（x, y, u, v, col）。顶点数必须是三的倍数。（因为每三个顶点绘制一个三角形。）</p>
+	</div>
+</div>
+<div class="function" id="TFILL">
+	<p class="functionName">TFILL</p>
+	<p class="arg"><b>参数：</b>TFILL <span class='text'>texname</span>,<span class='color'>color</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>TFILL</span> <span class='text'>"scrtex"</span>,<span class='color'>0xFFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>向指定的纹理填充指定颜色。</p>
+	</div>
+</div>
+<div class="function" id="TFORMAT">
+	<p class="functionName">TFORMAT</p>
+	<p class="arg"><b>参数：</b>TFORMAT <span class='text'>name</span>,<span class='text'>str</span>,<span class='textctrl'>opt</span>,<span class='textctrl'>rubyopt</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>TFORMAT</span> <span class='text'>"tex"</span>,<span class='text'>"あいうえおかきくけこ{漢字/ルビ}さしすせそ"</span>,<span class='textctrl'>{font="text",x=2,y=2,w=25,h=4}</span>,<span class='textctrl'>{font="ruby"}</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>在处理如英文文字用不到注音功能的时候可以省略rubyopt参数。</p>
+		<p>向纹理上写入字符串。opt和rubyopt参数和SPFORMAT相同。</p>
+	</div>
+</div>
+<div class="function" id="TFRECT">
+	<p class="functionName">TFRECT</p>
+	<p class="arg"><b>参数：</b>TFRECT <span class='text'>name</span>,<span class='number'>lx</span>,<span class='number'>ly</span>,<span class='number'>rx</span>,<span class='number'>ry</span>,<span class='color'>color</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>TFRECT</span> <span class='text'>"tex"</span>,<span class='number'>100</span>,<span class='number'>100</span>,<span class='number'>200</span>,<span class='number'>200</span>,<span class='color'>0xFFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>向纹理的指定区域中填充颜色。</p>
+	</div>
+</div>
+<div class="function" id="TFROMB">
+	<p class="functionName">TFROMB</p>
+	<p class="arg"><b>参数：</b>TFROMB <span class='text'>texname</span>,<span class='text'>bmpname</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>TFROMB</span> <span class='functionWord'>"tex"</span>,<span class='functionWord'>"bmp"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>由位图生成纹理。</p>
+	</div>
+</div>
+<div class="function" id="TGETSIZE">
+	<p class="functionName">TGETSIZE</p>
+	<p class="arg"><b>参数：</b>TGETSIZE <span class='text'>texname</span>,<span class='var'>w</span>,<span class='var'>h</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>TGETSIZE</span> <span class='text'>"tex"</span>,<span class='var'>%w</span>,<span class='var'>%h</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>获得纹理的大小。</p>
+	</div>
+</div>
+<div class="function" id="TLOAD">
+	<p class="functionName">TLOAD</p>
+	<p class="arg"><b>参数：</b>TLOAD <span class='text'>texname</span>,<span class='text'>filename</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>TLOAD</span> <span class='text'>"tex"</span>,<span class='text'>"test.jpg"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>载入文件作为纹理。</p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b>TSAVE <span class='text'>texname</span>,<span class='text'>filename</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>TSAVE</span> <span class='text'>"tex"</span>,<span class='text'>"savefile.png"</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>将纹理保存为文件。文件格式只能是PNG。</p>
+	</div>
+</div>
+<div class="function" id="TISPLAYING">
+	<p class="functionName">TISPLAYING</p>
+	<p class="arg"><b>参数：</b>TISPLAYING(<span class='text'>texname</span>)</p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='var'>%p</span>=<span class='functionWord'>TISPLAYING</span>(<span class='text'>"movtex"</span>)</p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>播放动画纹理的时候，动画在播放则返回1，否则返回0。</p>
+	</div>
+</div>
+<h5>形状绘制功能</h5>
+<div class="function" id="GBEZIER">
+	<p class="functionName">GBEZIER</p>
+	<p class="arg"><b>参数：</b>GBEZIER <span class='number'>x1</span>,<span class='number'>y1</span>,<span class='number'>x2</span>,<span class='number'>y2</span>,<span class='number'>x3</span>,<span class='number'>y3</span>,<span class='number'>x4</span>,<span class='number'>y4</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>GBEZIER</span> <span class='number'>0</span>,<span class='number'>100</span>,<span class='number'>10</span>,<span class='number'>80</span>,<span class='number'>90</span>,<span class='number'>80</span>,<span class='number'>100</span>,<span class='number'>100</span>,<span class='color'>#FFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制贝赛尔曲线。x1,y1为起点，x4,y4为终点，x2,y2为点1的控制点，x3,y3为点2的控制点。</p>
+	</div>
+</div>
+<div class="function" id="GBLEND">
+	<p class="functionName">GBLEND</p>
+	<p class="arg"><b>参数：</b>GBLEND <span class='number'>num</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>GBLEND</span> <span class='number'>0</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>切换渲染绘制模式。0表示通常α渲染，1为叠加渲染。</p>
+		<p>以后会考虑增加功能。</p>
+	</div>
+</div>
+<div class="function" id="GCIRCLE">
+	<p class="functionName">GCIRCLE</p>
+	<p class="arg"><b>参数：</b>GCIRCLE <span class='number'>x</span>,<span class='number'>y</span>,<span class='number'>r</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>GCIRCLE</span> <span class='number'>100</span>,<span class='number'>100</span>,<span class='number'>35</span>,<span class='color'>#FFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制圆。</p>
+	</div>
+</div>
+<div class="function" id="GELLIPSE">
+	<p class="functionName">GELLIPSE</p>
+	<p class="arg"><b>参数：</b>GELLIPSE <span class='number'>x1</span>,<span class='number'>y1</span>,<span class='number'>x2</span>,<span class='number'>y2</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>GELLIPSE</span> <span class='number'>100</span>,<span class='number'>100</span>,<span class='number'>200</span>,<span class='number'>200</span>,<span class='color'>#FFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制以x1,y1为左上，x2,y2为右下的长方形的内接椭圆。</p>
+	</div>
+</div>
+<div class="function" id="GFCIRCLE">
+	<p class="functionName">GFCIRCLE</p>
+	<p class="arg"><b>参数：</b>GFCIRCLE <span class='number'>x</span>,<span class='number'>y</span>,<span class='number'>r</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>GFCIRCLE</span> <span class='number'>100</span>,<span class='number'>100</span>,<span class='number'>35</span>,<span class='color'>#FFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制填充圆。</p>
+	</div>
+</div>
+<div class="function" id="GFELLIPSE">
+	<p class="functionName">GFELLIPSE</p>
+	<p class="arg"><b>参数：</b>GFELLIPSE <span class='number'>x1</span>,<span class='number'>y1</span>,<span class='number'>x2</span>,<span class='number'>y2</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>GFELLIPSE</span> <span class='number'>100</span>,<span class='number'>100</span>,<span class='number'>200</span>,<span class='number'>200</span>,<span class='color'>#FFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制以x1,y1为左上，x2,y2为右下的长方形的内接填充椭圆。</p>
+	</div>
+</div>
+<div class="function" id="GRECT">
+	<p class="functionName">GRECT</p>
+	<p class="arg"><b>参数：</b>GRECT <span class='number'>x1</span>,<span class='number'>y1</span>,<span class='number'>x2</span>,<span class='number'>y2</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>GRECT</span> <span class='number'>100</span>,<span class='number'>100</span>,<span class='number'>200</span>,<span class='number'>200</span>,<span class='color'>#FFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制左上为x1,y1，右上为x2,y2的长方形。</p>
+	</div>
+</div>
+<div class="function" id="GFRECT">
+	<p class="functionName">GFRECT</p>
+	<p class="arg"><b>参数：</b>GFRECT <span class='number'>x1</span>,<span class='number'>y1</span>,<span class='number'>x2</span>,<span class='number'>y2</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>GFRECT</span> <span class='number'>100</span>,<span class='number'>100</span>,<span class='number'>200</span>,<span class='number'>200</span>,<span class='color'>#FFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制左上为x1,y1，右上为x2,y2的填充长方形。</p>
+	</div>
+</div>
+<div class="function" id="GLINE">
+	<p class="functionName">GLINE</p>
+	<p class="arg"><b>参数：</b>GLINE <span class='number'>x1</span>,<span class='number'>y1</span>,<span class='number'>x2</span>,<span class='number'>y2</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>GLINE</span> <span class='number'>100</span>,<span class='number'>100</span>,<span class='number'>200</span>,<span class='number'>200</span>,<span class='color'>#FFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制连接x1,y1和x2,y2的直线。</p>
+	</div>
+</div>
+<div class="function" id="GLINES">
+	<p class="functionName">GLINES</p>
+	<p class="arg"><b>参数：</b>GLINES <span class='var'>array</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class='var'>a</span>[<span class='number'>0</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='number'>1</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='var'>2</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>a</span>[<span class='number'>3</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>a</span>[<span class='number'>4</span>]=<span class='number'>300</span></p>
+		<p><span class='var'>a</span>[<span class='number'>5</span>]=<span class='number'>300</span></p>
+		<p><span class='functionWord'>GLINES</span> <span class='var'>a</span>,<span class='color'>#FFFFFFFF</span></p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制折线，坐标由数组指定。</p>
+	</div>
+</div>
+<div class="function" id="GLINEL">
+	<p class="functionName">GLINEL</p>
+	<p class="arg"><b>参数：</b>GLINEL <span class='var'>array</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class='var'>a</span>[<span class='number'>0</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='number'>1</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='number'>2</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>a</span>[<span class='number'>3</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>a</span>[<span class='number'>4</span>]=<span class='number'>300</span></p>
+		<p><span class='var'>a</span>[<span class='number'>5</span>]=<span class='number'>300</span></p>
+		<p><span class='var'>a</span>[<span class='number'>6</span>]=<span class='number'>300</span></p>
+		<p><span class='var'>a</span>[<span class='number'>7</span>]=<span class='number'>300</span></p>
+		<p><span class='functionWord'>GLINEL</span> <span class='var'>a</span>,<span class='color'>#FFFFFFFF</span></p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制直线列。坐标由数组指定。由于是起点终点构成一条直线，所以数组元素个数必须是4的倍数。</p>
+	</div>
+</div>
+<div class="function" id="GPOINT">
+	<p class="functionName">GPOINT</p>
+	<p class="arg"><b>参数：</b>GPOINT <span class='number'>x</span>,<span class='number'>y</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>GPOINT</span> <span class='number'>125</span>,<span class='number'>125</span>,<span class='color'>#FFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制点。</p>
+	</div>
+</div>
+<div class="function" id="GPOINTL">
+	<p class="functionName">GPOINTL</p>
+	<p class="arg"><b>参数：</b>GPOINTL <span class='var'>array</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class='var'>a</span>[<span class='number'>0</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='number'>1</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='number'>2</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>a</span>[<span class='number'>3</span>]=<span class='number'>200</span></p>
+		<p><span class='functionWord'>GPOINTL</span> <span class='var'>a</span>,<span class='color'>#FFFFFFFF</span></p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制点列表。坐标由数组指定。</p>
+	</div>
+</div>
+<div class="function" id="GTRIANGLE">
+	<p class="functionName">GTRIANGLE</p>
+	<p class="arg"><b>参数：</b>GTRIANGLE <span class='number'>x1</span>,<span class='number'>y1</span>,<span class='number'>x2</span>,<span class='number'>y2</span>,<span class='number'>x3</span>,<span class='number'>y3</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p><span class='functionWord'>GTRIANGLE</span> <span class='number'>100</span>,<span class='number'>100</span>,<span class='number'>200</span>,<span class='number'>200</span>,<span class='number'>300</span>,<span class='number'>100</span>,<span class='color'>#FFFFFFFF</span></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制填充的三角形。</p>
+	</div>
+</div>
+<div class="function" id="GTRIANGLEL">
+	<p class="functionName">GTRIANGLEL</p>
+	<p class="arg"><b>参数：</b>GTRIANGLEL <span class='var'>array</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class='var'>a</span>[<span class='number'>0</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='number'>1</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='number'>2</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>a</span>[<span class='number'>3</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>a</span>[<span class='number'>4</span>]=<span class='number'>300</span></p>
+		<p><span class='var'>a</span>[<span class='number'>5</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='number'>6</span>]=<span class='number'>400</span></p>
+		<p><span class='var'>a</span>[<span class='number'>7</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='number'>8</span>]=<span class='number'>500</span></p>
+		<p><span class='var'>a</span>[<span class='number'>9</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>a</span>[<span class='number'>10</span>]=<span class='number'>600</span></p>
+		<p><span class='var'>a</span>[<span class='number'>11</span>]=<span class='number'>100</span></p>
+		<p><span class='functionWord'>GTRIANGLEL</span> <span class='var'>a</span>,<span class='color'>#FFFFFFFF</span></p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制填充三角形列表。</p>
+		<p>数组每6个元素构成一个三角形的三个顶点。</p>
+	</div>
+</div>
+<div class="function" id="GTRIANGLEF">
+	<p class="functionName">GTRIANGLEF</p>
+	<p class="arg"><b>参数：</b>GTRIANGLEF <span class='var'>array</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode">
+		<p><span class='var'>a</span>[<span class='number'>0</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='number'>1</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='number'>2</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>a</span>[<span class='number'>3</span>]=<span class='number'>200</span></p>
+		<p><span class='var'>a</span>[<span class='number'>4</span>]=<span class='number'>300</span></p>
+		<p><span class='var'>a</span>[<span class='number'>5</span>]=<span class='number'>100</span></p>
+		<p><span class='var'>a</span>[<span class='number'>6</span>]=<span class='number'>0</span></p>
+		<p><span class='var'>a</span>[<span class='number'>7</span>]=<span class='number'>0</span></p>
+		<p><span class='functionWord'>GTRIANGLEF</span> <span class='var'>a</span>,<span class='color'>#FFFFFFFF</span></p>
+	</div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p>绘制三角形构成的扇形。</p>
+		<p>最初点为中心点，之后的点为扇形顶点。</p>
+	</div>
+</div>
+<div class="function" id="GTRIANGLES">
+	<p class="functionName">GTRIANGLES</p>
+	<p class="arg"><b>参数：</b>GTRIANGLES <span class='var'>array</span>,<span class='color'>col</span></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
+	</div>
+</div>
+<div class="function" id="">
+	<p class="functionName"></p>
+	<p class="arg"><b>参数：</b></p>
+	<p class="example"><b>例：</b></p>
+	<div class="examplecode"><p></p></div>
+	<p class="func"><b>功能：</b></p>
+	<div class="description">
+		<p></p>
 	</div>
 </div>
 <div class="function" id="">
