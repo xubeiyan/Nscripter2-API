@@ -1,13 +1,14 @@
 <html>
 <head>
-<title>NScripter2 API ver0.01</title>
+<title>NScripter2 API CHS ver0.01</title>
+<meta charset="utf-8" />
 <style type="text/css">
 body {font-family: "Consolas","微软雅黑";background-color:#FDFDFD}
 /* 超链接样式 */
 a:link {color:#777;text-decoration:none;}		
 a:visited {color:#777;text-decoration:none;}	
 a:hover {color:#000;text-decoration:underline;}	
-a:active {color:#000;text-decoration:underline;}
+a:active {color:#777;text-decoration:none;}
 p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 /*.arg {background-color:#CCC;}*/
 /*.example {font-weight:bold;}*/
@@ -23,17 +24,22 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 /* 文本 */
 .intro {margin:10px; background-color:#DED; font-size:14px}
 .label {color:#A00}
-.reverseWord {color:#999;font-weight:bold}
+.reserveWord {color:#999;font-weight:bold}
 .text {color:#0A0}
 .textctrl {color:#F00}
 .number {color:#188; font-weight:bold}
 .var {font-weight:bold;color:#00E}
+.tools {position:fixed; right: 20px; bottom: 20px; color:#000; background-color: #A0FFAB}
 
 </style>
 </head>
 <body>
+<div class="tools">
+	<a href="#functionList"><div style="width:50px; height:50px; padding:5px">返回函数列表</div></a>
+	<a href="#functionContent"><div style="width:50px; height:50px; padding:5px">返回函数功能</div></a>
+</div>
 <div id="functionList">
-<h5>函数列表</h5>
+<h5>函数列表部分</h5>
 	<p class="functionList"><a href="#BGMFADEOUT" title="" >BGMFADEOUT</a></p>
 	<p class="functionList"><a href="#BGMPLAY" title="" >BGMPLAY</a></p>
 	<p class="functionList"><a href="#BGMPLAYONCE" title="" >BGMPLAYONCE</a></p>
@@ -45,27 +51,56 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<p class="functionList"><a href="#BTN" title="" >BTN</a></p>
 	<p class="functionList"><a href="#BTNCLEAR" title="" >BTNCLEAR</a></p>
 	<p class="functionList"><a href="#BTNEXEC" title="" >BTNEXEC</a></p>
+	<p class="functionList"><a href="#CALL" title="" >CALL</a></p>
+	<p class="functionList"><a href="#CAPTION" title="" >CAPTION</a></p>
+	<p class="functionList"><a href="#CLEARMOUSE" title="" ></a></p>
 	<p class="functionList"><a href="#CLICK" title="" >CLICK</a></p>
+	<p class="functionList"><a href="#DEFSUB" title="" >DEFSUB</a></p>
+	<p class="functionList"><a href="#DOEVENTS" title="" >DOEVENTS</a></p>
 	<p class="functionList"><a href="#ERROR" title="" >ERROR</a></p>
+	<p class="functionList"><a href="#EXEC" title="" >EXEC</a></p>
+	<p class="functionList"><a href="#FCHK" title="" >FCHK</a></p>
 	<p class="functionList"><a href="#FDELETE" title="" >FDELETE</a></p>
+	<p class="functionList"><a href="#FILECHK" title="" >FILECHK</a></p>
+	<p class="functionList"><a href="#FILETIME" title="" >FILETIME</a></p>
+	<p class="functionList"><a href="#FINSERT" title="" >FINSERT</a></p>
 	<p class="functionList"><a href="#FONT" title="" >FONT</a></p>
 	<p class="functionList"><a href="#GETBGMVOLUME" title="" >GETBGMVOLUME</a></p>
 	<p class="functionList"><a href="#GETBGVVOLUME" title="" >GETBGVVOLUME</a></p>
+	<p class="functionList"><a href="#GETCLICK" title="" >GETCLICK</a></p>
+	<p class="functionList"><a href="#GETLOGTEXT" title="" >GETLOGTEXT</a></p>
+	<p class="functionList"><a href="#GETMOUSE" title="" >GETMOUSE</a></p>
+	<p class="functionList"><a href="#GETSCREENSHOT" title="" >GETSCREENSHOT</a></p>
 	<p class="functionList"><a href="#GETSEVOLUME" title="" >GETSEVOLUME</a></p>
+	<p class="functionList"><a href="#GETSKIP" title="" >GETSKIP</a></p>
 	<p class="functionList"><a href="#GETSPCELL" title="" >GETSPCELL</a></p>
 	<p class="functionList"><a href="#GETSPINFO" title="" >GETSPINFO</a></p>
 	<p class="functionList"><a href="#GETVOICEVOLUME" title="" >GETVOICEVOLUME</a></p>
+	<p class="functionList"><a href="#INPUT" title="" >INPUT</a></p>
+	<p class="functionList"><a href="#LCHK" title="" >LCHK</a></p>
+	<p class="functionList"><a href="#LINSERT" title="" >LINSERT</a></p>
 	<p class="functionList"><a href="#LOAD" title="" >LOAD</a></p>
+	<p class="functionList"><a href="#LOGCHK" title="" >LOGCHK</a></p>
 	<p class="functionList"><a href="#LRCLICK" title="" >LRCLICK</a></p>
+	<p class="functionList"><a href="#LUA" title="" >LUA</a></p>
+	<p class="functionList"><a href="#LUAF" title="" >LUAF</a></p>
+	<p class="functionList"><a href="#LUAFILE" title="" >LUAFILE</a></p>
 	<p class="functionList"><a href="#MOVIE" title="" >MOVIE</a></p>
 	<p class="functionList"><a href="#MRESET" title="" >MRESET</a></p>
 	<p class="functionList"><a href="#MWRITE" title="" >MWRITE</a></p>
 	<p class="functionList"><a href="#MWRITEBEGIN" title="" >MWRITEBEGIN</a></p>
 	<p class="functionList"><a href="#MWRITEEND" title="" >MWRITEEND</a></p>
-	<p class="functionList"><a href="#PRINT" title="" ></a></p>
+	<p class="functionList"><a href="#OKBOX" title="" >OKBOX</a></p>
+	<p class="functionList"><a href="#PARAM" title="" >PARAM</a></p>
+	<p class="functionList"><a href="#PRINT" title="" >PRINT</a></p>
 	<p class="functionList"><a href="#QUAKE" title="" >QUAKE</a></p>
 	<p class="functionList"><a href="#QUIT" title="" >QUIT</a></p>
-	<p class="functionList"><a href="#SAVE" title="" ></a></p>
+	<p class="functionList"><a href="#RESETTIMER" title="" >RESETTIMER</a></p>
+	<p class="functionList"><a href="#SAVE" title="" >SAVE</a></p>
+	<p class="functionList"><a href="#SAVEMODE" title="" >SAVEMODE</a></p>
+	<p class="functionList"><a href="#SAVEPOINT" title="" >SAVEPOINT</a></p>
+	<p class="functionList"><a href="#SAVETIME" title="" >SAVETIME</a></p>
+	<p class="functionList"><a href="#SCHK" title="" >SCHK</a></p>
 	<p class="functionList"><a href="#SECHVOLUME" title="" >SECHVOLUME</a></p>
 	<p class="functionList"><a href="#SEFADEOUT" title="" >SEFADEOUT</a></p>
 	<p class="functionList"><a href="#SELECT" title="" >SELECT</a></p>
@@ -73,7 +108,10 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<p class="functionList"><a href="#SEPLAY" title="" >SEPLAY</a></p>
 	<p class="functionList"><a href="#SESTOP" title="" >SESTOP</a></p>
 	<p class="functionList"><a href="#SESTOPALL" title="" >SESTOPALL</a></p>
+	<p class="functionList"><a href="#SETCLIPBOARD" title="" ></a></p>
+	<p class="functionList"><a href="#SETMOUSE" title="" ></a></p>
 	<p class="functionList"><a href="#SEVOLUME" title="" >SEVOLUME</a></p>
+	<p class="functionList"><a href="#SKIP" title="" >SKIP</a></p>
 	<p class="functionList"><a href="#SP" title="" >SP</a></p>
 	<p class="functionList"><a href="#SPANIMATIONRESET" title="" >SPANIMATIONRESET</a></p>
 	<p class="functionList"><a href="#SPBEZIER" title="" >SPBEZIER</a></p>
@@ -93,36 +131,19 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<p class="functionList"><a href="#SPSETZ" title="" >SPSETZ</a></p>
 	<p class="functionList"><a href="#SPVISIBLE" title="" >SPVISIBLE</a></p>
 	<p class="functionList"><a href="#SPZ" title="" >SPZ</a></p>
+	<p class="functionList"><a href="#TCHK" title="" >TCHK</a></p>
+	<p class="functionList"><a href="#VGET" title="" >VGET</a></p>
+	<p class="functionList"><a href="#VSET" title="" >VSET</a></p>
 	<p class="functionList"><a href="#VOICEPLAY" title="" >VOICEPLAY</a></p>
 	<p class="functionList"><a href="#VOICEFADEOUT" title="" >VOICEFADEOUT</a></p>
 	<p class="functionList"><a href="#VOICEVOLUME" title="" >VOICEVOLUME</a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
-	<p class="functionList"><a href="#" title="" ></a></p>
+	<p class="functionList"><a href="#WAIT" title="" >WAIT</a></p>
+	<p class="functionList"><a href="#WAITTIMER" title="" >WAITTIMER</a></p>
 	<p class="functionList"><a href="#" title="" ></a></p>
 </div>
 
 <div id="functionContent">
-<h5>API函数</h5>
+<h5>函数功能部份</h5>
 <h5>错误显示功能</h5>
 <div class="function" id="ERROR">
 	<p class="functionName">ERROR</p>
@@ -412,7 +433,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<p class="functionName">SPHITCHECK</p>
 	<p class="arg"><b>参数：</b>SPHITCHECK(<span class='text'>name</span>,<span class='number'>x</span>,<span class='number'>y</span>)</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p><span class='reverseWord'>if</span> <span class='functionWord'>SPHITCHECK</span>(<span class='text'>"sp1"</span>,<span class='number'>100</span>,<span class='number'>100</span>)==<span class='number'>1</span> <span class='reverseWord'>then</span> <span class='reverseWord'>goto</span> <span class='label'>@hit</span></p></div>
+	<div class="examplecode"><p><span class='reserveWord'>if</span> <span class='functionWord'>SPHITCHECK</span>(<span class='text'>"sp1"</span>,<span class='number'>100</span>,<span class='number'>100</span>)==<span class='number'>1</span> <span class='reserveWord'>then</span> <span class='reserveWord'>goto</span> <span class='label'>@hit</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
 		<p>判断精灵是否覆盖了指定的坐标，是则返回1，否则返回0。</p>
@@ -710,7 +731,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<p class="functionName">GETBGVVOLUME</p>
 	<p class="arg"><b>参数：</b>GETBGVVOLUME()</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p><span class='var'>bgvvol</span>=<span class='functionWord'>GETBGVVOLUME<span class='reverseWord'>()</p></div>
+	<div class="examplecode"><p><span class='var'>bgvvol</span>=<span class='functionWord'>GETBGVVOLUME<span class='reserveWord'>()</p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
 		<p>获得当前BGV的音量。</p>
@@ -723,7 +744,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<div class="examplecode"><p><span class='functionWord'>SEPLAY</span> <span class='number'>0</span>,<span class='text'>"test.ogg"</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p>播放SE，ch为通道0~15。</p>
+		<p>播放SE，ch为声道0~15。</p>
 	</div>
 </div>
 <div class="function" id="SELOOP">
@@ -773,7 +794,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<div class="examplecode"><p><span class='functionWord'>SECHVOLUME</span> <span class='number'>4</span>,-<span class='number'>10000</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p>单独设置某个通道的音量。</p>
+		<p>单独设置某个声道的音量。</p>
 	</div>
 </div>
 <div class="function" id="SEFADEOUT">
@@ -1060,7 +1081,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>自定义命令。命令名同时也是子程序的名字。</p>
 		<p>例子中代码，第一个字符串变量chr定义了一个chr命令。</p>
 		<p><span class='label'>@chr</span></p>
-		<p><span class='reverseWord'>param</span> <span class='var'>%name</span>,<span class='var'>%pos</span></p>
+		<p><span class='reserveWord'>param</span> <span class='var'>%name</span>,<span class='var'>%pos</span></p>
 		<p>命令的参数的获得如上例中在命令内部实现。</p>
 		<br />
 		<p>原型（prototype）的定义如下：</p>
@@ -1089,16 +1110,16 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<p class="arg"><b>参数：</b>VSET <span class='var'>varname</span>,<span class='text'>value</span></p>
 	<p class="example"><b>例：</b></p>
 	<div class="examplecode">
-		<p><span class='reverseWord'>defsub</span> <span class='text'></p>
+		<p><span class='reserveWord'>defsub</span> <span class='text'></p>
 		<p>test</span>,<span class='text'>"R"</span></p>
 		<p>test <span class='var'>name</span></p>
 		<p><span class='functionWord'>CPRINT</span> <span class='var'>%name</span></p>
-		<p><span class='reverseWord'>quit</span></p>
+		<p><span class='reserveWord'>quit</span></p>
 		<br />
 		<p><span class='label'>@test</span></p>
 		<p><span class='functionWord'>PARAM</span> <span class='var'>%v</span></p>
 		<p><span class='functionWord'>VSET</span> <span class='var'>%v</span>,<span class='text'>"名前"</span></p>
-		<p><span class='reverseWord'>return</span></p>
+		<p><span class='reserveWord'>return</span></p>
 	</div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
@@ -1110,15 +1131,15 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<p class="arg"><b>参数：</b>VGET(<span class='var'>varname</span>)</p>
 	<p class="example"><b>例：</b></p>
 	<div class="examplecode">
-		<p><span class='reverseWord'>defsub</span> <span class='text'>test</span>,<span class='text'>"R"</span></p>
+		<p><span class='reserveWord'>defsub</span> <span class='text'>test</span>,<span class='text'>"R"</span></p>
 		<p><span class='var'>%name</span>=<span class='text'>"てすと"</span></p>
 		<p>test <span class='var'>%name</span></p>
-		<p><span class='reverseWord'>quit</span></p>
+		<p><span class='reserveWord'>quit</span></p>
 		<br />
 		<p><span class='label'>@test</span></p>
 		<p><span class='functionWord'>PARAM</span> <span class='var'>%v</span></p>
 		<p><span class='functionWord'>CPRINT</span> <span class='functionWord'>VGET</span>(<span class='var'>%v</span>)</p>
-		<p><span class='reverseWord'>return</span></p>
+		<p><span class='reserveWord'>return</span></p>
 	</div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
@@ -1215,8 +1236,8 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>此功能用于检查是否有更新包。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
+<div class="function" id="LINSERT">
+	<p class="functionName">LINSERT</p>
 	<p class="arg"><b>参数：</b>LINSERT <span class='label'>label</span></p>
 	<p class="example"><b>例：</b></p>
 	<div class="examplecode"><p><span class='functionWord'>LINSERT</span> "<span class='label'>@test</span>"</p></div>
@@ -1892,7 +1913,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>将字符串转换为数值。上例中%n=100。</p>
 	</div>
 </div>
-<div class="function" id="">
+<div class="function" id="RANDOM">
 	<p class="functionName">RANDOM</p>
 	<p class="arg"><b>参数：</b>RANDOM()</p>
 	<p class="example"><b>例：</b></p>
@@ -1998,8 +2019,8 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>删除字符串两端的空格。上例中%str="string"。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
+<div class="function" id="TYPE">
+	<p class="functionName">TYPE</p>
 	<p class="arg"><b>参数：</b>TYPE(<span class='var'>val</span>)</p>
 	<p class="example"><b>例：</b></p>
 	<div class="examplecode"><p><span class='var'>%t</span>=<span class='functionWord'>TYPE</span>(<span class='number'>123</span>)</p></div>
@@ -2176,7 +2197,7 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 </div>
 <div class="function" id="BGRADATION">
 	<p class="functionName">BGRADATION</p>
-	<p class="arg"><b>参数：</b>BGRADATION <span class='text'>bmpname</span>,<span class='color'>color1</span>,<span class='color'>color2</span>,<span class='reverseWord'>flagx</span>,<span class='reverseWord'>flagy</span></p>
+	<p class="arg"><b>参数：</b>BGRADATION <span class='text'>bmpname</span>,<span class='color'>color1</span>,<span class='color'>color2</span>,<span class='reserveWord'>flagx</span>,<span class='reserveWord'>flagy</span></p>
 	<p class="example"><b>例：</b></p>
 	<div class="examplecode"><p></p></div>
 	<p class="func"><b>功能：</b></p>
@@ -2361,8 +2382,8 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>继续播放由SPAUSE停止的声道。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
+<div class="function" id="SSTOP">
+	<p class="functionName">SSTOP</p>
 	<p class="arg"><b>参数：</b>SSTOP <span class='text'>sndname</span></p>
 	<p class="example"><b>例：</b></p>
 	<div class="examplecode"><p><span class='functionWord'>SSTOP</span> <span class='text'>"bgsound"</span></p></div>
@@ -2579,8 +2600,8 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 		<p>载入文件作为纹理。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
+<div class="function" id="TSAVE">
+	<p class="functionName">TSAVE</p>
 	<p class="arg"><b>参数：</b>TSAVE <span class='text'>texname</span>,<span class='text'>filename</span></p>
 	<p class="example"><b>例：</b></p>
 	<div class="examplecode"><p><span class='functionWord'>TSAVE</span> <span class='text'>"tex"</span>,<span class='text'>"savefile.png"</span></p></div>
@@ -2815,44 +2836,47 @@ p {margin-top:3px; margin-bottom:3px; padding-left:5px}
 	<p class="functionName">GTRIANGLES</p>
 	<p class="arg"><b>参数：</b>GTRIANGLES <span class='var'>array</span>,<span class='color'>col</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode">
+		<p><span class='functionWord'>GTRIANGLES</span> <span class='var'>a</span>,<span class='color'>#FFFFFFFF</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>绘制连续三角形（strip）。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<h5>变换功能</h5>
+<div class="function" id="TRANSITION">
+	<p class="functionName">TRANSITION</p>
+	<p class="arg"><b>参数：</b>TRANSITION <span class='text'>frombmpname</span>,<span class='text'>tobmpname</span>,<span class='number'>rate</span>,<span class='reserveWord'>type</span>,<span class='textctrl'>opt</span>,...</p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode"><p><span class='functionWord'>TRANSITON</span> <span class='text'>"from"</span>,<span class='text'>"to"</span>,<span class='number'>0.7</span>,<span class='reserveWord'>#F</span></p></div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>由两张位图生成变换中图像。rate为变换率（0为from，1为to）。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
+<h5>陷入处理</h5>
+<div class="function" id="TRAP">
+	<p class="functionName">TRAP</p>
+	<p class="arg"><b>参数：</b>TRAP <span class='label'>label</span>,<span class='text'>trigger</span></p>
 	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
+	<div class="examplecode">
+		<p><span class='functionWord'>TRAP</span> <span class='label'>@logo_end</span></p>
+		<p><span class='functionWord'>TRAP</span> <span class='label'>@logo_end</span>,<span class='text'>"L"</span></p>
+		<p><span class='functionWord'>TRAP</span> <span class='label'>@logo_end</span>,<span class='text'>"LR"</span></p>
+		<p><span class='functionWord'>TRAP</span> <span class='label'>@logo_end</span>,<span class='text'>"LRS"</span></p>
+		<p><span class='functionWord'>TRAP</span> <span class='label'>@logo_end</span>,<span class='text'>"LRSE"</span></p>
+		<p><span class='functionWord'>TRAP</span> <span class='reserveWord'>#NIL</span></p>
+	</div>
 	<p class="func"><b>功能：</b></p>
 	<div class="description">
-		<p></p>
+		<p>执行TRAP处理的时候等待鼠标点击或者按键后陷入，然后类似GOTO跳转到指定的标签。</p>
+		<p>想在任何时候都能够通过点击跳过商标的时候使用此功能。</p>
+		<p>指定标签为#NIL会解除指定的陷入。如果不解除该陷入会一直有效，所以请记得解除。</p>
+		<p>第二个参数为陷入条件。省略默认为"LRSE"。</p>
+		<p>L=左键点击，R=右键点击，S=空格，E=回车键。</p>
 	</div>
 </div>
-<div class="function" id="">
-	<p class="functionName"></p>
-	<p class="arg"><b>参数：</b></p>
-	<p class="example"><b>例：</b></p>
-	<div class="examplecode"><p></p></div>
-	<p class="func"><b>功能：</b></p>
-	<div class="description">
-		<p></p>
-	</div>
-</div>
-
 </div>
 </body>
-
+<!-- 初翻完成于2014年4月22日 -->
 </html>
