@@ -35,3 +35,5 @@ $v...v$代表变量。
 
 
 渣翻译：yueyongdong 校对：自己校对有什么不满吗
+
+一个外部网站上的[手册](http://chenhai.net/NScripter2APICHSv0.2.html "有问题请发送邮件")
