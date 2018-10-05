@@ -2,7 +2,12 @@ Nscripter2-API CHS version
 ==============
 
 高桥大神的新一代产品——[Nscripter2(日语)](http://www.nscripter.com/)的API手册。    
-翻译纯粹是为了NS2更好的推广加上自己的兴趣，因此难免有错误和翻译得不周到的地方。    欢迎大家反馈，发送邮件到yueyongdong@gmail.com，指出第几行（以html文件为准）或者哪个命令。
+翻译纯粹是为了NS2更好的推广加上自己的兴趣，因此难免有错误和翻译得不周到的地方。     
+欢迎大家反馈，发送邮件到yueyongdong@gmail.com，指出第几行（以html文件为准）或者哪个命令。
+
+## 文件说明 ##
+
+version 2文件夹内为新版文档。分为日语原版（Manual_jp）和简体中文版（Manual_chs）和翻译参考translation reference.txt。     
 
 Nscripter2 API.html文件是API的html汉化版本。   
 Nscripter2 API.txt文件为翻译的原版文档。   
