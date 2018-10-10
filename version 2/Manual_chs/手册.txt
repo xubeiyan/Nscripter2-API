@@ -1,28 +1,28 @@
 2015/04/15
-  BUG�C���F�C?��nmv?��I�N�n??���I??�B����?�Ŗ{���B
+  BUG修正：修正了nmv动画的起始帧渲染的错误。未改变版本号。
 2015/04/16
-  ADV Sample�I���������a��?�I��?���ߏ��Ȍ�����?��3�����f�B����?�Ŗ{���B
+  ADV Sample的文字部分和按钮的距离太近所以向左移动了3个像素。未改变版本号。
 2015/08/05
-  gui.getkey�ȋyBASIC�IGETKEY����������?��?+-*/.=�I?���B�C?��BASIC�I?���itransition�j�I��?���ʁiSlide effect�j�IBUG�B�Ŗ{��?�X?1.01�B
+  gui.getkey以及BASIC的GETKEY函数增加了对按键+-*/.=的处理。修正了BASIC的变化（transition）的滑动效果（Slide effect）的BUG。版本号变更为1.01。
 2015/08/12
-  �C����Sample Script���Icl�ȋycl0���ߓIBUG�B����?�Ŗ{���B
+  修正了Sample Script中的cl以及cl0命令的BUG。未改变版本号。
 2015/08/18
-  �C?����W��?�ISE�d�����\�IBUG�B�Ŗ{��?�X?1.02�B
+  修正了拓展按钮的SE播放功能的BUG。版本号变更?1.02。
 2015/08/26
-  �C?��time���ߓIBUG�B����?�Ŗ{���B
+  修正了time命令的BUG。未改变版本号。
 2015/08/27
-  �C?���꘢��̏�v�s�\���I�I??�B�Ŗ{��?�X?1.10�B
+  修正了一个具体情况不能透露的错误。版本号变更为1.10。
 2016/10/13
-  Pad�I���\������DLL���B�g���ݕs�g�p�I��v���ȕ�?�o���B�i��?���r���^�n?�����v�LXINPUT??.dll?�v�o?�I??�j
-  �Ŗ{��?�X?1.20�B
+  Pad的功能分割至DLL中。使其在不使用的情况下可以分离出去。（同时也解决了某些环境下没有XINPUT??.dll导致出错的问题）
+  版本号变更为1.20。
 2017/03/09
-  �C?��BASIC�Iinput���ߓIBUG�B
-  �Ŗ{��?�X?1.21�B
-�i�V�@�X�V�I�����j
-�E��揫?��?�W�iTexture Atlas�j���\��?Lua���\���������̒��B?����?���ꕝ?���w��召����??���I�I���\�B
-  �g�p�����\�\�g?���?�ȋy�L��ʓI�p�F?���I?��C�ȋy�n?�I?�������ʓ������x��I�񏡁B
-  �����@��������BASIC��?�ݍl?���B�H��d�_�݉���system.lua�C?�sBASIC���I��?�iSprite�j??�I?���C��?��minimap�I?���B
+  修正了BASIC的input命令的BUG。
+  版本号变更为1.21。
+（之后更新的方向）
+・首先将纹理图集（Texture Atlas）功能作为Lua功能增加到引擎中。这是一个将一幅图像按指定大小分割成纹理的的功能。
+  使用此功能能使动作游戏以及有大量的角色图像的动画，以及地图的表示等方面得到速度上的提升。
+  至于如何整合到BASIC中?在考?中。工作重点在改造system.lua，进行BASIC中的精灵（Sprite）功能的调整，以满足minimap的显示。
 
-�E�\��������WEB��?�搔���I���\�i�v���L????�I����I?��?��??�j
+・可能会增加从WEB上读取数据的功能（要是有实际利用的机会的话估计会实现）
 2017/09/11
-  ??����e��??�I�A��??�Ibtnexec�Ialphabet=1�acursor=1�B�Ŗ{���X�V��1.22�B
+  实现了手册中记载的但未实现的btnexec的alphabet=1和cursor=1。版本号更新至1.22。

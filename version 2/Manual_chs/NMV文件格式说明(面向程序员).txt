@@ -1,47 +1,47 @@
 ----------------------------------------------
---  NMV format specification ifor programmerj
+--  NMV format specification ï¼ˆfor programmerï¼‰
 ----------------------------------------------
-–{•¶Œ¥NMVŠiŽ®“I?–¾Bˆê”Êl“s‰ÂˆÈ??“I¶¬B•¶ŒŠiŽ®¥Ù”Å?“ICÙŽù\?‘¦‰ÂŽ©—RŽg—pB
-NMVŠiŽ®‘ü???‘¶?‘œB—RNScripter2ˆøúÌ???—˜aNMV•¶Œ?˜°“¯ˆê–Ú?‰º“¯–¼“IOgg•¶Œ“I”d•úB
+æœ¬æ–‡ä»¶æ˜¯NMVæ ¼å¼çš„è¯´æ˜Žã€‚ä¸€èˆ¬äººéƒ½å¯ä»¥ç®€å•åœ°ç”Ÿæˆã€‚æ–‡ä»¶æ ¼å¼æ˜¯æ— ç‰ˆæƒçš„ï¼Œæ— éœ€ç”³è¯·å³å¯è‡ªç”±ä½¿ç”¨ã€‚
+NMVæ ¼å¼åªå‚¨å­˜å›¾åƒã€‚ç”±NScripter2å¼•æ“Žè´Ÿè´£å¤„ç†å’ŒNMVæ–‡ä»¶ä½äºŽåŒä¸€ç›®å½•ä¸‹åŒåçš„Oggæ–‡ä»¶çš„æ’­æ”¾ã€‚
 
-¡NMV0ŠiŽ®i–¢—ˆ‰Â”\Žg—p1A2A3“™“™—ˆŽw’è”Å–{C?Ýæ•ÛŽ?0j
-
--------------------
--- •¶Œ?•”
--------------------
-•¶Œ“I‹NŽn•”•ª¬?•¶Œ?•”iHEADERjB
-
-–¼Ì           ?“x         ?–¾
-•¶Œ??       4(char*4)    "nmv0"
-?•”‘å¬       4(long)      •ïŠÜ—¹•¶Œ??Ý“à“I?•”Š—L•¶Œ‘å¬B•¶Œ?•”@‘¦¥”˜•”•ªB
-?‰æ?“x       4(long)      ?‰æ?“x
-?‰æ‚“x       4(long)      ?‰æ‚“x
-?—¦           8(double)    ?—¦B‰Â¸?“ž‘o¸“x•‚“_”B
-?”           4(long)      ?”
-i—R˜°?•”‘å¬¥‰ÂˆÈŽw’è“ICŠˆÈ‘z?ŠOú‰ÁŽš’i?˜¸Ÿ?ŽnBNScripter2?Žæ?‰ï’µ?Ÿ•”•ªBj
-
+â– NMV0æ ¼å¼ï¼ˆæœªæ¥å¯èƒ½ä½¿ç”¨1ã€2ã€3ç­‰ç­‰æ¥æŒ‡å®šç‰ˆæœ¬ï¼ŒçŽ°åœ¨å…ˆä¿æŒä¸º0ï¼‰
 
 -------------------
--- ”˜•”•ªiDataj
+-- æ–‡ä»¶?éƒ¨
 -------------------
-–¼Ì             ?“x     ?–¾
-?”˜1          •sŒÅ’è   Še?“I”˜Bª˜?•”’†Žw’è“I?”ˆÂ?˜”r—ñB
-?”˜2
+æ–‡ä»¶çš„èµ·å§‹éƒ¨åˆ†æˆ?æ–‡ä»¶å¤´éƒ¨ï¼ˆHEADERï¼‰ã€‚
+
+åç§°           é•¿åº¦         è¯´æ˜Ž
+æ–‡ä»¶æ ‡å¿—       4(char*4)    "nmv0"
+å¤´éƒ¨å¤§å°       4(long)      åŒ…å«äº†æ–‡ä»¶å¤´éƒ¨åœ¨å†…çš„å¤´éƒ¨æ‰€æœ‰æ–‡ä»¶å¤§å°ã€‚æ–‡ä»¶å¤´éƒ¨åŽå³æ˜¯æ•°æ®éƒ¨åˆ†ã€‚
+åŠ¨ç”»å®½åº¦       4(long)      åŠ¨ç”»å®½åº¦
+åŠ¨ç”»é«˜åº¦       4(long)      åŠ¨ç”»é«˜åº¦
+å¸§çŽ‡           8(double)    å¸§çŽ‡ã€‚å¯ç²¾ç¡®åˆ°åŒç²¾åº¦æµ®ç‚¹æ•°ã€‚
+å¸§æ•°           4(long)      å¸§æ•°
+ï¼ˆç”±äºŽå¤´éƒ¨å¤§å°æ˜¯å¯ä»¥æŒ‡å®šçš„ï¼Œæ‰€ä»¥æƒ³é¢å¤–å¢žåŠ å­—æ®µå°±ä»Žæ­¤å¼€å§‹ã€‚NScripter2å¼•æ“Žè¯»å–åˆ™ä¼šè·³è¿‡æ­¤éƒ¨åˆ†ã€‚ï¼‰
+
+
+-------------------
+-- æ•°æ®éƒ¨åˆ†ï¼ˆDataï¼‰
+-------------------
+åç§°             é•¿åº¦     è¯´æ˜Ž
+å¸§æ•°æ®1          ä¸å›ºå®š   å„å¸§çš„æ•°æ®ã€‚æ ¹æ®å¤´éƒ¨ä¸­æŒ‡å®šçš„å¸§æ•°æŒ‰é¡ºåºæŽ’åˆ—ã€‚
+å¸§æ•°æ®2
 .
 .
-?”˜N
+å¸§æ•°æ®N
 
 
 -------------------
--- ?”˜iFrame Dataj
+-- å¸§æ•°æ®ï¼ˆFrame Dataï¼‰
 -------------------
-–¼Ì             ?“x                 ?–¾
-JPEG‘å¬         4(unsigned long)     JPEG•¶Œ“I‘å¬B
-JPEG•¶Œ         •sŒÅ’è               JPEG•¶Œ“I–{‘ÌB‰ÂˆÈŽg—plibjpeg“™?—ˆ?ŽæB
+åç§°             é•¿åº¦                 è¯´æ˜Ž
+JPEGå¤§å°         4(unsigned long)     JPEGæ–‡ä»¶çš„å¤§å°ã€‚
+JPEGæ–‡ä»¶         ä¸å›ºå®š               JPEGæ–‡ä»¶çš„æœ¬ä½“ã€‚å¯ä»¥ä½¿ç”¨libjpegç­‰åº“æ¥è¯»å–ã€‚
 
-—R˜°NMVŠe?¥JPEGŠiŽ®CŠˆÈ–v—LY??—ã“I¢?B
-˜¸??“ž”ö¥”ñí??“IB
+ç”±äºŽNMVå„å¸§æ˜¯JPEGæ ¼å¼ï¼Œæ‰€ä»¥æ²¡æœ‰ä»€ä¹ˆå¤„ç†ä¸Šçš„å›°éš¾ã€‚
+ä»Žå¤´è¯»åˆ°å°¾æ˜¯éžå¸¸ç®€ç­”çš„ã€‚
 
-ƒJPEG•¶Œ?–¾„
-•¶ŒŠiŽ®¥•’Ê“IJPEG•¶ŒBƒ¿?¥’Ê?2”{?‘œ?“xC¶??‘¶RGB’Ê“¹”˜C‰E??‘¶ƒ¿’Ê“¹”˜—ˆ??“IB
-–v—Lƒ¿?“I?–ç•s—p˜¸NMV•¶Œ•û–Ê“üŽèi?Žæ“I?ŒóŽw’è‘¦‰Âj
+ï¼œJPEGæ–‡ä»¶è¯´æ˜Žï¼ž
+æ–‡ä»¶æ ¼å¼æ˜¯æ™®é€šçš„JPEGæ–‡ä»¶ã€‚Î±å€¼æ˜¯é€šè¿‡2å€å›¾åƒçš„å®½åº¦ï¼Œå·¦åŠéƒ¨åˆ†å­˜RGBé€šé“æ•°æ®ï¼Œå³åŠéƒ¨åˆ†å­˜Î±é€šé“æ•°æ®æ¥å®žçŽ°çš„ã€‚
+æ²¡æœ‰Î±é€šé“çš„å›¾åƒä¹Ÿä¸ç”¨ä»ŽNMVæ–‡ä»¶æ–¹é¢å…¥æ‰‹ï¼ˆè¯»å–çš„æ—¶å€™æŒ‡å®šå³å¯ï¼‰
