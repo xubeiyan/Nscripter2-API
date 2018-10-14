@@ -5,13 +5,13 @@
 <title>lua</title>
 <link href="nscripter.css" rel="stylesheet" type="text/css">
 </head>
-<body><h1>NScr2Lua解説</h1>
+<body><h1>NScr2Lua说明</h1>
 <p>NScripter2が実行しているのは普通のLuaですが、C++で実装している関数が多くあります。ここではそれを解説します。<br>
 system.luaで実装されているものについては、ソースが公開されているので、解説しません。<br>
 C++で言うところのいわゆるメンバ関数(第一引数がそのクラスのインスタンスであるような関数)は、シンタックスシュガーで書いてあります。例えばtextureの項目のdrawはt:drawとありますが、これはtexture.createやtexture.load等で作成したテクスチャクラスのインスタンスから呼び出せるメンバ関数である、ということです。詳しくはLuaの入門書等を読んでください。</p>
 <a name="top"></a>
-<h2>NScr2Luaマニュアル目次</h2>
-<p> <a href="index.html">全体の目次に戻る</a></p>
+<h2>NScr2Lua手册目录</h2>
+<p> <a href="index.html">回到上一层目录</a></p>
 <h3>basic</h3>
 <dl>
 <dt>basic.loadscript(filename,src)

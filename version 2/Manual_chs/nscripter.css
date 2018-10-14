@@ -1,30 +1,32 @@
 @charset "utf-8";
 /* CSS Document */
-
+/* Color ECF4F3 76DBD1 57A99A 555151 */
 body,td,th {
 	font-family: "Noto Sans CJK", "微软雅黑", "MS PGothic", sans-serif;
 	font-size: medium;
-	color: white;
+	color: #555151;
 }
 body {
-	background-color: #232021;
+	background-color: #ECF4F3;
 	margin-left: 1em;
 	margin-top: 1em;
 	margin-right: 1em;
 	margin-bottom: 1em;
 }
 a:link {
-	color: #FFFF88;
+	color: #57A99A;
 }
-a:hover {
-	color: white;
-}
+
 a:visited {
-	color: #FFFF88;
+	color: #57A99A;
+}
+
+a:hover {
+	color: #37897A;
 }
 h1,h2,h3,h4,h5,h6 {
-	text-shadow: 2px 2px 2px #666666;
-	border-bottom: 1px solid #48832C;
+	text-shadow: 2px 2px 2px #76DBD1;
+	border-bottom: 1px solid #555151;
 	margin-top: 0;
 	margin-bottom: 0;
 	padding-top: 0.5em;
@@ -32,40 +34,43 @@ h1,h2,h3,h4,h5,h6 {
 }
 ul {
 	margin: 0;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
 }
 h1 {
-	font-size : xx-large;
+	font-size: 2em;
 }
 h2 {
-	font-size: large;
+	font-size: 1.5em;
 }
 h3 {
-	font-size: medium;
+	font-size: 1.2em;
 }
 h4 {
-	font-size: small;
+	font-size: 1.1em;
 	margin-left: 1em;
 }
 p {
-	font-size: small;
+	font-size: 1em;
 	margin-left: 1em;
 	margin-top: 0.3em;
 	margin-bottom: 0.3em;
 }
+
 li {
-	font-size: small;
-	padding-top: 0.3em;
+	font-size: 1em;
+	padding-top: 0.15em;
+	padding-bottom: 0.15em;
 }
 b,strong {
-	background-color: #112288;
+	background-color: #DCE4E3;
 }
 
 pre {
 	margin-left: 1em;
-	font-size: small;
+	font-size: 0.8em;
 	color: #AAFFAA;
+	background-color: #333;
 }
 
 table {
@@ -75,11 +80,15 @@ table {
 dt {
 	margin: 0;
 	font-weight: bold;
-	background-color: blue;
+	background-color: #DCE4E3;
 	border-bottom: 1px solid #22AAFF;
-	border-left: 2px solid #22AAFF;
+	border-left: 1px solid #22AAFF;
 	margin-left: 0.5em;
+	padding-left: 0.5em;
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
 }
 dd {
-
+	padding-top: 0.3em;
+	padding-bottom: 0.3em;
 }
