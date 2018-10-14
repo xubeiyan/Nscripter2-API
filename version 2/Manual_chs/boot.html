@@ -5,11 +5,11 @@
 <title>boot</title>
 <link href="nscripter.css" rel="stylesheet" type="text/css">
 </head>
-<body><h2>NScripter2の起動の仕組み</h2>
-<p><a href="index.html">目次に戻る</a><br>
-NScr2.exeは、実行するとまず<strong>root.lua</strong>を探しに行きます。これは「Lua」という言語で書かれています。<br>
-root.luaはウィンドウが作られる前に必要な設定、例えば画面のサイズの設定などがあります。Luaがわからない方も、一度目を通しておいてください。細かい動作設定がいろいろ出来るようになっています。<br>
-例えば、<strong>gui.create(1024,768)という記述の数字を変えれば解像度が変えられる</strong>、ということを覚えておいて下さい。<br>また、その下の<strong>basic.utf8_flag=0という行の0を1に変更すれば、BASICのソースをUTF-8で書くことが出来ます（デフォルトではSHIFT-JISです）。</strong>UTF-8でだけ使える文字（❤など）もありますので、そちらがよいと思う人はそうしてください。<br>
+<body><h2>NScripter2的启动详情</h2>
+<p><a href="index.html">回到目录</a></p>
+<p>NScr2.exe在启动之后首先会去寻找<strong>root.lua</strong>这个文件。它是使用“Lua”语言编写的。</p>
+<p>root.lua包含了生成程序窗口前必要的设定值，比如窗口画面的大小。如果你不是很懂Lua语言的话，可以跳过此文件。因为很多也可以通过命令来实现。</p>
+<p>例えば、<strong>gui.create(1024,768)という記述の数字を変えれば解像度が変えられる</strong>、ということを覚えておいて下さい。<br>また、その下の<strong>basic.utf8_flag=0という行の0を1に変更すれば、BASICのソースをUTF-8で書くことが出来ます（デフォルトではSHIFT-JISです）。</strong>UTF-8でだけ使える文字（❤など）もありますので、そちらがよいと思う人はそうしてください。<br>
 さて、root.luaはデフォルトの記述では<strong>system.lua</strong>を読み込みに行きます。こちらにはBASICの各命令の機能が記述されています。<strong>こちらを弄る必要はありません</strong>（開発側でバージョン更新で弄ることがあるので、書き換えると更新内容とバッティングすることがありえます。なるべく弄らないで下さい）。<br>
 system.luaを読み込み終えると、BASICが起動します。<strong>BASICは0.txt～9.txt、00.txt～99.txt、000.txt～999.txtを読み込みます。</strong>0.txtと00.txtと000.txtが混在しても実行に影響ありませんが、ややこしいのでどれかに統一した方がいいでしょう。たいていは00.txt～99.txtで十分だと思います。<br>
 なお、これらのスクリプトファイル(root.lua、system.lua、そこからユーザースクリプトで読込まれる他のluaスクリプト、BASICスクリプト(数値.txt～))は、ns2アーカイブから読込むことも出来ます。旧NScripterと違って、NScripter2はスクリプトとデータのアーカイブを分けません。データのアーカイブの中にスクリプトも格納します。<br>
@@ -39,7 +39,7 @@ config.defの設定は手動で増やすことが出来ます。次のような�
 <br>
 NScripter2は、実行時にsavedataというフォルダを作成します。配布時にはこのフォルダを混ぜないようにしてください（テストプレイ時のセーブデータが残ってしまうことになります）<br>
 nscr2.exeは名前を変更したりアイコンを変更したりしても問題なく動作します。アイコンを変更するフリーソフトはたくさんありますので、アイコン 変更 exe 等で検索するといいでしょう。<br>
-<a href="index.html">目次に戻る</a>
+<a href="index.html">回到目录</a>
 </p>
 </body>
 </html>

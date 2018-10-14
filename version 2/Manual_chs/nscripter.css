@@ -2,7 +2,7 @@
 /* CSS Document */
 
 body,td,th {
-	font-family: "ÉÅÉCÉäÉI", Meiryo, "ÇlÇr ÇoÉSÉVÉbÉN", "MS PGothic", sans-serif;
+	font-family: "Noto Sans CJK", "ÂæÆËΩØÈõÖÈªë", "MS PGothic", sans-serif;
 	font-size: medium;
 	color: white;
 }
@@ -24,45 +24,48 @@ a:visited {
 }
 h1,h2,h3,h4,h5,h6 {
 	text-shadow: 2px 2px 2px #666666;
-	border-bottom:1px solid #48832C;
+	border-bottom: 1px solid #48832C;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 }
 ul {
-	margin :0;
+	margin: 0;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
 }
 h1 {
 	font-size : xx-large;
-	margin:0;
 }
 h2 {
-	font-size : large;
-	margin:0;
+	font-size: large;
 }
 h3 {
-	font-size : medium;
-	margin-top:0;
-	margin-bottom:0;
+	font-size: medium;
 }
 h4 {
-	font-size : small;
-	margin-left : 1em;
-	margin-top:0;
-	margin-bottom:0;
+	font-size: small;
+	margin-left: 1em;
 }
 p {
 	font-size: small;
-	margin-left:1em;
+	margin-left: 1em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
 }
 li {
 	font-size: small;
+	padding-top: 0.3em;
 }
 b,strong {
-	background-color:#112288;
+	background-color: #112288;
 }
 
 pre {
-	margin-left :1em;
-	font-size:small;
-	color:#AAFFAA;
+	margin-left: 1em;
+	font-size: small;
+	color: #AAFFAA;
 }
 
 table {
@@ -70,12 +73,13 @@ table {
 }
 
 dt {
-	margin:0;
-	font-weight:bold;
-	background-color:blue;
-	border-bottom:1px solid #22AAFF;
-	border-left:2px solid #22AAFF;}
-	margin-left:0.5em;
+	margin: 0;
+	font-weight: bold;
+	background-color: blue;
+	border-bottom: 1px solid #22AAFF;
+	border-left: 2px solid #22AAFF;
+	margin-left: 0.5em;
+}
 dd {
 
 }
