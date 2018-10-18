@@ -6,9 +6,9 @@
 <link href="nscripter.css" rel="stylesheet" type="text/css">
 </head>
 <body><h1>NScr2Lua说明</h1>
-<p>NScripter2が実行しているのは普通のLuaですが、C++で実装している関数が多くあります。ここではそれを解説します。<br>
-system.luaで実装されているものについては、ソースが公開されているので、解説しません。<br>
-C++で言うところのいわゆるメンバ関数(第一引数がそのクラスのインスタンスであるような関数)は、シンタックスシュガーで書いてあります。例えばtextureの項目のdrawはt:drawとありますが、これはtexture.createやtexture.load等で作成したテクスチャクラスのインスタンスから呼び出せるメンバ関数である、ということです。詳しくはLuaの入門書等を読んでください。</p>
+<p>NScripter2执行的时候是普通的Lua脚本，其中包含了很多基于C++的函数。在这里对它们进行说明。</p>
+<p>system.lua中实现的各种东西，由于源代码是公开的，这里就不做任何说明了。</p>
+<p>在C++中所谓的成员函数(member function)（第一个参数是类的实例的函数）中（译者的C++不是很好，解释是编译时将一个指向对象实例的指针加入了参数列表，作为第一个参数传了进去。具体可以参考https://www.learncpp.com/cpp-tutorial/8-8-the-hidden-this-pointer/），是作为一种语法糖的存在。例如在texture的项目中，draw是t:draw的例えばtextureの項目のdrawはt:drawとありますが、これはtexture.createやtexture.load等で作成したテクスチャクラスのインスタンスから呼び出せるメンバ関数である、ということです。详细的内容请参考Lua语言的入门书籍。</p>
 <a name="top"></a>
 <h2>NScr2Lua手册目录</h2>
 <p> <a href="index.html">回到上一层目录</a></p>
@@ -531,6 +531,6 @@ int(Luaのbool相当、0か1)、void *(Luaのライトユーザーデータ相�
 <dt>basic_func.FUNCNAME()
 <dd>BASICの関数を実装しています。関数名を全部大文字に変換したものを使ってください。basic.registerfuncとセットで使います。returnで戻り値を返すことが出来ます。system.luaに例がありますので参照してください。
 </dl>
-<p> <a href="#top">目次に戻る</a></p>
+<p> <a href="#top">回到本页目录</a></p>
 </body>
 </html>
