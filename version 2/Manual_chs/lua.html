@@ -8,22 +8,22 @@
 <body><h1>NScr2Lua说明</h1>
 <p>NScripter2执行的时候是普通的Lua脚本，其中包含了很多基于C++的函数。在这里对它们进行说明。</p>
 <p>system.lua中实现的各种东西，由于源代码是公开的，这里就不做任何说明了。</p>
-<p>在C++中所谓的成员函数(member function)（第一个参数是类的实例的函数）中（译者的C++不是很好，解释是编译时将一个指向对象实例的指针加入了参数列表，作为第一个参数传了进去。具体可以参考https://www.learncpp.com/cpp-tutorial/8-8-the-hidden-this-pointer/），是作为一种语法糖的存在。例如在texture的项目中，draw是t:draw的例えばtextureの項目のdrawはt:drawとありますが、これはtexture.createやtexture.load等で作成したテクスチャクラスのインスタンスから呼び出せるメンバ関数である、ということです。详细的内容请参考Lua语言的入门书籍。</p>
+<p>在C++中所谓的成员函数(member function)（第一个参数是类的实例的函数）中（译者的C++不是很好，理解为编译时将一个指向对象实例的指针加入了参数列表，作为第一个参数传了进去。具体可以参考https://www.learncpp.com/cpp-tutorial/8-8-the-hidden-this-pointer/），是作为一种语法糖的存在。例如在texture的项目中，draw是t:draw的简写，这是由texture.create或者texture.load生成的texture类的实例中调用的成员函数。详细的内容请参考Lua语言的入门书籍。</p>
 <a name="top"></a>
 <h2>NScr2Lua手册目录</h2>
 <p> <a href="index.html">回到上一层目录</a></p>
 <h3>basic</h3>
 <dl>
 <dt>basic.loadscript(filename,src)
-<dd>NScr2BASICにシナリオファイルを読み込みます。ファイル名filenameとシナリオファイルのテキストそのものsrcを渡します。この関数に渡す時には、エンコードはUTF-8にしてください。
+<dd>读取剧本文件到NScr2BASIC中。其中filename为剧本文件名，src为待传入的变量，调用时剧本的编码请设定为utf-8。
 <dt>basic.setlog(logmode)
-<dd>trueにするとエラー時にBASICのログが出力されます。
+<dd>设为true的时候，会输出错误信息至BASIC中。
 <dt>basic.setsrcdump(dumpmode)
 <dd>trueにするとエラー時のログにソースコードの中間言語表現によるダンプリストが出力されます。
 <dt>basic.savedump(filename)
 <dd>ソースコードの中間言語表現によるダンプリストを出力します。
 <dt>basic.reset()
-<dd>リセットを実行します。
+<dd>执行Reset（重启游戏）。
 <dt>basic.run()
 <dd>読み込んだソースファイルを実行します。
 <dt>basic.exec(line)
