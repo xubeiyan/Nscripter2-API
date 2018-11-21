@@ -7,11 +7,22 @@ Nscripter2-API CHS version
 
 ## 文件说明 ##
 
-version 2文件夹内为新版文档。分为日语原版（Manual_jp）和简体中文版（Manual_chs）和翻译参考translation reference.txt。     
+### 新版文档（未完成） ###
 
-Nscripter2 API.html文件是API的html汉化版本。   
-Nscripter2 API.txt文件为翻译的原版文档。   
-trans.html为实现代码高亮的格式转换的工具。
+> 龟速翻译中......     
+
+version 2文件夹内为新版文档。分为     
+* 日语原版（Manual_jp）    
+* 简体中文版（Manual_chs）     
+* 翻译参考translation reference.txt         
+
+### 旧版文档 ###
+
+> 此文档翻译完成时间在2014年，当时NScripter2的官方的资料也不是很全，所以当时做了一些美化工作    
+
+* Nscripter2 API.html文件是API的html汉化版本   
+* Nscripter2 API.txt文件为翻译的原版文档   
+* trans.html为实现代码高亮的格式转换的工具
 
 渣翻译：yueyongdong 校对：自己校对有什么不满吗
 
@@ -28,4 +39,4 @@ v2完成~
 
 ## 外部版本
 
-一个外部网站上的[手册](http://chenhai.net/NScripter2APICHSv0.2.html "有问题请发送邮件")
+旧版：一个外部网站上的[手册](http://chenhai.net/NScripter2APICHSv0.2.html "有问题请发送邮件")
