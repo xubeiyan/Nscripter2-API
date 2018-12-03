@@ -9,10 +9,11 @@
 <p><a href="index.html">回到目录</a></p>
 <p>NScr2.exe在启动之后首先会去寻找<strong>root.lua</strong>这个文件。它是使用“Lua”语言编写的。</p>
 <p>root.lua包含了生成程序窗口前必要的设定值，比如窗口画面的大小。如果你不是很懂Lua语言的话，可以跳过此文件。因为很多也可以通过命令来实现。</p>
-<p>例えば、<strong>gui.create(1024,768)という記述の数字を変えれば解像度が変えられる</strong>、ということを覚えておいて下さい。<br>また、その下の<strong>basic.utf8_flag=0という行の0を1に変更すれば、BASICのソースをUTF-8で書くことが出来ます（デフォルトではSHIFT-JISです）。</strong>UTF-8でだけ使える文字（❤など）もありますので、そちらがよいと思う人はそうしてください。<br>
-さて、root.luaはデフォルトの記述では<strong>system.lua</strong>を読み込みに行きます。こちらにはBASICの各命令の機能が記述されています。<strong>こちらを弄る必要はありません</strong>（開発側でバージョン更新で弄ることがあるので、書き換えると更新内容とバッティングすることがありえます。なるべく弄らないで下さい）。<br>
-system.luaを読み込み終えると、BASICが起動します。<strong>BASICは0.txt～9.txt、00.txt～99.txt、000.txt～999.txtを読み込みます。</strong>0.txtと00.txtと000.txtが混在しても実行に影響ありませんが、ややこしいのでどれかに統一した方がいいでしょう。たいていは00.txt～99.txtで十分だと思います。<br>
-なお、これらのスクリプトファイル(root.lua、system.lua、そこからユーザースクリプトで読込まれる他のluaスクリプト、BASICスクリプト(数値.txt～))は、ns2アーカイブから読込むことも出来ます。旧NScripterと違って、NScripter2はスクリプトとデータのアーカイブを分けません。データのアーカイブの中にスクリプトも格納します。<br>
+<p>比如，将<strong>gui.create(1024,768)</strong>这条语句中的数字改变的话，会引起游戏窗口分辨率的改变。请记住这种类似的调用。</p>
+<p>接下来，下面的<strong>basic.utf8_flag=0</strong>中，如果将0变为1的话，BASIC里面源代码就要使用UTF-8来编写（默认是SHIFT-JIS编码）。用于解决显示只有UTF-8编码下才有的文字（例如❤）的问题，或者觉得UTF-8编码更好的用户请使用这个值。</p>
+<p>接下来，root.lua会读取默认的<strong>system.lua</strong>来执行下面的操作。那里面记述了BASIC各个命令的功能。<strong>没有修改那里面的必要。</strong>（作为开发方面需要在版本更新上修改，因此需要修改或更新此文件的内容。因此请不要修改这里面的内容）。</p>
+<p>读取完成system.lua上面的内容之后，会启动BASIC步骤。<strong>BASCI是指读取0.txt~9.txt，00.txt~99.txt，000.txt~999.txt文件。</strong>0.txt和00.txt以及000.txt同时存在没有影响。但是为了使流程清晰，请使用统一的编号。例如00.txt~99.txt就足够了</p>
+<p>因此，从这些脚本文件（root.lua，system.lua，以及用户脚本（User Scrpit），BASIC脚本（数字.txt~）），以及ns2打包文件中。中なお、これらのスクリプトファイル(root.lua、system.lua、そこからユーザースクリプトで読込まれる他のluaスクリプト、BASICスクリプト(数値.txt～))は、ns2アーカイブから読込むことも出来ます。旧NScripterと違って、NScripter2はスクリプトとデータのアーカイブを分けません。データのアーカイブの中にスクリプトも格納します。<br>
 <br>
 nscr2.exeの他に、config.exeというのも同梱されています。これは、Windows Aero環境の一部で起きる不具合に対応するために起動時に処理したい設定や、デバッグログの設定などをするためにあるものです。nscr2.exeと同じフォルダにconfig.exeとconfig.defをおいておけば動作します。<br>
 config.defの設定は手動で増やすことが出来ます。次のようなフォーマットになっています。BASICのgetconfigもしくはLuaのgui.getconfigでconfig.iniファイルから値を読めるため、ユーザー側の起動前設定に使うことも出来ます。</p>

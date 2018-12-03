@@ -67,9 +67,9 @@
 <dt>flag=basic.tchk()
 <dd>最后一条读取后显示的文字是已读文字的返回true，是初次阅读的话返回false。
 <dt>color=basic.htmlcolor_to_number(htmlcolor)
-<dd>HTML形式の色指定文字列("#AARRGGBB"もしくは"#RRGGBB")を32ビットの数値に変換します。内部的にはこの値を色を示すものとして扱っています。
+<dd>将HTML形式的颜色字符串（#AARRGGBB或者#RRGGBB）转换成32位的数值。在引擎内部是使用这个值来表示颜色的。
 <dt>tbl=basic.get1darray(vname)
-<dd>BASICの0ベースの配列をLuaの1ベースの配列（テーブル）に変換します。
+<dd>将BASIC中从0开始的数组转换成Lua中的1开始数组（Table）。
 <dt>tbl=basic.decodetable(str)
 <dd>将BASIC的“Table形式”的字符串转换成Lua的Table。
 </dl>
@@ -124,25 +124,25 @@ ESCキーは"ESC"、カーソルキーはそれぞれ"UP""DOWN""LEFT""RIGHT"、C
 <h3>gui</h3>
 <dl>
 <dt>gui.bgcolor(color)
-<dd>ウィンドウの背景色を設定します。colorは32ビットARGBです。以後、Luaにおける色指定はすべて32ビットARGBです。
+<dd>设定窗口的背景颜色。color值为32位 的ARGB。下文中的Lua相关的颜色指定都是32位的ARGB。
 <dt>gui.setscreenmode(mode)
-<dd>スクリーンモードを設定します。1でフルスクリーン、0でウィンドウモードです。
+<dd>设定屏幕模式。1为全屏，0为窗口模式。
 <dt>mode=gui.getscreenmode()
-<dd>スクリーンモードを取得します。1でフルスクリーン、0でウィンドウモードです。
+<dd>获得当前的屏幕模式。1为全屏，0为窗口模式。
 <dt>gui.create(w,h)
-<dd>DirectXウィンドウを作成します。幅と高さを指定してください。破棄は出来ません。一度だけ実行してください。
+<dd>生成DirectX的窗口。请指定好宽度与高度。由于不能销毁，所以请务必确保这条指令只执行了一次。
 <dt>gui.caption(title)
-<dd>DirectXウィンドウのタイトルを設定します。
+<dd>设定DirectX窗口的标题。
 <dt>gui.doevents()
-<dd>ウィンドウメッセージを処理します。
+<dd>处理窗口消息（Window Message）。
 <dt>gui.okbox(text,caption)
-<dd>「ＯＫ」ボタンのみのダイアログボックスを表示します。
+<dd>弹出一个只有“OK”按钮的对话框。
 <dt>ret=gui.yesnobox(text,caption)
-<dd>「はい」「いいえ」のダイアログボックスを表示し、true falseで結果を返します。
+<dd>弹出一个有「はい」（是）「いいえ」（否）的对话框，返回值是true和false。
 <dt>x,y=gui.getmouse()
-<dd>マウスの座標を取得します。画面外である場合はnil,nilを戻します。
+<dd>获得当前鼠标的坐标，如果是屏幕外的话返回nil,nil。
 <dt>gui.setmouse(x,y)
-<dd>マウスの座標を設定します。
+<dd>设定鼠标的坐标。
 <dt>lx,ly,rx,ry,dx,dy,a,b,x,y,start,back,l1,r1,l2,r2,l3,r3=gui.getpad(num)
 <dd>num番のXBOXパッドの入力を取得します。順に、左スティックX,Y 右スティックX,Y デジタル方向X,Y A B X Y START BACK L1 R2ボタン L2 R2トリガー L3 R3ボタン、です。ボタンはすべてtrueまたはfalse、lx ly rx ryは-32768～32767、dx,dyは-1～1、l2 r2は0～255です。※なお、パッド系命令を使う場合はnscr2pad.dllがnscr2.exeと同じフォルダにある必要があります。
 <dt>gui.setpad(num,lmotor,rmotor)
@@ -297,9 +297,9 @@ ESCキーは"ESC"、カーソルキーはそれぞれ"UP""DOWN""LEFT""RIGHT"、C
 <dt>nmv.write(framebmp)
 <dd>向NMV文件中写入一帧。参数为bitmap对象。
 <dt>nmv.writejpeg(filename)
-<dd>NMVファイルにJPEGファイルを一枚フレームとして書き込みます。動作は高速です。JPEGをそのまま使いますのでwritebeginで指定した品質は無視されます。再圧縮はされないので、元のJPEGは劣化しません。
+<dd>向NMV文件内写入JPEG文件作为一帧。此动作完成迅速，因为其不会根据writebegin的指定的品质压缩图片。不会进行二次压缩，原有的JPEG文件仍然会保持其品质。
 <dt>w,h,fps,framenum=nmv.getinfo(filename)
-<dd>指定したNMVムービーファイルの情報を得ます。アーカイブから情報を得ることも出来ます。
+<dd>获取指定的NMV文件的信息。可以获得打包在文件内的NMV文件的信息。
 </dl>
 <h3>shape</h3>
 直接描画のための関数ライブラリなのですが、ほとんど使っていないためドキュメントから省きます。将来的に削除されるかもしれません。
