@@ -148,7 +148,7 @@ ESCキーは"ESC"、カーソルキーはそれぞれ"UP""DOWN""LEFT""RIGHT"、C
 <dt>gui.setpad(num,lmotor,rmotor)
 <dd>num番のパッドを振動させます。左モーター（低周波）と右モーター（高周波）のスピードを0～65535で指定します。※なお、パッド系命令を使う場合はnscr2pad.dllがnscr2.exeと同じフォルダにある必要があります。
 <dt>lu,ru,w,ld,rd=gui.getclick()
-<dd>マウスの左クリック、右クリック、ホイール上下、左押し下げ、右押し下げのメッセージを取得します。
+<dd>获取鼠标的左键点击，右键点击，滚轮上下，左键按下，右键按下マウスの左クリック、右クリック、ホイール上下、左押し下げ、右押し下げのメッセージを取得します。
 <dt>gui.clearbuffer()
 <dd>マウス関連のメッセージをクリアします。
 <dt>tbl=gui.getdropfilelist()
@@ -315,7 +315,7 @@ ESCキーは"ESC"、カーソルキーはそれぞれ"UP""DOWN""LEFT""RIGHT"、C
 <dt>fnt:putgradation(target,utf16code,x,y,col1,col2,fx,fy)
 <dd>フォントをグラデーションで描画します。
 <dt>w,h=fnt:getinfo(name)
-<dd>フォント情報を返します。現在の仕様では、幅と高さを返しています。将来的に追加するかもしれません。
+<dd>返回字体的信息。现在的版本中返回的是字体的宽和高。以后可能会增加新的内容。
 <dt>fnt:delete()
 <dd>フォントオブジェクトを削除します。
 </dl>
