@@ -1,0 +1,8 @@
+*define
+game
+*start
+bg black,1
+click
+bg white,99,1000,"effectdll.dll"
+click
+end

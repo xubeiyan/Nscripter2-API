@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE> </TITLE>
+</HEAD>
+<BODY BACKGROUND="img/bg.jpg">
+<DIV ALIGN="center">
+<FONT SIZE="6" COLOR="#ffff00"><B>NScripterの文法</B></FONT></DIV>
+<br><br>
+;で始まる文は、コメントです。<br>
+*で始まる文は、ラベル名です。<br>
+その他は、命令文か、もしくは表示文です。<br>
+何もないただの改行、半角スペース、タブは読み飛ばされます。<br>
+文字列を定数として指定する場合は、"でくくってください。<br>
+　例）"bgfile.bmp"<br>
+　＜注意＞<br>
+NScripterは、Scripter3とは文法規則が違います。（厳密になっています）<br>
+一番違うのは、ただの改行が画面上での改行を表さないことでしょう。<br>
+画面上で改行させたい場合は、br命令を用いてください。<br>
+<br>
+なお、:（コロン）でつなげることによって、一行にたくさんの命令文を
+書くことができます。これは、if文で威力を発揮します。<br>
+<br>
+NScripterの命令文は、原則的に、二行に分けては行けません。<br>
+ただし、select系の命令だけは例外で、行を変えることができます。<br>
+<br>
+　例）<br>
+　　　　select	"選択肢１",*sel1,<br>
+　　　　　　　　"選択肢２",*sel2,<br>
+　　　　　　　　"選択肢３",*sel3<br>
+<br>
+基本的に、NScripterは、英字の小文字大文字を区別しません。<br>
+ただし、SPIによっては、ファイル名の大文字小文字があっていないと、
+ロードできない仕様のものもあるので、ご注意ください。<br>
+<br>
+</BODY>
+</HTML>

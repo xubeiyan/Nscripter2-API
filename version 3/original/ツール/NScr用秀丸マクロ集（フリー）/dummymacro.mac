@@ -1,0 +1,14 @@
+//エクセルでファイルリストのテーブルを開き(HTMLでもテーブル部分なら開けます）、
+//ファイル名の列だけコピーしてどこかのテキストファイルに貼り付け。
+//それからこのマクロでcreatedummy "00000.bmp"みたいな形に変えて、
+//NScripterで実行すればダミーの出来上がり。
+
+gofiletop;
+while (1) {
+insert "createdummy \"";
+golineend2;
+insert ".bmp\"";
+#n=lineno;
+right;
+if (#n==lineno) break;
+}

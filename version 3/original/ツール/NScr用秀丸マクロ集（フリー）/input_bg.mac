@@ -1,0 +1,7 @@
+$0=input ("BG–½—ßF”wŒi“ü—Í","");
+if ($0=="") endmacro;
+insert "bg ";
+insert $0;
+
+insert ",2\n";
+endmacro;

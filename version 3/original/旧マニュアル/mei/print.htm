@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE> </TITLE>
+</HEAD>
+<BODY BACKGROUND="img/bg.jpg">
+<DIV ALIGN="center">
+<FONT SIZE="6" COLOR="#ffff00"><B>print</B></FONT></DIV>
+<br><br>
+<B><FONT SIZE="3" COLOR="#ff0000">print エフェクト</FONT><br></B>
+<br>
+そのエフェクトで画面を書きなおします。<br>
+<br>
+エフェクトの指定には、次の二種類の方法があります。<br>
+１）一ケタで指定<br>
+　　　　0…何もしないで、メモリにだけ書きこむ<br>
+　　　　1…瞬時表示<br>
+　　　　その他…effect命令で定義済みのエフェクトを呼び出す。<br>
+　　　　例）bg "test.jpg",0<br>
+　　　　ld c,"testman.jpg",1<br>
+　　　　cl c,3<br>
+<br>
+２）直接指定<br>
+　　　　effect命令に与えるパラメータと同じ物を指定。<br>
+　　　　例）bg "test.jpg",10,1000<br>
+　　　　ld "testman.jpg",15,2000,"mask.bmp"<br>
+ <br>
+<br>
+</BODY>
+</HTML>

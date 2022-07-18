@@ -1,0 +1,64 @@
+;defsub サンプル
+
+*define
+;↓lrclickの動作をわかりやすくするためにつけているだけです、必要ではありません。
+btnnowindowerase	;ボタン時にテキストウィンドウを消さない
+
+defsub chr
+defsub music
+defsub lrclick
+
+game
+
+*chr
+getparam $50
+mov $51,":a;chr\"
+add $51,$50
+ld c,$51,10,1000
+return
+
+*music
+getparam %50
+if %50=0 bgmstop	;0はストップ
+if %50=1 bgm "bgm\music1.wav"
+if %50=2 bgm "bgm\music2.wav"
+if %50=3 bgm "bgm\music3.wav"
+return
+
+
+*lrclick
+getparam i%50
+btndef clear
+
+*lrclick_lp
+btnwait2 %51
+if %51=0 mov %%50,0:return
+if %51=-1 mov %%50,1:return
+goto *lrclick_lp
+
+
+*start
+;↓立ち絵命令の動作がわかりやすいようにつけただけで、必要ありません。
+erasetextwindow 0 ;エフェクト時にテキストウィンドウを消さない
+
+
+ｌｒｃｌｉｃｋは、左クリックで０、右クリックで１を返すクリック待ち命令です。ＣＧモードなどで使えます。
+lrclick %0
+if %0=0 goto *lclk
+if %0=1 goto *rclk
+
+*lclk
+左クリックしました。\
+goto *nextpage
+
+*rclk
+右クリックしました。\
+goto *nextpage
+
+*nextpage
+ｃｈｒは、立ち絵を表示する命令です。透過指定：ａ；や、chr\などのフォルダ指定がいりません。立ち位置とエフェクトを指定する手間も省きます。@
+chr "man.jpg"
+ｍｕｓｉｃは、音楽を演奏する命令です。数字だけで指定できます。@
+music 1
+クリックで終わります。@
+end
