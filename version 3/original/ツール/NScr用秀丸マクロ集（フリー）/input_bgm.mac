@@ -1,6 +1,0 @@
-$0=input ("BGM–½—ßF‚a‚f‚l”Ô†“ü—Í","");
-if ($0=="") endmacro;
-insert "mov %0,";
-insert $0;
-insert ":gosub *music\n";
-endmacro;

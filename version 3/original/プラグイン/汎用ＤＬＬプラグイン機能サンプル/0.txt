@@ -1,8 +1,0 @@
-*define
-game
-*start
-exec_dll "execdll.dll/テストですよー。"
-getret %0
-getret $0
-戻り値は%0と$0でした。\
-end

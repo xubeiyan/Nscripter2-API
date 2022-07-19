@@ -1,6 +1,0 @@
-$0=input ("LD–½—ßF—§‚¿ŠG“ü—Í","");
-if ($0=="") endmacro;
-insert "ld c,";
-insert $0;
-insert ",3\n";
-endmacro;

@@ -1,7 +1,0 @@
-$0=input ("SE–½—ßF‚r‚d“ü—Í","");
-if ($0=="") endmacro;
-
-insert "dwave 1,\"se\\";
-insert $0;
-insert ".wav\"\n";
-endmacro;
